@@ -1,0 +1,23 @@
+// Global Variables
+$blue: #01b4e4;
+$green: #90cea1;
+.footer {
+    bottom: 0;
+    border-top: 1.5px solid $blue;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p{
+        font-size: .9rem;
+        margin-bottom: 1rem;
+    }
+    a{
+        img{
+            width: 20rem;
+            object-fit: cover;
+        }
+    }
+}

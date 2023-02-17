@@ -1,0 +1,21 @@
+.banner {
+    border-radius: 0.3rem;
+    background-image: url("https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,00192f,00baff)/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg");
+    background-size: contain;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .banner-title {
+        width: 90%;
+        text-align: left;
+        h2{
+            font-size: 4rem;
+        }
+        h3{
+            font-size: 2rem;
+        }
+    }
+}

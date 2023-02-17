@@ -1,0 +1,32 @@
+// Global Variables
+$blue: #01b4e4;
+$green: #90cea1;
+
+// Navbar css
+.navbar{
+    width: 100%;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    ul{
+        width: 100%;
+        padding: .5rem;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        border-top: 1.5px solid $blue;
+        border-bottom: 1.5px solid $blue;
+        li .nav-link{
+            text-decoration: none;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            &:hover{
+                text-decoration: underline;
+                color: $blue;
+                transition: all 1s ease-in-out;
+            }
+        }
+    }
+}
