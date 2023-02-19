@@ -1,0 +1,100 @@
+// Global Variables
+$blue: #01b4e4;
+$green: #90cea1;
+.moviePage{
+
+    h2{
+        font-size: 2rem;
+    }
+    p{
+        font-size: 1.1rem;
+    }
+    .released-icon{
+        font-size: 0.9rem;
+        background-color: rgb(22 163 74);
+        display: inline-block;
+        margin: 0.5rem 0;
+        padding: 0.5rem 1rem;
+        border-radius: .4rem;
+    }
+
+    .genres-section{
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        .genre{
+            font-size: 0.9rem;
+            background-color: $blue;
+            padding: 0.4rem .8rem;
+            border-radius: .6rem;
+            color: white;
+            text-decoration: none;
+            margin-left: .5rem;
+            &:hover{
+                background-color: #007696;
+                transition: all 0.4s ease-in-out;
+            }
+        }
+    }
+
+    img{
+        object-fit: cover;
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+    .movie-overview{
+        margin: 1rem 0;
+        h2{
+            font-size: 1.4rem;
+            margin-bottom: .5rem;
+            text-decoration: underline;
+        }
+        p{
+            font-size: .95rem;
+        }
+    }
+    .movie-production{
+        margin: 1rem 0;
+        h2{
+            font-size: 1.4rem;
+            margin-bottom: .5rem;
+            text-decoration: underline;
+        }
+        .companies{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .company{
+            margin-right: 1rem;
+            background: linear-gradient(to right, #565656 0%, rgb(21, 21, 21) 100%);
+            border-radius: .75rem;
+            padding: .4rem .8rem;
+            border: .5px solid #2f2f2f;
+            img{
+                object-fit: contain;
+                width: 6rem;
+                height: 6rem;
+            }
+            &:hover{
+                border: .5px solid $green;
+                transition: all .5s ease-in-out;
+            }
+        }
+    }
+    .movie-reviews{
+        margin: 1rem 0;
+        h2{
+            font-size: 1.4rem;
+            margin-bottom: .5rem;
+            text-decoration: underline;
+        }
+    }
+    .section-title{
+        font-size: 1.4rem;
+        margin-bottom: .5rem;
+        text-decoration: underline;  
+    }
+}

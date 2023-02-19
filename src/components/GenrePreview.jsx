@@ -1,16 +1,30 @@
 import { Link } from "react-router-dom";
-import MovieList from "./MovieList";
+import React, { useEffect, useState } from "react";
+import "../styles/genrePreview.scss";
+import MovieCarousel from "./MovieCarousel";
 
-const GenrePreview = ({ name, id }) => {
+const GenrePreview = ({ name, genreId }) => {
+  const [movies, setMovies] = useState([]);
+
+  const getMovies = async (id) => {
+    const data = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?with_genres=${id}&api_key=${process.env.REACT_APP_API_KEY}`
+    );
+    const movies = await data.json();
+    setMovies(movies.results);
+  };
+  useEffect(() => {
+    getMovies(genreId);
+  });
   return (
-    <div className="my-4">
-      <div className="genre-title">
-        <h2 className="text-xl font-semibold">{name}</h2>
-        <Link to={"/genre/2"}>
-          <p className="text-sm">View More</p>
+    <div className="genrePreview">
+      <div className="genre-heading">
+        <h2>{name}</h2>
+        <Link to={`/genre/${genreId}`} className="link">
+          View More
         </Link>
       </div>
-      <MovieList data={[1, 2, 3]} />
+      <MovieCarousel movies={movies} />
     </div>
   );
 };

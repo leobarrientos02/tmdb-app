@@ -1,0 +1,34 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0 1rem;
+  background: #0d0d0d;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pages {
+  height: 100vh;
+}
+
+.movie-grid {
+  display: -ms-grid;
+  display: grid;
+  gap: 4rem;
+  -ms-grid-columns: (minmax(15rem, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.page-title {
+  font-size: 2.5rem;
+}
+/*# sourceMappingURL=global.css.map */

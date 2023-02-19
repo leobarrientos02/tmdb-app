@@ -8,6 +8,13 @@ $green: #90cea1;
     padding: 1rem 0;
     display: flex;
     flex-direction: column;
+    .logo{
+        padding: .5rem 0;
+    }
+    img{
+        object-fit: cover;
+        width: 20rem;
+    }
     ul{
         width: 100%;
         padding: .5rem;
@@ -20,10 +27,14 @@ $green: #90cea1;
         li .nav-link{
             text-decoration: none;
             font-size: 1rem;
+            font-weight: 600;
             color: white;
             cursor: pointer;
             &:hover{
-                text-decoration: underline;
+                color: $blue;
+                transition: all 1s ease-in-out;
+            }
+            &:focus{
                 color: $blue;
                 transition: all 1s ease-in-out;
             }

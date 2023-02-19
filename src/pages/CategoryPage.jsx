@@ -1,27 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Movie from "../components/Movie";
-
-function formatTitle(string) {
-  let title = "";
-  switch (string) {
-    case "popular":
-      title = "Popular";
-      break;
-    case "now_playing":
-      title = "Now Playing";
-      break;
-    case "top_rated":
-      title = "Top Rated";
-      break;
-    case "upcoming":
-      title = "Upcoming";
-      break;
-    default:
-      title = "All";
-  }
-  return title;
-}
+import { FormatTitle } from "../shared";
 
 const CategoryPage = () => {
   const [movies, setMovies] = useState([]);
@@ -30,7 +10,7 @@ const CategoryPage = () => {
 
   const getMovies = async (category) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.API_KEY}`
+      `https://api.themoviedb.org/3/movie/${categoryTitle}?api_key=${process.env.REACT_APP_API_KEY}`
     );
     const movies = await data.json();
     setMovies(movies.results);
@@ -39,9 +19,9 @@ const CategoryPage = () => {
     getMovies(params.type);
   });
   return (
-    <div>
-      <h2>{formatTitle(categoryTitle)} Movies</h2>
-      <div>
+    <div className="categoryPage">
+      <h2 className="page-title">{FormatTitle(categoryTitle)} Movies</h2>
+      <div className="movie-grid">
         {movies.map((movie) => {
           return (
             <Movie

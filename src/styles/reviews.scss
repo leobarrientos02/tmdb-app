@@ -1,0 +1,52 @@
+// Global Variables
+$blue: #01b4e4;
+$green: #90cea1;
+.reviews{
+    max-height: 80vh;
+    overflow-y: scroll;
+    padding-right: 1rem;
+    border-radius: 0.25rem;
+    scrollbar-width: auto;
+    scrollbar-color: $green #222222;
+    .section-title{
+        margin: 1rem 0;
+        h2{
+            font-size: 1.4rem;
+            margin-bottom: .5rem;
+            text-decoration: underline;
+        }
+    }
+    .review{
+        margin-bottom: 2rem;
+        padding: 0.4rem;
+        .review-header{
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between;
+            align-items:center;
+        .author{
+            display: flex;
+            flex-direction: row;
+            align-items:center;
+            img{
+                object-fit: cover;
+                border-radius: 50%;
+                width: 2rem;
+            }
+            p{
+                margin-left: .5rem;
+                font-weight: 600;
+            }
+        }
+
+        .creation{
+            font-size: 1rem;
+        }
+        }
+
+        .content{
+            font-size: .9rem;
+            margin-left: .5rem;
+        }
+    }
+}

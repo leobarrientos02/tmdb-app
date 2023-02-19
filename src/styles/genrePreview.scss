@@ -1,0 +1,26 @@
+// Global Variables
+$blue: #01b4e4;
+$green: #90cea1;
+
+.genrePreview{
+    margin: 1.5rem 0;
+    .genre-heading{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        
+        h2{
+            font-size: 2rem;
+        }
+        .link{
+            text-decoration: none;
+            color: white;
+            &:hover{
+                color: $blue;
+                text-decoration: underline;
+                transition: all .5s ease-in-out;
+            }
+        }
+    }
+}

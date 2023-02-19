@@ -1,0 +1,30 @@
+.movie{
+    .vote-bubble {
+        position: relative;
+        width: fit-content;
+        border-radius: 50%;
+        background: #081c22;
+        padding: 0.5rem 0.25rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: solid white 2px;
+        top: 5%;
+    }
+    
+    img{
+        object-fit: cover;
+        width: 100%;
+        border-radius: .75rem;
+        box-shadow: rgba(15, 9, 40, 0.474) 0px 2px 4px 0px, rgba(19, 35, 98, 0.32) 0px 2px 16px 0px;
+    }
+
+    h2{
+        font-size: 1.2rem;
+    }
+
+    p{
+        font-size: .75rem;
+        color: lightgray;
+    }
+
+}

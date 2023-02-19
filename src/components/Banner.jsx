@@ -8,6 +8,16 @@ export function Banner() {
           Explore our large variety of movies.
         </h3>
       </div>
+      {/* <form className="banner-search">
+        <input
+          className="banner-input"
+          type="text"
+          name="movie"
+          id="search-text"
+          placeholder="Search Movies"
+        />
+        <input className="banner-button" type="submit" value="Search" />
+      </form> */}
     </div>
   );
 }

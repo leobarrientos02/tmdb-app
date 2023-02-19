@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
+import "../styles/movie.scss";
+import VotePercentage, { FormatDate } from "../shared";
 
-function VotePercentage(num) {
-  return Math.round((num * 100) / 10);
-}
 const Movie = ({ id, vote, poster_path, title, release_date }) => {
+  let imagePath = "https://image.tmdb.org/t/p/original";
   return (
-    <div>
+    <div className="movie">
       <p className="vote-bubble" title={VotePercentage(vote) + "% Rating"}>
         {VotePercentage(vote)}%
       </p>
-      <Link href={`movie/${id}`}>
-        <p>{poster_path}</p>
+      <Link to={`/movie/${id}`}>
+        <img src={imagePath + poster_path} alt={title} />
       </Link>
-      <h1 className="text-lg font-bold mt-2">{title}</h1>
-      <p className="text-xs text-gray-300">Release date: {release_date}</p>
+      <h2>{title}</h2>
+      <p>Release date: {FormatDate(release_date)}</p>
     </div>
   );
 };
