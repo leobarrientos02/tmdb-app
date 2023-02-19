@@ -1,7 +1,14 @@
 import "../styles/banner.scss";
+import { motion } from "framer-motion";
 export function Banner() {
   return (
-    <div className="banner">
+    <motion.div
+      className="banner"
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="banner-title">
         <h2 className="text-5xl font-semibold">Welcome.</h2>
         <h3 className="text-3xl font-semibold">
@@ -18,6 +25,6 @@ export function Banner() {
         />
         <input className="banner-button" type="submit" value="Search" />
       </form> */}
-    </div>
+    </motion.div>
   );
 }

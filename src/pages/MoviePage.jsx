@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import ReviewSection from "../components/ReviewSection";
 import MovieCarousel from "../components/MovieCarousel";
 import VotePercentage, { FormatDate } from "../shared";
+import { motion } from "framer-motion";
 import "../styles/moviePage.scss";
 import "../styles/movieCarousel.scss";
 
@@ -49,7 +50,14 @@ const MoviePage = () => {
         })}
       </div>
 
-      <img src={imagePath + movieData?.backdrop_path} alt={movieData?.title} />
+      <motion.img
+        src={imagePath + movieData?.backdrop_path}
+        alt={movieData?.title}
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      />
 
       <div>
         <h2 className="section-title">Overview</h2>
@@ -74,7 +82,6 @@ const MoviePage = () => {
       </div>
 
       <div className="movie-reviews">
-        <h2 className="section-title">Reviews</h2>
         <ReviewSection movieId={params.id} />
       </div>
 
