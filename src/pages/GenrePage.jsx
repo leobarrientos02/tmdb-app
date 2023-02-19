@@ -42,7 +42,7 @@ const GenrePage = () => {
   }, [page, params.id]);
   let pages = Array.from(Array(total), (_, i) => i + 1);
   return (
-    <div>
+    <div className="genrePage">
       <h2 className="page-title">{genre} Movies</h2>
       <div className="movie-grid">
         {movies.map((movie) => {

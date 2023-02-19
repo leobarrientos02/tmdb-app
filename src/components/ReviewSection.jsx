@@ -19,6 +19,7 @@ const ReviewSection = ({ movieId }) => {
 
   return (
     <div className="reviews">
+      <h2 className="section-title">Reviews</h2>
       {reviews?.map((review) => {
         return (
           <div className="review" key={review.id}>

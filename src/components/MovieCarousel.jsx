@@ -3,6 +3,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import VotePercentage, { FormatDate } from "../shared";
 import "../styles/movieCarousel.scss";
+import { motion } from "framer-motion";
 
 const MovieCarousel = ({ movies }) => {
   let imagePath = "https://image.tmdb.org/t/p/original";
@@ -19,7 +20,13 @@ const MovieCarousel = ({ movies }) => {
       {movies.map((movie) => {
         return (
           <SplideSlide key={movie?.id}>
-            <div className="movieCard">
+            <motion.div
+              className="movieCard"
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               <p
                 className="vote-bubble"
                 title={VotePercentage(movie?.vote) + "% Rating"}
@@ -33,7 +40,7 @@ const MovieCarousel = ({ movies }) => {
               <p className="release">
                 Release date: {FormatDate(movie?.release_date)}
               </p>
-            </div>
+            </motion.div>
           </SplideSlide>
         );
       })}
