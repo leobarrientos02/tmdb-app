@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Movie from "../components/Movie";
+import { scrollToTop } from "../shared";
 
 const GenrePage = () => {
   const [movies, setMovies] = useState([]);
@@ -30,6 +31,11 @@ const GenrePage = () => {
     setGenre(result.name);
   };
 
+  const pagination = (id, page) => {
+    scrollToTop();
+    getMovies(id, page);
+  };
+
   useEffect(() => {
     getMovies(params.id, page);
     getGenreName(params.id);
@@ -57,7 +63,7 @@ const GenrePage = () => {
         <div className="pagination">
           <button
             className={page === 1 ? "block-link" : "pagination-btn"}
-            onClick={() => getMovies(params.id, page - 1)}
+            onClick={() => pagination(params.id, page - 1)}
           >
             {"<"} Previous
           </button>
@@ -66,7 +72,7 @@ const GenrePage = () => {
               return (
                 <button
                   className={page === i ? "current-link" : "pagination-btn"}
-                  onClick={() => getMovies(params.id, i)}
+                  onClick={() => pagination(params.id, i)}
                   key={i}
                 >
                   {i}
@@ -76,7 +82,7 @@ const GenrePage = () => {
           </div>
           <button
             className={page === total ? "block-link" : "pagination-btn"}
-            onClick={() => getMovies(params.id, page + 1)}
+            onClick={() => pagination(params.id, page + 1)}
           >
             Next {">"}
           </button>

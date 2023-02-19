@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CompanyBanner from "../components/CompanyBanner";
 import Movie from "../components/Movie";
+import { scrollToTop } from "../shared";
 
 const CompanyPage = () => {
   const [movies, setMovies] = useState([]);
@@ -18,6 +19,12 @@ const CompanyPage = () => {
     setTotal(movies.total_pages);
     setMovies(movies.results);
   };
+
+  const pagination = (id, page) => {
+    scrollToTop();
+    getMovies(id, page);
+  };
+
   useEffect(() => {
     getMovies(params.id, 1);
   }, [params.id]);
@@ -45,16 +52,16 @@ const CompanyPage = () => {
         <div className="pagination">
           <button
             className={page === 1 ? "block-link" : "pagination-btn"}
-            onClick={() => getMovies(params.id, page - 1)}
+            onClick={() => pagination(params.id, page - 1)}
           >
             {"<"} Previous
           </button>
-          <div className={total > 20 ? "numbers-large" : "numbers-small"}>
+          <div className={total > 12 ? "numbers-large" : "numbers-small"}>
             {pages.map((i) => {
               return (
                 <button
                   className={page === i ? "current-link" : "pagination-btn"}
-                  onClick={() => getMovies(params.id, i)}
+                  onClick={() => pagination(params.id, i)}
                   key={i}
                 >
                   {i}
@@ -64,7 +71,7 @@ const CompanyPage = () => {
           </div>
           <button
             className={page === total ? "block-link" : "pagination-btn"}
-            onClick={() => getMovies(params.id, page + 1)}
+            onClick={() => pagination(params.id, page + 1)}
           >
             Next {">"}
           </button>
