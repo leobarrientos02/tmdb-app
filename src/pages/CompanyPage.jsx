@@ -5,18 +5,24 @@ import Movie from "../components/Movie";
 
 const CompanyPage = () => {
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
   let params = useParams();
 
-  const getMovies = async (id) => {
+  const getMovies = async (id, pageNum) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?with_companies=${id}&page=1&api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/discover/movie?with_companies=${id}&page=${pageNum}&api_key=${process.env.REACT_APP_API_KEY}`
     );
     const movies = await data.json();
+    setPage(pageNum);
+    setTotal(movies.total_pages);
     setMovies(movies.results);
   };
   useEffect(() => {
-    getMovies(params.id);
-  });
+    getMovies(params.id, 1);
+  }, [params.id]);
+
+  let pages = Array.from(Array(total), (_, i) => i + 1);
   return (
     <div>
       <CompanyBanner companyId={params.id} />
@@ -34,6 +40,37 @@ const CompanyPage = () => {
           );
         })}
       </div>
+
+      <div className="pagination-container">
+        <div className="pagination">
+          <button
+            className={page === 1 ? "block-link" : "pagination-btn"}
+            onClick={() => getMovies(params.id, page - 1)}
+          >
+            {"<"} Previous
+          </button>
+          <div className={total > 20 ? "numbers-large" : "numbers-small"}>
+            {pages.map((i) => {
+              return (
+                <button
+                  className={page === i ? "current-link" : "pagination-btn"}
+                  onClick={() => getMovies(params.id, i)}
+                  key={i}
+                >
+                  {i}
+                </button>
+              );
+            })}
+          </div>
+          <button
+            className={page === total ? "block-link" : "pagination-btn"}
+            onClick={() => getMovies(params.id, page + 1)}
+          >
+            Next {">"}
+          </button>
+        </div>
+      </div>
+      <p className="current-pagenum">Current Page: {page}</p>
     </div>
   );
 };

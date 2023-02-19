@@ -5,14 +5,17 @@ import Movie from "../components/Movie";
 const GenrePage = () => {
   const [movies, setMovies] = useState([]);
   const [genre, setGenre] = useState("");
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
   let params = useParams();
 
-  const getMovies = async (genre) => {
+  const getMovies = async (genre, pageNum) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?with_genres=${genre}&page=1&api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/discover/movie?with_genres=${genre}&page=${pageNum}&api_key=${process.env.REACT_APP_API_KEY}`
     );
     const movies = await data.json();
-
+    setPage(pageNum);
+    setTotal(movies.total_pages > 500 ? 500 : movies.total_pages);
     setMovies(movies.results);
   };
 
@@ -26,10 +29,12 @@ const GenrePage = () => {
     })[0];
     setGenre(result.name);
   };
+
   useEffect(() => {
-    getMovies(params.id);
+    getMovies(params.id, page);
     getGenreName(params.id);
-  }, [params.id]);
+  }, [page, params.id]);
+  let pages = Array.from(Array(total), (_, i) => i + 1);
   return (
     <div>
       <h2 className="page-title">{genre} Movies</h2>
@@ -47,6 +52,37 @@ const GenrePage = () => {
           );
         })}
       </div>
+
+      <div className="pagination-container">
+        <div className="pagination">
+          <button
+            className={page === 1 ? "block-link" : "pagination-btn"}
+            onClick={() => getMovies(params.id, page - 1)}
+          >
+            {"<"} Previous
+          </button>
+          <div className={total > 20 ? "numbers-large" : "numbers-small"}>
+            {pages.map((i) => {
+              return (
+                <button
+                  className={page === i ? "current-link" : "pagination-btn"}
+                  onClick={() => getMovies(params.id, i)}
+                  key={i}
+                >
+                  {i}
+                </button>
+              );
+            })}
+          </div>
+          <button
+            className={page === total ? "block-link" : "pagination-btn"}
+            onClick={() => getMovies(params.id, page + 1)}
+          >
+            Next {">"}
+          </button>
+        </div>
+      </div>
+      <p className="current-pagenum">Current Page: {page}</p>
     </div>
   );
 };
