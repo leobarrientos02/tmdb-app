@@ -4,6 +4,7 @@ import "@splidejs/splide/dist/css/splide.min.css";
 import VotePercentage, { FormatDate } from "../shared";
 import "../styles/movieCarousel.scss";
 import { motion } from "framer-motion";
+import NotFound from "../images/imageNotFound.png";
 
 const MovieCarousel = ({ movies }) => {
   let imagePath = "https://image.tmdb.org/t/p/original";
@@ -34,7 +35,11 @@ const MovieCarousel = ({ movies }) => {
                 {VotePercentage(movie?.vote_average)}%
               </p>
               <Link to={`/movie/${movie?.id}`}>
-                <img src={imagePath + movie?.poster_path} alt={movie?.title} />
+                <img
+                  src={imagePath + movie?.poster_path}
+                  alt=""
+                  onError={(e) => (e.currentTarget.src = NotFound)}
+                />
               </Link>
               <h2 className="movie-title">{movie?.title}</h2>
               <p className="release">

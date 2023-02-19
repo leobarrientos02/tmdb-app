@@ -39,5 +39,22 @@ $green: #90cea1;
                 transition: all 1s ease-in-out;
             }
         }
+
+        .genre-dropdown {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0;
+            .genre-option{
+                margin: 0;
+                background: #2f2f2f;
+                font-size: .8rem;
+                font-weight: 400;
+                color: white;
+                cursor: pointer;
+            }
+        }
     }
 }
