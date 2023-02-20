@@ -5,28 +5,38 @@ $green: #90cea1;
     min-height: 20rem;
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
     img{
         border-radius: 1rem;
         object-fit: cover;
-        width: 95%;
+        width: 100%;
+        &:hover{
+            border: solid .5px $blue;
+        }
     }
 
     .vote-bubble {
-        position: fixed;
-        width: fit-content;
+        position:absolute;
         border-radius: 50%;
         background: #081c22;
         padding: 0.5rem 0.25rem;
         font-size: 0.9rem;
-        font-weight: 600;
         border: solid white 2px;
         top: 0;
+        right:0;
     }
 
     .movie-title{
+        width: 100%;
+        text-align: left;
         font-size: 1.2rem;
     }
     .release{
+        width: 100%;
+        text-align: left;
         font-size: .8rem;
         color: lightgrey;
     }

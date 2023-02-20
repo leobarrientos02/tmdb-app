@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Logo from "../images/logo.svg";
 import "../styles/navbar.scss";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [genres, setGenres] = useState([]);
@@ -29,7 +30,12 @@ const Navbar = () => {
     <div className="navbar">
       <div className="top-nav">
         <Link to="/">
-          <img src={Logo} alt="TMDB" />
+          <motion.img
+            src={Logo}
+            alt="TMDB"
+            transition={{ duration: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+          />
         </Link>
         <form onSubmit={submitHandler} className="search">
           <input
