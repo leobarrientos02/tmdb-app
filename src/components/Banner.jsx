@@ -1,13 +1,23 @@
 import "../styles/banner.scss";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+
 export function Banner() {
+  const [input, setInput] = useState("");
+  const navigate = useNavigate();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    navigate(`/search/${input}`);
+  };
   return (
     <motion.div
       className="banner"
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.6, delay: 0.3 }}
     >
       <div className="banner-title">
         <h2 className="text-5xl font-semibold">Welcome.</h2>
@@ -15,16 +25,17 @@ export function Banner() {
           Explore our large variety of movies.
         </h3>
       </div>
-      {/* <form className="banner-search">
+      <form onSubmit={submitHandler} className="search">
         <input
-          className="banner-input"
+          className="search-input"
           type="text"
-          name="movie"
-          id="search-text"
+          required
+          onChange={(e) => setInput(e.target.value)}
+          value={input}
           placeholder="Search Movies"
         />
-        <input className="banner-button" type="submit" value="Search" />
-      </form> */}
+        <input className="search-btn" type="submit" value="Search" />
+      </form>
     </motion.div>
   );
 }

@@ -1,3 +1,6 @@
+// Global Variables
+$blue: #01b4e4;
+$green: #90cea1;
 .banner {
     border-radius: 0.3rem;
     background-image: url("https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,00192f,00baff)/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg");
@@ -6,9 +9,10 @@
     height: 60vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     .banner-title {
+        margin-left: 4rem;
         width: 90%;
         text-align: left;
         h2{
@@ -16,6 +20,37 @@
         }
         h3{
             font-size: 2rem;
+        }
+    }
+    .search{
+        margin-top: 1rem;
+        margin-left: 4rem;
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        .search-input{
+            border: none;
+            width: 90%;
+            border-radius: 1rem 0 0 1rem;
+            background: white;
+            color: #2f2f2f;
+            font-size: 1rem;
+            padding: 0.5rem;
+            outline: none;
+        }
+        .search-btn{
+            width: 10%;
+            border-radius: 0 1rem 1rem 0;
+            background-image: linear-gradient(to right, #90cea1, #01b4e4);
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            &:hover{
+                background-image: linear-gradient(to right, #76ab84, #009ac5);
+            }
         }
     }
 }

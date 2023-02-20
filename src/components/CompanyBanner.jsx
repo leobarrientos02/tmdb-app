@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import "../styles/companyBanner.scss";
+
 const CompanyBanner = ({ companyId }) => {
   const [company, setCompany] = useState({});
   let imagePath = "https://image.tmdb.org/t/p/original";
@@ -14,7 +16,13 @@ const CompanyBanner = ({ companyId }) => {
     getCompany(companyId);
   });
   return (
-    <div className="company-banner">
+    <motion.div
+      className="company-banner"
+      animate={{ x: 0 }}
+      initial={{ x: "-100%" }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.7 }}
+    >
       <div className="image">
         <img src={imagePath + company?.logo_path} alt={company?.name} />
       </div>
@@ -25,7 +33,7 @@ const CompanyBanner = ({ companyId }) => {
           {company?.homepage}
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

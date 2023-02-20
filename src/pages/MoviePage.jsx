@@ -43,7 +43,7 @@ const MoviePage = () => {
       <div className="genres-section">
         {movieData?.genres?.map((genre) => {
           return (
-            <Link to={`/genre/${genre.id}`} className="genre">
+            <Link key={genre.id} to={`/genre/${genre.id}`} className="genre">
               {genre.name}
             </Link>
           );
@@ -56,7 +56,7 @@ const MoviePage = () => {
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
       />
 
       <div>
