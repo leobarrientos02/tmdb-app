@@ -5,6 +5,7 @@ import GenrePage from "./GenrePage";
 import MoviePage from "./MoviePage";
 import CompanyPage from "./CompanyPage";
 import CategoryPage from "./CategoryPage";
+import SearchPage from "./SearchPage";
 
 const Pages = () => {
   return (
@@ -14,6 +15,7 @@ const Pages = () => {
       <Route path="/category/:category" element={<CategoryPage />} />
       <Route path="/genre/:id" element={<GenrePage />} />
       <Route path="/company/:id" element={<CompanyPage />} />
+      <Route path="/search/:search" element={<SearchPage />} />
     </Routes>
   );
 };

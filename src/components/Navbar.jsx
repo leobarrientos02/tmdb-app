@@ -6,6 +6,7 @@ import "../styles/navbar.scss";
 
 const Navbar = () => {
   const [genres, setGenres] = useState([]);
+  const [input, setInput] = useState("");
   const navigate = useNavigate();
 
   const getGenres = async () => {
@@ -15,15 +16,31 @@ const Navbar = () => {
     const res = await data.json();
     setGenres(res.genres);
   };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    navigate(`/search/${input}`);
+  };
+
   useEffect(() => {
     getGenres();
   });
   return (
     <div className="navbar">
-      <div className="logo">
+      <div className="top-nav">
         <Link to="/">
           <img src={Logo} alt="TMDB" />
         </Link>
+        <form onSubmit={submitHandler} className="search">
+          <input
+            type="text"
+            required
+            onChange={(e) => setInput(e.target.value)}
+            value={input}
+            placeholder="Search Movies"
+          />
+          <button>Search</button>
+        </form>
       </div>
       <ul>
         <li>
