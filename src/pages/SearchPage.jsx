@@ -52,7 +52,7 @@ const SearchPage = () => {
         page={page}
         total={total}
         pagination={pagination}
-        type="search"
+        type="OneParameter"
       />
     </div>
   );

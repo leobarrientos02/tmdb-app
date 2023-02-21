@@ -7,7 +7,7 @@ const Pagination = ({ param, page, total, pagination, type }) => {
           <button
             className={page === 1 ? "block-link" : "pagination-btn"}
             onClick={
-              type === "search"
+              type === "OneParameter"
                 ? () => pagination(page - 1)
                 : () => pagination(param, page - 1)
             }
@@ -20,7 +20,7 @@ const Pagination = ({ param, page, total, pagination, type }) => {
                 <button
                   className={page === i ? "current-link" : "pagination-btn"}
                   onClick={
-                    type === "search"
+                    type === "OneParameter"
                       ? () => pagination(i)
                       : () => pagination(param, i)
                   }
@@ -34,7 +34,7 @@ const Pagination = ({ param, page, total, pagination, type }) => {
           <button
             className={page === total ? "block-link" : "pagination-btn"}
             onClick={
-              type === "search"
+              type === "OneParameter"
                 ? () => pagination(page + 1)
                 : () => pagination(param, page + 1)
             }
