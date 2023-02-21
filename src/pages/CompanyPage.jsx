@@ -53,6 +53,7 @@ const CompanyPage = () => {
         page={page}
         total={total}
         pagination={pagination}
+        type={"company"}
       />
     </div>
   );

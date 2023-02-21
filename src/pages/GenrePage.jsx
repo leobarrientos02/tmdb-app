@@ -64,6 +64,7 @@ const GenrePage = () => {
         page={page}
         total={total}
         pagination={pagination}
+        type={"genre"}
       />
     </div>
   );

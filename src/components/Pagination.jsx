@@ -1,4 +1,4 @@
-const Pagination = ({ param, page, total, pagination }) => {
+const Pagination = ({ param, page, total, pagination, type }) => {
   let pages = Array.from(Array(total), (_, i) => i + 1);
   return (
     <div>
@@ -6,7 +6,11 @@ const Pagination = ({ param, page, total, pagination }) => {
         <div className="pagination">
           <button
             className={page === 1 ? "block-link" : "pagination-btn"}
-            onClick={() => pagination(param, page - 1)}
+            onClick={
+              type === "search"
+                ? () => pagination(page - 1)
+                : () => pagination(param, page - 1)
+            }
           >
             {"<"} Previous
           </button>
@@ -15,7 +19,11 @@ const Pagination = ({ param, page, total, pagination }) => {
               return (
                 <button
                   className={page === i ? "current-link" : "pagination-btn"}
-                  onClick={() => pagination(param, i)}
+                  onClick={
+                    type === "search"
+                      ? () => pagination(i)
+                      : () => pagination(param, i)
+                  }
                   key={i}
                 >
                   {i}
@@ -25,7 +33,11 @@ const Pagination = ({ param, page, total, pagination }) => {
           </div>
           <button
             className={page === total ? "block-link" : "pagination-btn"}
-            onClick={() => pagination(param, page + 1)}
+            onClick={
+              type === "search"
+                ? () => pagination(page + 1)
+                : () => pagination(param, page + 1)
+            }
           >
             Next {">"}
           </button>
