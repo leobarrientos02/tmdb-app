@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReviewSection from "../../components/Reviews/ReviewSection";
-import MovieCarousel from "../../components/MovieCarousel/MovieCarousel";
+import MovieCarousel from "../../components/Carousel/Carousel";
 import VotePercentage, { FormatDate } from "../../shared";
 import { motion } from "framer-motion";
 import "../../styles/moviePage.scss";

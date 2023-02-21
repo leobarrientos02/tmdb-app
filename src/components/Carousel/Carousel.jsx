@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import VotePercentage, { FormatDate } from "../../shared";
-import "./movieCarousel.scss";
+import "./Carousel.scss";
 import { motion } from "framer-motion";
 import NotFound from "../../images/imageNotFound.png";
 
-const MovieCarousel = ({ movies }) => {
+const Carousel = ({ movies }) => {
   let imagePath = "https://image.tmdb.org/t/p/original";
   return (
     <Splide
@@ -53,4 +53,4 @@ const MovieCarousel = ({ movies }) => {
   );
 };
 
-export default MovieCarousel;
+export default Carousel;

@@ -62,6 +62,9 @@ $green: #90cea1;
                         &:hover{
                             color: $blue;
                         }
+                        &:focus{
+                            color: $blue;
+                        }
                     }
                 }
             }
