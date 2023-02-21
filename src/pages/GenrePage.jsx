@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Movie from "../components/Movie";
-import { scrollToTop } from "../shared";
+import Pagination from "../components/Pagination";
+// import { scrollToTop } from "../shared";
 
 const GenrePage = () => {
   const [movies, setMovies] = useState([]);
@@ -32,7 +33,7 @@ const GenrePage = () => {
   };
 
   const pagination = (id, page) => {
-    scrollToTop();
+    // scrollToTop();
     getMovies(id, page);
   };
 
@@ -40,7 +41,6 @@ const GenrePage = () => {
     getMovies(params.id, page);
     getGenreName(params.id);
   }, [page, params.id]);
-  let pages = Array.from(Array(total), (_, i) => i + 1);
   return (
     <div className="genrePage">
       <h2 className="page-title">{genre} Movies</h2>
@@ -59,36 +59,13 @@ const GenrePage = () => {
         })}
       </div>
 
-      <div className="pagination-container">
-        <div className="pagination">
-          <button
-            className={page === 1 ? "block-link" : "pagination-btn"}
-            onClick={() => pagination(params.id, page - 1)}
-          >
-            {"<"} Previous
-          </button>
-          <div className={total > 20 ? "numbers-large" : "numbers-small"}>
-            {pages.map((i) => {
-              return (
-                <button
-                  className={page === i ? "current-link" : "pagination-btn"}
-                  onClick={() => pagination(params.id, i)}
-                  key={i}
-                >
-                  {i}
-                </button>
-              );
-            })}
-          </div>
-          <button
-            className={page === total ? "block-link" : "pagination-btn"}
-            onClick={() => pagination(params.id, page + 1)}
-          >
-            Next {">"}
-          </button>
-        </div>
-      </div>
-      <p className="current-pagenum">Current Page: {page}</p>
+      <Pagination
+        param={params.id}
+        page={page}
+        total={total}
+        pagination={pagination}
+        type={"genre"}
+      />
     </div>
   );
 };
