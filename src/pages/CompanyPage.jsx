@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CompanyBanner from "../components/CompanyBanner/CompanyBanner";
 import Movie from "../components/Movie/Movie";
-import { scrollToTop } from "../shared";
+import Pagination from "../components/Pagination";
+// import { scrollToTop } from "../shared";
 
 const CompanyPage = () => {
   const [movies, setMovies] = useState([]);
@@ -21,7 +22,7 @@ const CompanyPage = () => {
   };
 
   const pagination = (id, page) => {
-    scrollToTop();
+    // scrollToTop();
     getMovies(id, page);
   };
 
@@ -29,7 +30,6 @@ const CompanyPage = () => {
     getMovies(params.id, 1);
   }, [params.id]);
 
-  let pages = Array.from(Array(total), (_, i) => i + 1);
   return (
     <div>
       <CompanyBanner companyId={params.id} />
@@ -48,36 +48,13 @@ const CompanyPage = () => {
         })}
       </div>
 
-      <div className="pagination-container">
-        <div className="pagination">
-          <button
-            className={page === 1 ? "block-link" : "pagination-btn"}
-            onClick={() => pagination(params.id, page - 1)}
-          >
-            {"<"} Previous
-          </button>
-          <div className={total > 12 ? "numbers-large" : "numbers-small"}>
-            {pages.map((i) => {
-              return (
-                <button
-                  className={page === i ? "current-link" : "pagination-btn"}
-                  onClick={() => pagination(params.id, i)}
-                  key={i}
-                >
-                  {i}
-                </button>
-              );
-            })}
-          </div>
-          <button
-            className={page === total ? "block-link" : "pagination-btn"}
-            onClick={() => pagination(params.id, page + 1)}
-          >
-            Next {">"}
-          </button>
-        </div>
-      </div>
-      <p className="current-pagenum">Current Page: {page}</p>
+      <Pagination
+        param={params.id}
+        page={page}
+        total={total}
+        pagination={pagination}
+        type={"company"}
+      />
     </div>
   );
 };
