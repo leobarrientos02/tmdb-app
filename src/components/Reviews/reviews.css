@@ -13,7 +13,7 @@
 
 .reviews .section-title h2 {
   font-size: 1.4rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   text-decoration: underline;
 }
 
@@ -28,14 +28,14 @@
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .reviews .review .review-header .author {
@@ -44,22 +44,22 @@
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .reviews .review .review-header .author img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 50%;
   width: 2rem;
 }
 
 .reviews .review .review-header .author p {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
   font-weight: 600;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .reviews .review .content {
-  font-size: .9rem;
-  margin-left: .5rem;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
 }
 /*# sourceMappingURL=reviews.css.map */

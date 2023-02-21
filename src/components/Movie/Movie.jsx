@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import "../styles/movie.scss";
-import VotePercentage, { FormatDate } from "../shared";
+import "./movie.scss";
+import VotePercentage, { FormatDate } from "../../shared";
 import { motion } from "framer-motion";
-import NotFound from "../images/imageNotFound.png";
+import NotFound from "../../images/imageNotFound.png";
 
 const Movie = ({ id, vote, poster_path, title, release_date }) => {
   let imagePath = "https://image.tmdb.org/t/p/original";

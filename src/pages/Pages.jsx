@@ -1,10 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
-import GenrePage from "./GenrePage";
-import MoviePage from "./MoviePage";
+import GenrePage from "./movies/GenrePage";
+import MoviePage from "./movies/MoviePage";
 import CompanyPage from "./CompanyPage";
-import CategoryPage from "./CategoryPage";
+import FilteredMoviesPage from "./movies/FilteredPage";
+import FilteredTVPage from "./tv/FilteredPage";
 import SearchPage from "./SearchPage";
 
 const Pages = () => {
@@ -12,7 +13,8 @@ const Pages = () => {
     <Routes className="pages">
       <Route path="/" element={<HomePage />} />
       <Route path="/movie/:id" element={<MoviePage />} />
-      <Route path="/category/:category" element={<CategoryPage />} />
+      <Route path="/movies/:filter" element={<FilteredMoviesPage />} />
+      <Route path="/tv/:filter" element={<FilteredTVPage />} />
       <Route path="/genre/:id" element={<GenrePage />} />
       <Route path="/company/:id" element={<CompanyPage />} />
       <Route path="/search/:search" element={<SearchPage />} />

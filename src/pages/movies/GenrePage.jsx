@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Movie from "../components/Movie";
-import Pagination from "../components/Pagination";
+import Movie from "../../components/Movie/Movie";
+import Pagination from "../../components/Pagination";
 // import { scrollToTop } from "../shared";
 
 const GenrePage = () => {
@@ -42,7 +42,7 @@ const GenrePage = () => {
     getGenreName(params.id);
   }, [page, params.id]);
   return (
-    <div className="genrePage">
+    <div className="GenrePage">
       <h2 className="page-title">{genre} Movies</h2>
       <div className="movie-grid">
         {movies.map((movie) => {

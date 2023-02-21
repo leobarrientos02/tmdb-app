@@ -14,11 +14,13 @@
 
 .movie img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
-  border-radius: .75rem;
-  -webkit-box-shadow: rgba(15, 9, 40, 0.474) 0px 2px 4px 0px, rgba(19, 35, 98, 0.32) 0px 2px 16px 0px;
-          box-shadow: rgba(15, 9, 40, 0.474) 0px 2px 4px 0px, rgba(19, 35, 98, 0.32) 0px 2px 16px 0px;
+  border-radius: 0.75rem;
+  -webkit-box-shadow: rgba(15, 9, 40, 0.474) 0px 2px 4px 0px,
+    rgba(19, 35, 98, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(15, 9, 40, 0.474) 0px 2px 4px 0px,
+    rgba(19, 35, 98, 0.32) 0px 2px 16px 0px;
 }
 
 .movie h2 {
@@ -26,7 +28,7 @@
 }
 
 .movie p {
-  font-size: .75rem;
+  font-size: 0.75rem;
   color: lightgray;
 }
 /*# sourceMappingURL=movie.css.map */

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CompanyBanner from "../components/CompanyBanner";
-import Movie from "../components/Movie";
+import CompanyBanner from "../components/CompanyBanner/CompanyBanner";
+import Movie from "../components/Movie/Movie";
 import Pagination from "../components/Pagination";
 // import { scrollToTop } from "../shared";
 

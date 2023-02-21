@@ -1,5 +1,4 @@
-import { CheckAvatar } from "../shared";
-import "../styles/reviews.scss";
+import { CheckAvatar } from "../../shared";
 const Author = ({ avatar, username }) => {
   return (
     <div className="author">

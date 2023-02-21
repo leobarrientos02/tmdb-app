@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Movie from "../components/Movie";
-import { FormatTitle } from "../shared";
+import Movie from "../../components/Movie/Movie";
+import { FormatTitle } from "../../shared";
 
-const CategoryPage = () => {
+const FilteredMoviesPage = () => {
   const [movies, setMovies] = useState([]);
   let params = useParams();
-  let categoryTitle = params.category;
 
-  const getMovies = async (category) => {
+  const getMovies = async (filter) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${categoryTitle}?api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/movie/${filter}?api_key=${process.env.REACT_APP_API_KEY}`
     );
     const movies = await data.json();
     setMovies(movies.results);
   };
   useEffect(() => {
-    getMovies(params.type);
+    getMovies(params.filter);
   });
   return (
-    <div className="categoryPage">
-      <h2 className="page-title">{FormatTitle(categoryTitle)} Movies</h2>
+    <div className="FilterPage">
+      <h2 className="page-title">{FormatTitle(params.filter)} Movies</h2>
       <div className="movie-grid">
         {movies.map((movie) => {
           return (
@@ -39,4 +38,4 @@ const CategoryPage = () => {
   );
 };
 
-export default CategoryPage;
+export default FilteredMoviesPage;

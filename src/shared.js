@@ -18,6 +18,12 @@ export const FormatTitle = (string) => {
         case "upcoming":
             title = "Upcoming";
             break;
+        case 'airing_today':
+            title = "Airing Today";
+            break;
+        case 'on_the_air':
+            title = "On the Air";
+            break;
         default:
             title = "All";
     }

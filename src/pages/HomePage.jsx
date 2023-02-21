@@ -1,5 +1,5 @@
-import { Banner } from "../components/Banner";
-import GenrePreview from "../components/GenrePreview";
+import { Banner } from "../components/Banner/Banner";
+import GenrePreview from "../components/GenrePreview/GenrePreview";
 import React, { useEffect, useState } from "react";
 
 const HomePage = () => {
