@@ -1,4 +1,4 @@
-import "../styles/banner.scss";
+import "./banner.scss";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
@@ -10,6 +10,7 @@ export function Banner() {
   const submitHandler = (e) => {
     e.preventDefault();
     navigate(`/search/${input}`);
+    setInput("");
   };
   return (
     <motion.div
@@ -32,7 +33,7 @@ export function Banner() {
           required
           onChange={(e) => setInput(e.target.value)}
           value={input}
-          placeholder="Search Movies"
+          placeholder="Search Movies, TV Shows, or People"
         />
         <input className="search-btn" type="submit" value="Search" />
       </form>

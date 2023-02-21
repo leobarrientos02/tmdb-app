@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { FormatLocaleDate } from "../shared";
+import { FormatLocaleDate } from "../../shared";
 import Author from "./Author";
-import "../styles/reviews.scss";
+import "./reviews.scss";
 
 const ReviewSection = ({ movieId }) => {
   const [reviews, setReviews] = useState([]);

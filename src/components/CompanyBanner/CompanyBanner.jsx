@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import "../styles/companyBanner.scss";
+import "./companyBanner.scss";
 
 const CompanyBanner = ({ companyId }) => {
   const [company, setCompany] = useState({});

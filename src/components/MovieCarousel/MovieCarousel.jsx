@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
-import VotePercentage, { FormatDate } from "../shared";
-import "../styles/movieCarousel.scss";
+import VotePercentage, { FormatDate } from "../../shared";
+import "./movieCarousel.scss";
 import { motion } from "framer-motion";
-import NotFound from "../images/imageNotFound.png";
+import NotFound from "../../images/imageNotFound.png";
 
 const MovieCarousel = ({ movies }) => {
   let imagePath = "https://image.tmdb.org/t/p/original";

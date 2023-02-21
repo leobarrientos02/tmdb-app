@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import "../styles/genrePreview.scss";
-import MovieCarousel from "./MovieCarousel";
+import "./genrePreview.scss";
+import MovieCarousel from "../MovieCarousel/MovieCarousel";
 
 const GenrePreview = ({ name, genreId }) => {
   const [movies, setMovies] = useState([]);

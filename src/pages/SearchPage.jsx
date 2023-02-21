@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { scrollToTop } from "../shared";
-import Movie from "../components/Movie";
+import Movie from "../components/Movie/Movie";
 
 const SearchPage = () => {
   const [movies, setMovies] = useState([]);
@@ -11,7 +11,7 @@ const SearchPage = () => {
 
   const getMovies = async (search) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&page=${page}`
+      `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&page=${page}`
     );
     const res = await data.json();
     setTotal(res.total_pages);

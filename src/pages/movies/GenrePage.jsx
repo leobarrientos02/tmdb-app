@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Movie from "../components/Movie";
-import { scrollToTop } from "../shared";
+import Movie from "../../components/Movie/Movie";
+import { scrollToTop } from "../../shared";
 
 const GenrePage = () => {
   const [movies, setMovies] = useState([]);
