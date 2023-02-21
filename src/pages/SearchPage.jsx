@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { scrollToTop } from "../shared";
+// import { scrollToTop } from "../shared";
 import Movie from "../components/Movie";
 
 const SearchPage = () => {
@@ -19,7 +19,7 @@ const SearchPage = () => {
   };
 
   const pagination = (pageNum) => {
-    scrollToTop();
+    // scrollToTop();
     setPage(pageNum);
   };
 
