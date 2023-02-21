@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./genrePreview.scss";
-import MovieCarousel from "../Carousel/Carousel";
+import Carousel from "../Carousel/Carousel";
 
 const GenrePreview = ({ name, genreId }) => {
   const [movies, setMovies] = useState([]);
@@ -20,11 +20,11 @@ const GenrePreview = ({ name, genreId }) => {
     <div className="genrePreview">
       <div className="genre-heading">
         <h2>{name}</h2>
-        <Link to={`/genre/${genreId}`} className="link">
+        <Link to={`/movies/genre/${genreId}`} className="link">
           View More
         </Link>
       </div>
-      <MovieCarousel movies={movies} />
+      <Carousel movies={movies} />
     </div>
   );
 };

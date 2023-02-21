@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Movie from "../../components/Movie/Movie";
+import Card from "../../components/Card/Card";
 import Pagination from "../../components/Pagination";
 import { FormatTitle } from "../../shared";
 
@@ -30,16 +30,17 @@ const FilteredMoviesPage = () => {
   return (
     <div className="FilterPage">
       <h2 className="page-title">{FormatTitle(params.filter)} Movies</h2>
-      <div className="movie-grid">
+      <div className="page-grid">
         {movies.map((movie) => {
           return (
-            <Movie
+            <Card
               key={movie.id}
               id={movie.id}
               title={movie.title}
               poster_path={movie.poster_path}
               release_date={movie.release_date}
               vote={movie.vote_average}
+              type={"movie"}
             />
           );
         })}

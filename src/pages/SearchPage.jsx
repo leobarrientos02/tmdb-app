@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import { scrollToTop } from "../shared";
-import Movie from "../components/Movie/Movie";
+import Card from "../components/Card/Card";
 import Pagination from "../components/Pagination";
 
 const SearchPage = () => {
@@ -32,16 +32,17 @@ const SearchPage = () => {
   return (
     <div className="SearchPage">
       <h2 className="page-title">Results for search: {params.search}</h2>
-      <div className="movie-grid">
+      <div className="page-grid">
         {movies.map((movie) => {
           return (
-            <Movie
+            <Card
               key={movie.id}
               id={movie.id}
               title={movie.title}
               poster_path={movie.poster_path}
               release_date={movie.release_date}
               vote={movie.vote_average}
+              type={"movie"}
             />
           );
         })}
