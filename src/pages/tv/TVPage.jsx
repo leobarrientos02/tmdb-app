@@ -9,6 +9,7 @@ import "../../styles/tvPage.scss";
 import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
 import ReviewSection from "../../components/Reviews/ReviewSection";
 import SimilarContent from "../../components/SimilarContent/SimilarContent";
+import ContentImages from "../../components/ContentImages/ContentImages";
 
 const TVPage = () => {
   const [show, setShow] = useState([]);
@@ -86,6 +87,8 @@ const TVPage = () => {
         <p>{show?.overview}</p>
       </div>
 
+      <ContentImages id={show?.id} type={"tv"} />
+
       <ProductionCompanies res={show} type="show" />
 
       <div className="tv-seasons">
@@ -102,8 +105,11 @@ const TVPage = () => {
         >
           {show?.seasons?.map((season) => {
             return (
-              <SplideSlide to={`/tv/company/${season.id}`} key={season.id}>
-                <Link className="season">
+              <SplideSlide key={season.id}>
+                <Link
+                  to={`/show/${params.id}/season/${season?.id}`}
+                  className="season"
+                >
                   <img
                     src={imagePath + season.poster_path}
                     alt=""

@@ -7,7 +7,8 @@ import CompanyPage from "./movies/CompanyPage";
 import FilteredMoviesPage from "./movies/FilteredPage";
 import FilteredTVPage from "./tv/FilteredPage";
 import TVPage from "./tv/TVPage";
-import SearchPage from "./SearchPage";
+import SeasonPage from "./tv/SeasonPage";
+import SearchPage from "./tv/SearchPage";
 
 const Pages = () => {
   return (
@@ -19,8 +20,11 @@ const Pages = () => {
       <Route path="/movie/company/:id" element={<CompanyPage />} />
       <Route path="/shows/:filter" element={<FilteredTVPage />} />
       <Route path="/show/:id" element={<TVPage />} />
-      <Route path="/show/season/:id" element={<TVPage />} />
-      <Route path="/show/season/episode/:id" element={<TVPage />} />
+      <Route path="/show/:id/season/:seasonNumber" element={<SeasonPage />} />
+      <Route
+        path="/show/:id/season/:seasonNumber/episode/:episodeNumber"
+        element={<TVPage />}
+      />
       <Route path="/search/:search" element={<SearchPage />} />
     </Routes>
   );

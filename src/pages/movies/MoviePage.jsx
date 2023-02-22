@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import "../../styles/moviePage.scss";
 import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
 import SimilarContent from "../../components/SimilarContent/SimilarContent";
+import ContentImages from "../../components/ContentImages/ContentImages";
 
 const MoviePage = () => {
   const [movieData, setMovieData] = useState([]);
@@ -58,6 +59,8 @@ const MoviePage = () => {
         <h2 className="section-title">Overview</h2>
         <p>{movieData?.overview}</p>
       </div>
+
+      <ContentImages id={params.id} type={"movie"} />
 
       <ProductionCompanies res={movieData} type={"movie"} />
 
