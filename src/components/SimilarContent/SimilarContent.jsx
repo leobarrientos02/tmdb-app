@@ -51,7 +51,9 @@ const SimilarContent = ({ id, type }) => {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.7, delay: 0.2 }}
                 />
-                <h2 className="content-title">{content?.name}</h2>
+                <h2 className="content-title">
+                  {type === "tv" ? content?.name : content?.title}
+                </h2>
                 <p className="date">
                   {type === "tv"
                     ? FormatDate(content?.first_air_date)

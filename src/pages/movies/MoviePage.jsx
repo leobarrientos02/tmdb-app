@@ -47,7 +47,11 @@ const MoviePage = () => {
       </div>
 
       <motion.img
-        src={imagePath + movieData?.backdrop_path}
+        src={
+          movieData?.backdrop_path === null
+            ? imagePath + movieData?.poster_path
+            : imagePath + movieData?.backdrop_path
+        }
         alt={movieData?.title}
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}

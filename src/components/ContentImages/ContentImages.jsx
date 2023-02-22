@@ -19,31 +19,35 @@ const ContentImages = ({ url }) => {
   useEffect(() => {
     getImages();
   });
-  return (
-    <div className="ContentImages">
-      <h2>Images</h2>
-      <Splide
-        options={{
-          perPage: 4,
-          drag: "free",
-          gap: "2rem",
-          arrows: true,
-          pagination: false,
-        }}
-      >
-        {images?.map((image) => {
-          return (
-            <SplideSlide key={image?.file_path}>
-              <motion.img
-                src={imagePath + image?.file_path}
-                alt=""
-                onError={(e) => (e.currentTarget.src = NotFound)}
-              />
-            </SplideSlide>
-          );
-        })}
-      </Splide>
-    </div>
-  );
+  if (images === undefined) {
+    return (
+      <div className="ContentImages">
+        <h2>Images</h2>
+        <Splide
+          options={{
+            perPage: 4,
+            drag: "free",
+            gap: "2rem",
+            arrows: true,
+            pagination: false,
+          }}
+        >
+          {images?.map((image) => {
+            return (
+              <SplideSlide key={image?.file_path}>
+                <motion.img
+                  src={imagePath + image?.file_path}
+                  alt=""
+                  onError={(e) => (e.currentTarget.src = NotFound)}
+                />
+              </SplideSlide>
+            );
+          })}
+        </Splide>
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
 };
 export default ContentImages;
