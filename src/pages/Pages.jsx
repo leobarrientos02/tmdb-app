@@ -8,6 +8,7 @@ import FilteredMoviesPage from "./movies/FilteredPage";
 import FilteredTVPage from "./tv/FilteredPage";
 import TVPage from "./tv/TVPage";
 import SeasonPage from "./tv/SeasonPage";
+import EpisodePage from "./tv/EpisodePage";
 import SearchPage from "./tv/SearchPage";
 
 const Pages = () => {
@@ -23,7 +24,7 @@ const Pages = () => {
       <Route path="/show/:id/season/:seasonNumber" element={<SeasonPage />} />
       <Route
         path="/show/:id/season/:seasonNumber/episode/:episodeNumber"
-        element={<TVPage />}
+        element={<EpisodePage />}
       />
       <Route path="/search/:search" element={<SearchPage />} />
     </Routes>

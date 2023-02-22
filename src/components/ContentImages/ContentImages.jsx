@@ -5,13 +5,13 @@ import NotFound from "../../images/imageNotFound.png";
 import "./contentImages.scss";
 import { motion } from "framer-motion";
 
-const ContentImages = ({ id, type }) => {
+const ContentImages = ({ url }) => {
   const [images, setImages] = useState([]);
   let imagePath = "https://image.tmdb.org/t/p/original";
 
   const getImages = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/${type}/${id}/images?api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/${url}?api_key=${process.env.REACT_APP_API_KEY}`
     );
     const res = await data.json();
     setImages(res.backdrops);

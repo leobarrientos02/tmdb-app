@@ -29,7 +29,7 @@ const MoviePage = () => {
       <h2>{movieData?.title}</h2>
       <p>Released Date: {FormatDate(movieData?.release_date)}</p>
       <p>Runtime: {movieData?.runtime} minutes</p>
-      <p>Rating: {VotePercentage(movieData?.vote_average)}%</p>
+      <p>Average Vote: {VotePercentage(movieData?.vote_average)}%</p>
       <p className="released-icon">{movieData?.status}</p>
 
       <div className="genres-section">
@@ -60,7 +60,7 @@ const MoviePage = () => {
         <p>{movieData?.overview}</p>
       </div>
 
-      <ContentImages id={params.id} type={"movie"} />
+      <ContentImages url={`movie/${params.id}/images`} />
 
       <ProductionCompanies res={movieData} type={"movie"} />
 

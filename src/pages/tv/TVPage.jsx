@@ -87,7 +87,7 @@ const TVPage = () => {
         <p>{show?.overview}</p>
       </div>
 
-      <ContentImages id={show?.id} type={"tv"} />
+      <ContentImages url={`tv/${show?.id}/images`} />
 
       <ProductionCompanies res={show} type="show" />
 
@@ -107,7 +107,7 @@ const TVPage = () => {
             return (
               <SplideSlide key={season.id}>
                 <Link
-                  to={`/show/${params.id}/season/${season?.id}`}
+                  to={`/show/${params.id}/season/${season?.season_number}`}
                   className="season"
                 >
                   <img

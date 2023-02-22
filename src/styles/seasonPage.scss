@@ -1,0 +1,88 @@
+// Global Variables
+$blue: #01b4e4;
+$green: #90cea1;
+.SeasonPage{
+    min-height: 100vh;
+
+    .page-title{
+        font-size: 3rem;
+    }
+    .date{
+        font-size: 1rem;
+    }
+
+    .media-section{
+        margin: 1rem 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .image-wrapper{
+            width: 50%;
+            img{
+                width: 80%;
+                object-fit: contain;
+                border-radius: 1rem;
+            }
+        }
+    }
+
+    .overview{
+        margin: 1rem 0;
+        h2{
+            margin-top: .5rem;
+            font-size: 1.4rem;
+            text-decoration: underline;
+        }
+    }
+
+    .episodes{
+        h2{
+            margin: 1rem 0;
+            font-size: 1.4rem;
+            text-decoration: underline;
+        }
+
+        .episode-card{
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            height: 15rem;
+            .vote{
+                position: absolute;
+                right: 0;
+                border-radius: 50%;
+                background: #081c22;
+                padding: 0.5rem 0.25rem;
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: white;
+                border: solid white 2px;
+            }
+            .content-title{
+                color: white;
+                text-decoration: none;
+                font-size: 1.2rem;
+                margin: 0;
+            }
+            .date{
+                font-size: .8rem;
+                color: white;
+            }
+
+            img{
+                border-radius: 1rem;
+                object-fit: contain;
+            }
+            transition: all .4s ease-in-out;
+            &:hover{
+                img{
+                    border: $blue 1px solid;
+                }
+                h2{
+                    color: $blue;
+                    transition: all .4s ease-in-out;
+                }
+            }
+        }
+    }
+}
