@@ -38,54 +38,93 @@ $green: #90cea1;
         }
     }
 
-    .episodes{
+    .episodes-sections{
+        display: flex;
+        flex-direction: column;
         h2{
             margin: 1rem 0;
             font-size: 1.4rem;
             text-decoration: underline;
         }
 
-        .episode-card{
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            height: 15rem;
-            .vote{
-                position: absolute;
-                right: 0;
-                border-radius: 50%;
-                background: #081c22;
-                padding: 0.5rem 0.25rem;
-                font-size: 0.9rem;
-                font-weight: 600;
-                color: white;
-                border: solid white 2px;
-            }
-            .content-title{
-                color: white;
-                text-decoration: none;
-                font-size: 1.2rem;
-                margin: 0;
-            }
-            .date{
-                font-size: .8rem;
-                color: white;
-            }
-
-            img{
-                border-radius: 1rem;
-                object-fit: contain;
-            }
-            transition: all .4s ease-in-out;
-            &:hover{
-                img{
-                    border: $blue 1px solid;
+        .episodes{
+            .episode-card{
+                .vote{
+                    position: absolute;
+                    right: 0;
+                    border-radius: 50%;
+                    background: #081c22;
+                    padding: 0.5rem 0.25rem;
+                    font-size: 0.9rem;
+                    font-weight: 600;
+                    color: white;
+                    border: solid white 2px;
                 }
-                h2{
-                    color: $blue;
-                    transition: all .4s ease-in-out;
+                img{
+                    width: 100%;
+                    height: 16rem;
+                    object-fit: cover;
+                    border-radius: 1rem;
+                }
+                .content-title{
+                    padding: 0;
+                    margin: 0;
+                    color: white;
+                    text-decoration: none;
+                }
+                .date{
+                    color: white;
+                    font-size: .9rem;
+                }
+                &:hover{
+                    h2{
+                        color:$blue;
+                        transition: all .4s ease-in-out;
+                    }
                 }
             }
         }
+        // .episode-card{
+        //     display: flex;
+        //     flex-direction: column;
+        //     text-decoration: none;
+        //     height: 100%;
+        //     .vote{
+        //         position: absolute;
+        //         right: 0;
+        //         border-radius: 50%;
+        //         background: #081c22;
+        //         padding: 0.5rem 0.25rem;
+        //         font-size: 0.9rem;
+        //         font-weight: 600;
+        //         color: white;
+        //         border: solid white 2px;
+        //     }
+        //     .content-title{
+        //         color: white;
+        //         text-decoration: none;
+        //         font-size: 1.2rem;
+        //         margin: 0;
+        //     }
+        //     .date{
+        //         font-size: .8rem;
+        //         color: white;
+        //     }
+
+        //     img{
+        //         border-radius: 1rem;
+        //         object-fit: contain;
+        //     }
+        //     transition: all .4s ease-in-out;
+        //     &:hover{
+        //         img{
+        //             border: $blue 1px solid;
+        //         }
+        //         h2{
+        //             color: $blue;
+        //             transition: all .4s ease-in-out;
+        //         }
+        //     }
+        // }
     }
 }

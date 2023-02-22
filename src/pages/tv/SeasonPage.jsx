@@ -40,7 +40,7 @@ const Season = () => {
         <p>{season?.overview}</p>
       </div>
 
-      <div className="episodes">
+      <div className="episodes-sections">
         <h2>Episodes</h2>
         <Splide
           options={{
@@ -50,13 +50,14 @@ const Season = () => {
             arrows: true,
             pagination: false,
           }}
+          className="episodes"
         >
           {season?.episodes?.map((episode) => {
             return (
-              <SplideSlide key={episode.show_id}>
+              <SplideSlide key={episode.show_id} className="episode-card">
                 <Link
-                  className="episode-card"
                   to={`/show/${params.id}/season/${season?.season_number}/episode/${episode.episode_number}`}
+                  className="link"
                 >
                   <p className="vote">
                     {VotePercentage(episode.vote_average)}%
