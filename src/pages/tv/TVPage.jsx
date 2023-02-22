@@ -83,7 +83,9 @@ const TVPage = () => {
       />
 
       <div className="tv-overview">
-        <h2 className="section-title">Overview</h2>
+        <h2 className="section-title">
+          {show?.overview === "" ? "" : "Overview"}
+        </h2>
         <p>{show?.overview}</p>
       </div>
 

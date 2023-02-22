@@ -11,18 +11,18 @@ $green: #90cea1;
         font-size: 1rem;
     }
 
-    .media-section{
+    .image-wrapper{
         margin: 1rem 0;
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        .image-wrapper{
+        justify-content:center;
+        align-items:center;
+        background-color: #1c1c1c;
+        border-radius:1rem;
+        padding: 1rem 0;
+        img{
             width: 50%;
-            img{
-                width: 80%;
-                object-fit: contain;
-                border-radius: 1rem;
-            }
+            object-fit: cover;
+            border-radius: 1rem;
         }
     }
 
@@ -32,6 +32,9 @@ $green: #90cea1;
             margin-top: .5rem;
             font-size: 1.4rem;
             text-decoration: underline;
+        }
+        p{
+            color: white;
         }
     }
 

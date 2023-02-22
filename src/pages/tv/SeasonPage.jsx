@@ -27,18 +27,16 @@ const Season = () => {
       <h2 className="page-title">{season?.name}</h2>
       <p className="date">Air Date: {FormatDate(season?.air_date)}</p>
 
-      <div className="media-section">
-        <div className="image-wrapper">
-          <img
-            src={imagePath + season?.poster_path}
-            alt=""
-            onError={(e) => (e.currentTarget.src = NotFound)}
-          />
-        </div>
+      <div className="image-wrapper">
+        <img
+          src={imagePath + season?.poster_path}
+          alt=""
+          onError={(e) => (e.currentTarget.src = NotFound)}
+        />
       </div>
 
       <div className="overview">
-        <h2>Overview</h2>
+        <h2>{season?.overview === "" ? "" : "Overview"}</h2>
         <p>{season?.overview}</p>
       </div>
 

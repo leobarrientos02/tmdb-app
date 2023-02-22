@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import VotePercentage, { FormatDate } from "../../shared";
 import NotFound from "../../images/imageNotFound.png";
+import "../../styles/episodePage.scss";
 
 const EpisodePage = () => {
   const [episode, setEpisode] = useState({});
@@ -34,50 +35,62 @@ const EpisodePage = () => {
       </div>
 
       <div className="overview">
-        <h2>Overview</h2>
+        <h2>{episode?.overview === "" ? "" : "Overview"}</h2>
         <p>{episode?.overview}</p>
       </div>
 
       <div className="cast">
-        <h2>Cast</h2>
-        {episode?.crew?.map((person) => {
-          return (
-            <Link key={person.id} to={`/person/${person.id}`} className="link">
-              <div className="cast">
-                <img
-                  src={imagePath + person?.profile_path}
-                  alt=""
-                  onError={(e) => (e.currentTarget.src = NotFound)}
-                />
-                <div className="info">
-                  <h2>{person?.name}</h2>
-                  <p>{person?.job}</p>
+        <h2 className="section-title">Cast</h2>
+        <div className="persons">
+          {episode?.crew?.map((person) => {
+            return (
+              <Link
+                key={person.id}
+                to={`/person/${person.id}`}
+                className="link"
+              >
+                <div className="person">
+                  <img
+                    src={imagePath + person?.profile_path}
+                    alt=""
+                    onError={(e) => (e.currentTarget.src = NotFound)}
+                  />
+                  <div className="info">
+                    <h2>{person?.name}</h2>
+                    <p>{person?.job}</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
+        </div>
       </div>
 
       <div className="guest">
-        <h2>Guest Stars</h2>
-        {episode?.guest_stars?.map((person) => {
-          return (
-            <Link key={person.id} to={`/person/${person.id}`} className="link">
-              <div className="guest">
-                <img
-                  src={imagePath + person?.profile_path}
-                  alt=""
-                  onError={(e) => (e.currentTarget.src = NotFound)}
-                />
-                <div className="info">
-                  <h2>{person?.name}</h2>
-                  <p>{person?.character}</p>
+        <h2 className="section-title">Guest Stars</h2>
+        <div className="persons">
+          {episode?.guest_stars?.map((person) => {
+            return (
+              <Link
+                key={person.id}
+                to={`/person/${person.id}`}
+                className="link"
+              >
+                <div className="person">
+                  <img
+                    src={imagePath + person?.profile_path}
+                    alt=""
+                    onError={(e) => (e.currentTarget.src = NotFound)}
+                  />
+                  <div className="info">
+                    <h2>{person?.name}</h2>
+                    <p>{person?.character}</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
