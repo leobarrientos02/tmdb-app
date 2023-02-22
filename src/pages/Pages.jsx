@@ -3,10 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
 import GenrePage from "./movies/GenrePage";
 import MoviePage from "./movies/MoviePage";
-import CompanyPage from "./CompanyPage";
+import CompanyPage from "./movies/CompanyPage";
 import FilteredMoviesPage from "./movies/FilteredPage";
 import FilteredTVPage from "./tv/FilteredPage";
-import SearchPage from "./SearchPage";
+import TVPage from "./tv/TVPage";
+import SeasonPage from "./tv/SeasonPage";
+import EpisodePage from "./tv/EpisodePage";
+import SearchPage from "./tv/SearchPage";
 
 const Pages = () => {
   return (
@@ -14,9 +17,15 @@ const Pages = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/movie/:id" element={<MoviePage />} />
       <Route path="/movies/:filter" element={<FilteredMoviesPage />} />
-      <Route path="/tv/:filter" element={<FilteredTVPage />} />
-      <Route path="/genre/:id" element={<GenrePage />} />
-      <Route path="/company/:id" element={<CompanyPage />} />
+      <Route path="/movies/genre/:id" element={<GenrePage />} />
+      <Route path="/movie/company/:id" element={<CompanyPage />} />
+      <Route path="/shows/:filter" element={<FilteredTVPage />} />
+      <Route path="/show/:id" element={<TVPage />} />
+      <Route path="/show/:id/season/:seasonNumber" element={<SeasonPage />} />
+      <Route
+        path="/show/:id/season/:seasonNumber/episode/:episodeNumber"
+        element={<EpisodePage />}
+      />
       <Route path="/search/:search" element={<SearchPage />} />
     </Routes>
   );

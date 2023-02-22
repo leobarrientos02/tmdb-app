@@ -19,6 +19,9 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.link{
+    text-decoration: none;
+}
 ::-webkit-scrollbar {
     height: 12px;
     width: 12px;
@@ -39,7 +42,7 @@ body {
     height: 100vh;
 }
 
-.movie-grid{
+.page-grid{
     display: grid;
     column-gap: 3rem;
     row-gap: 2rem;
@@ -120,5 +123,12 @@ body {
 }
 
 .FilterPage, .GenrePage, .SearchPage{
-    min-height: 120vh;
+    min-height: 200%;
+
+    .page-heading{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
 }

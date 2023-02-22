@@ -1,13 +1,13 @@
 // Global Variables
 $blue: #01b4e4;
 $green: #90cea1;
-.moviePage{
+.tvPage{
 
-    h2{
-        font-size: 2rem;
-    }
     p{
         font-size: 1.1rem;
+    }
+    .page-title{
+        font-size: 2rem;
     }
     .released-icon{
         font-size: 0.9rem;
@@ -16,6 +16,36 @@ $green: #90cea1;
         margin: 0.5rem 0;
         padding: 0.5rem 1rem;
         border-radius: .4rem;
+    }
+
+    .creators{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-decoration: none;
+        .creator{
+            margin: 0 .5rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            text-decoration: none;
+            img{
+                width: 1.5rem;
+                height: 1.5rem;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+            p{
+                text-decoration: none;
+                color: white;
+                font-size:1rem;
+            }
+            &:hover{
+                p{
+                    color: $green;
+                }
+            }
+        }
     }
 
     .genres-section{
@@ -44,7 +74,7 @@ $green: #90cea1;
         border-radius: 1rem;
     }
 
-    .movie-overview{
+    .tv-overview{
         margin: 1rem 0;
         h2{
             font-size: 1.4rem;
@@ -55,60 +85,41 @@ $green: #90cea1;
             font-size: .95rem;
         }
     }
-    .movie-production{
+
+    .tv-seasons{
         margin: 1rem 0;
-        h2{
+        text-decoration: none;
+        .title{
             font-size: 1.4rem;
             margin-bottom: .5rem;
             text-decoration: underline;
         }
-        .companies{
+        .season{
+            width: 100%;
             display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-        .company{
-            margin: 0 2rem 1rem 0;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+            flex-direction: column;
             text-decoration: none;
             img{
-                border-radius: 50%;
-                width: 3rem;
-                height: 3rem;
-                object-fit: contain;
-                border: 1px solid $blue;
-                padding: .4rem;
-                background-color: #2f2f2f;
+                object-fit: cover;
+                width: 100%;
+                &:hover{
+                    border: #01b4e4 1px solid;
+                }
             }
-            h2{
-                margin-left: .5rem;
+            .content-title{
+                margin-top: .25rem;
+                font-size: 1.2rem;
                 text-decoration: none;
                 color: white;
-                font-size: 1rem;
-            }
-            &:hover{
-                img{
-                    border: 1px solid $green;
-                }
-                h2{
-                    color: $green;
+                &:hover{
+                    text-decoration: underline;
                 }
             }
+            .date{
+                font-size: .8rem;
+                color: white;
+                text-decoration: none;
+            }
         }
-    }
-    .movie-reviews{
-        margin: 1rem 0;
-        h2{
-            font-size: 1.4rem;
-            margin-bottom: .5rem;
-            text-decoration: underline;
-        }
-    }
-    .section-title{
-        font-size: 1.4rem;
-        margin-bottom: .5rem;
-        text-decoration: underline;  
     }
 }
