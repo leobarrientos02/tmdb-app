@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReviewSection from "../../components/Reviews/ReviewSection";
-import MovieCarousel from "../../components/Carousel/Carousel";
 import VotePercentage, { FormatDate } from "../../shared";
 import { motion } from "framer-motion";
 import "../../styles/moviePage.scss";
+import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
+import SimilarContent from "../../components/SimilarContent/SimilarContent";
 
 const MoviePage = () => {
   const [movieData, setMovieData] = useState([]);
-  const [similarMovies, setSimilarMovies] = useState([]);
   let params = useParams();
   let imagePath = "https://image.tmdb.org/t/p/original";
 
@@ -20,16 +20,8 @@ const MoviePage = () => {
     setMovieData(movie);
   };
 
-  const getSimilarMovies = async (id) => {
-    const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
-    );
-    const res = await data.json();
-    setSimilarMovies(res.results);
-  };
   useEffect(() => {
     getMovieData(params.id);
-    getSimilarMovies(params.id);
   });
   return (
     <div className="moviePage">
@@ -67,31 +59,11 @@ const MoviePage = () => {
         <p>{movieData?.overview}</p>
       </div>
 
-      <div className="movie-production">
-        <h2>Production Companies</h2>
-        <div className="companies">
-          {movieData?.production_companies?.map((company) => {
-            return (
-              <Link
-                to={`/movie/company/${company.id}`}
-                className="company"
-                key={company.id}
-              >
-                <img src={imagePath + company.logo_path} alt={company.name} />
-              </Link>
-            );
-          })}
-        </div>
-      </div>
+      <ProductionCompanies res={movieData} type={"movie"} />
 
-      <div className="movie-reviews">
-        <ReviewSection movieId={params.id} />
-      </div>
+      <ReviewSection id={params.id} type={"movie"} />
 
-      <div>
-        <h2 className="section-title">Similar Movies</h2>
-        <MovieCarousel movies={similarMovies} />
-      </div>
+      <SimilarContent id={params.id} type={"movie"} />
     </div>
   );
 };

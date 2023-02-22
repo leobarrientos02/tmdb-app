@@ -19,6 +19,8 @@ const Pages = () => {
       <Route path="/movie/company/:id" element={<CompanyPage />} />
       <Route path="/shows/:filter" element={<FilteredTVPage />} />
       <Route path="/show/:id" element={<TVPage />} />
+      <Route path="/show/season/:id" element={<TVPage />} />
+      <Route path="/show/season/episode/:id" element={<TVPage />} />
       <Route path="/search/:search" element={<SearchPage />} />
     </Routes>
   );

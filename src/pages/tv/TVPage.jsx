@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/dist/css/splide.min.css";
 import VotePercentage, { FormatDate } from "../../shared";
 import { motion } from "framer-motion";
-import "../../styles/moviePage.scss";
+import NotFound from "../../images/imageNotFound.png";
+import "../../styles/tvPage.scss";
+import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
+import ReviewSection from "../../components/Reviews/ReviewSection";
+import SimilarContent from "../../components/SimilarContent/SimilarContent";
 
 const TVPage = () => {
   const [show, setShow] = useState([]);
@@ -20,17 +26,35 @@ const TVPage = () => {
     getShow(params.id);
   });
   return (
-    <div className="moviePage">
-      <h2>{show?.name}</h2>
+    <div className="tvPage">
+      <h2 className="page-title">{show?.name}</h2>
       <p>
-        Released Date: {FormatDate(show?.first_air_date)} -{" "}
-        {FormatDate(show?.last_air_date)}
+        {FormatDate(show?.first_air_date)} to {FormatDate(show?.last_air_date)}
       </p>
       <p>{show?.number_of_seasons} Seasons</p>
       <p>
         {show?.number_of_episodes} Episodes ({show?.episode_run_time} minutes
         per episode)
       </p>
+      <div className="creators">
+        <p>Creators:</p>
+        {show?.created_by?.map((creator) => {
+          return (
+            <Link
+              key={creator.id}
+              to={`/people/${creator.id}`}
+              className="creator"
+            >
+              <img
+                src={imagePath + creator.profile_path}
+                alt=""
+                onError={(e) => (e.currentTarget.src = NotFound)}
+              />
+              <p>{creator.name}</p>
+            </Link>
+          );
+        })}
+      </div>
       <p>Rating: {VotePercentage(show?.vote_average)}%</p>
       <p className="released-icon">{show?.status}</p>
 
@@ -57,27 +81,46 @@ const TVPage = () => {
         transition={{ duration: 0.8, delay: 0.2 }}
       />
 
-      <div>
+      <div className="tv-overview">
         <h2 className="section-title">Overview</h2>
         <p>{show?.overview}</p>
       </div>
 
-      <div className="movie-production">
-        <h2>Production Companies</h2>
-        <div className="companies">
-          {show?.production_companies?.map((company) => {
+      <ProductionCompanies res={show} type="show" />
+
+      <div className="tv-seasons">
+        <h2 className="title">Seasons</h2>
+        <Splide
+          options={{
+            perPage: 5,
+            drag: "free",
+            gap: "2rem",
+            arrows: true,
+            pagination: false,
+          }}
+          className="seasons"
+        >
+          {show?.seasons?.map((season) => {
             return (
-              <Link
-                to={`/tv/company/${company.id}`}
-                className="company"
-                key={company.id}
-              >
-                <img src={imagePath + company.logo_path} alt={company.name} />
-              </Link>
+              <SplideSlide to={`/tv/company/${season.id}`} key={season.id}>
+                <Link className="season">
+                  <img
+                    src={imagePath + season.poster_path}
+                    alt=""
+                    onError={(e) => (e.currentTarget.src = NotFound)}
+                  />
+                  <h2 className="content-title">{season.name}</h2>
+                  <p className="date">{FormatDate(season.air_date)}</p>
+                </Link>
+              </SplideSlide>
             );
           })}
-        </div>
+        </Splide>
       </div>
+
+      <ReviewSection id={params.id} type={"tv"} />
+
+      <SimilarContent id={params.id} type={"tv"} />
     </div>
   );
 };
