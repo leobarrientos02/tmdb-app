@@ -11,7 +11,7 @@ import ReviewSection from "../../components/Reviews/ReviewSection";
 import SimilarContent from "../../components/SimilarContent/SimilarContent";
 import ContentImages from "../../components/ContentImages/ContentImages";
 
-const TVPage = () => {
+const ShowPage = () => {
   const [show, setShow] = useState([]);
   let params = useParams();
   let imagePath = "https://image.tmdb.org/t/p/original";
@@ -43,7 +43,7 @@ const TVPage = () => {
           return (
             <Link
               key={creator.id}
-              to={`/people/${creator.id}`}
+              to={`/person/${creator.id}`}
               className="creator"
             >
               <img
@@ -109,7 +109,7 @@ const TVPage = () => {
             return (
               <SplideSlide key={season.id}>
                 <Link
-                  to={`/show/${params.id}/season/${season?.season_number}`}
+                  to={`/tv/${params.id}/season/${season?.season_number}`}
                   className="season"
                 >
                   <img
@@ -133,4 +133,4 @@ const TVPage = () => {
   );
 };
 
-export default TVPage;
+export default ShowPage;

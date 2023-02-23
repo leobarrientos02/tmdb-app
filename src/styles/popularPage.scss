@@ -1,0 +1,25 @@
+.PopularPeoplePage{
+
+    .page-title{
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .person{
+        width: 100%;
+        img{
+            width: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+            box-shadow: rgba(15, 9, 40, 0.474) 0px 2px 4px 0px, rgba(19, 35, 98, 0.32) 0px 2px 16px 0px;
+        }
+        h2{
+            font-size: 1.2rem;
+            color: white;
+        }
+        p{
+            font-size: 1rem;
+            color: lightgray;
+        }
+    }
+}

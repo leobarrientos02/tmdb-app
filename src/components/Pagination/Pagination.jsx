@@ -1,3 +1,4 @@
+import "./pagination.scss";
 const Pagination = ({ param, page, total, pagination, type }) => {
   let pages = Array.from(Array(total), (_, i) => i + 1);
   return (

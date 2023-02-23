@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FormatTitle } from "../../shared";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/Pagination/Pagination";
 import Card from "../../components/Card/Card";
 
 const FilteredTVPage = () => {
@@ -45,7 +45,7 @@ const FilteredTVPage = () => {
               poster_path={show.poster_path}
               release_date={show.first_air_date}
               vote={show.vote_average}
-              type={"show"}
+              type={"tv"}
             />
           );
         })}

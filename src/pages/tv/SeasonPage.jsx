@@ -56,7 +56,7 @@ const Season = () => {
             return (
               <SplideSlide key={episode.show_id} className="episode-card">
                 <Link
-                  to={`/show/${params.id}/season/${season?.season_number}/episode/${episode.episode_number}`}
+                  to={`/tv/${params.id}/season/${season?.season_number}/episode/${episode.episode_number}`}
                   className="link"
                 >
                   <p className="vote">

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CompanyBanner from "../../components/CompanyBanner/CompanyBanner";
 import Card from "../../components/Card/Card";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/Pagination/Pagination";
 // import { scrollToTop } from "../shared";
 
 const CompanyPage = () => {

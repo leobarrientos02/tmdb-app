@@ -1,0 +1,32 @@
+.credits{
+    margin: 1rem 0;
+    .title{
+        font-size: 1.4rem;
+        text-decoration: underline;
+        margin-bottom: 1rem;
+    }
+
+    .cast, .crew{
+        .title{
+            width: 100%;
+            text-align: right;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+        width: 100%;
+        img{
+            width: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+            box-shadow: rgba(15, 9, 40, 0.474) 0px 2px 4px 0px, rgba(19, 35, 98, 0.32) 0px 2px 16px 0px;
+        }
+        h2{
+            font-size: 1.2rem;
+            color: white;
+        }
+        p{
+            font-size: .9rem;
+            color: lightgray;
+        }
+    }
+}

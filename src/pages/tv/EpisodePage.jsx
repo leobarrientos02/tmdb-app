@@ -45,7 +45,7 @@ const EpisodePage = () => {
           {episode?.crew?.map((person) => {
             return (
               <Link
-                key={person.id}
+                key={person.credit_id}
                 to={`/person/${person.id}`}
                 className="link"
               >
@@ -72,7 +72,7 @@ const EpisodePage = () => {
           {episode?.guest_stars?.map((person) => {
             return (
               <Link
-                key={person.id}
+                key={person.credit_id}
                 to={`/person/${person.id}`}
                 className="link"
               >

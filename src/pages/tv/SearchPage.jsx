@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import { scrollToTop } from "../shared";
 import Card from "../../components/Card/Card";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/Pagination/Pagination";
 
 const SearchPage = () => {
   const [movies, setMovies] = useState([]);
