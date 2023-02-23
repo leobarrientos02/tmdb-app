@@ -25,7 +25,7 @@ const SimilarContent = ({ id, type }) => {
   });
   return (
     <div className="SimilarContent">
-      <h2 className="title">Similar {type === "tv" ? "Shows" : type}</h2>
+      <h2 className="title">Similar {type === "tv" ? "Shows" : "Movies"}</h2>
       <Splide
         options={{
           perPage: 5,
@@ -39,7 +39,7 @@ const SimilarContent = ({ id, type }) => {
           return (
             <SplideSlide key={content?.id}>
               <Link
-                to={`/${type === "tv" ? "show" : type}/${content?.id}`}
+                to={`/${type === "tv" ? "tv" : type}/${content?.id}`}
                 className="card"
               >
                 <motion.img

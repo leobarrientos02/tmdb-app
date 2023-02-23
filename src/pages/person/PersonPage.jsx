@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Credits from "../../components/Credits/Credits";
-import { FormatDate } from "../../shared";
+import { FormatBirthDate } from "../../shared";
 import "../../styles/personPage.scss";
 
 const PersonPage = () => {
@@ -28,8 +28,21 @@ const PersonPage = () => {
         <div className="biography">
           <h2>{person?.name}</h2>
           <p>{person?.known_for_department}</p>
-          <p>Birthdate: {FormatDate(person?.birthday)}</p>
-          <p>Place of Birth: {person?.place_of_birth}</p>
+          <p>
+            {person?.birthday === "" || person?.birthday === null
+              ? ""
+              : "Birthdate: " + FormatBirthDate(person?.birthday)}
+          </p>
+          <p>
+            {person?.deathday === "" || person?.deathday === null
+              ? ""
+              : "Deathdate: " + FormatBirthDate(person?.deathday)}
+          </p>
+          <p>
+            {person?.place_of_birth === "" || person?.place_of_birth === null
+              ? ""
+              : `Birthplace: ${person?.place_of_birth}`}
+          </p>
           <p>{person?.biography}</p>
         </div>
       </div>

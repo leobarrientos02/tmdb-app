@@ -30,8 +30,12 @@ const Credits = ({ id }) => {
         <div className="page-grid">
           {credits?.cast?.map((cast) => {
             return (
-              <Link to={`/${cast?.media_type}/${cast?.id}`} className="link">
-                <div className="cast" key={cast.credit_id}>
+              <Link
+                to={`/${cast?.media_type}/${cast?.id}`}
+                key={cast.credit_id}
+                className="link"
+              >
+                <div className="cast">
                   <img
                     src={imagePath + cast?.poster_path}
                     alt=""
@@ -66,8 +70,12 @@ const Credits = ({ id }) => {
         <div className="page-grid">
           {credits?.crew?.map((crew) => {
             return (
-              <Link to={`/${crew?.media_type}/${crew?.id}`} className="link">
-                <div className="crew" key={crew.credit_id}>
+              <Link
+                to={`/${crew?.media_type}/${crew?.id}`}
+                key={crew.credit_id}
+                className="link"
+              >
+                <div className="crew">
                   <img
                     src={imagePath + crew?.poster_path}
                     alt=""

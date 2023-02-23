@@ -37,6 +37,14 @@ export const FormatDate = (releaseDate) => {
     return new Date(releaseDate).toLocaleDateString();
 }
 
+export const FormatBirthDate = (date) => {
+    if (date === "" || date === null) {
+        return ""
+    }
+    return new Date(date).toLocaleDateString();
+}
+
+
 export const FormatLocaleDate = (creationDate) => {
     let formatDate = new Date(creationDate);
     return formatDate.toLocaleString();
