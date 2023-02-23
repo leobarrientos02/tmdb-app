@@ -1,17 +1,16 @@
+// Global Variables
+$blue: #01b4e4;
+$green: #90cea1;
 .credits{
     margin: 1rem 0;
-    .title{
-        font-size: 1.4rem;
-        text-decoration: underline;
-        margin-bottom: 1rem;
-    }
 
     .cast, .crew{
         .title{
             width: 100%;
-            text-align: right;
-            font-size: 2rem;
+            text-align: left;
+            font-size: 2.5rem;
             text-decoration: none;
+            margin-bottom: 1rem;
         }
         width: 100%;
         img{
@@ -19,6 +18,9 @@
             object-fit: cover;
             border-radius: 1rem;
             box-shadow: rgba(15, 9, 40, 0.474) 0px 2px 4px 0px, rgba(19, 35, 98, 0.32) 0px 2px 16px 0px;
+            &:hover{
+                border: 2px solid $blue; 
+            }
         }
         h2{
             font-size: 1.2rem;

@@ -1,0 +1,31 @@
+.PeoplePage{
+    .header{
+        width: 100%;
+        margin: 1rem 0;
+        display: flex;
+        flex-direction: row;
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: #1c1c1c;
+
+        .image-wrapper{
+            display: flex;
+            img{
+                height: 22rem;
+                object-fit: cover;
+                border-radius: 1rem;
+            }
+        }
+
+        .biography{
+            margin-left: 1rem;
+            h2{
+                font-size: 2.5rem;
+            }
+            p{
+                font-size: 1.1rem;
+                margin-top: .5rem;
+            }
+        }
+    }
+}

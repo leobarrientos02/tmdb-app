@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FormatDate } from "../../shared";
+import NotFound from "../../images/imageNotFound.png";
 import "./credits.scss";
+
 const Credits = ({ id }) => {
   const [credits, setCredits] = useState([]);
   let imagePath = "https://image.tmdb.org/t/p/original";
@@ -19,18 +21,35 @@ const Credits = ({ id }) => {
   });
   return (
     <div className="credits">
-      <h2 className="title">Credits</h2>
       <div className="cast">
-        <h2 className="title">Cast</h2>
+        <h2 className="title">
+          {credits?.cast === undefined || credits?.cast?.length === 0
+            ? ""
+            : "Cast"}
+        </h2>
         <div className="page-grid">
           {credits?.cast?.map((cast) => {
             return (
               <Link to={`/${cast?.media_type}/${cast?.id}`} className="link">
                 <div className="cast" key={cast.credit_id}>
-                  <img src={imagePath + cast?.poster_path} alt="" />
+                  <img
+                    src={imagePath + cast?.poster_path}
+                    alt=""
+                    onError={(e) => (e.currentTarget.src = NotFound)}
+                  />
                   <h2>{cast?.title}</h2>
-                  <p>{FormatDate(cast?.release_date)}</p>
-                  <p>Character: {cast?.character}</p>
+                  <p>
+                    {FormatDate(
+                      cast?.media_type === "movie"
+                        ? cast?.release_date
+                        : cast?.first_air_date
+                    )}
+                  </p>
+                  <p>
+                    {cast?.character === "" || cast?.character === undefined
+                      ? ""
+                      : `Character: ${cast?.character}`}
+                  </p>
                 </div>
               </Link>
             );
@@ -39,16 +58,28 @@ const Credits = ({ id }) => {
       </div>
 
       <div className="crew">
-        <h2 className="title">Crew</h2>
+        <h2 className="title">
+          {credits?.crew === undefined || credits?.crew.length === 0
+            ? ""
+            : "Crew"}
+        </h2>
         <div className="page-grid">
           {credits?.crew?.map((crew) => {
             return (
               <Link to={`/${crew?.media_type}/${crew?.id}`} className="link">
                 <div className="crew" key={crew.credit_id}>
-                  <img src={imagePath + crew?.poster_path} alt="" />
+                  <img
+                    src={imagePath + crew?.poster_path}
+                    alt=""
+                    onError={(e) => (e.currentTarget.src = NotFound)}
+                  />
                   <h2>{crew?.title}</h2>
                   <p>{FormatDate(crew?.release_date)}</p>
-                  <p>Role: {crew?.job}</p>
+                  <p>
+                    {crew?.job === "" || crew?.job === undefined
+                      ? ""
+                      : `Role: ${crew?.job}`}
+                  </p>
                 </div>
               </Link>
             );
