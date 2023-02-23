@@ -85,7 +85,7 @@ const ShowPage = () => {
 
       <ContentImages url={`tv/${show?.id}/images`} />
 
-      <ProductionCompanies res={show} type="show" />
+      <ProductionCompanies res={show} />
 
       <div className="tv-seasons">
         <h2 className="title">Seasons</h2>

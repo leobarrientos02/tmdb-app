@@ -67,7 +67,7 @@ const MoviePage = () => {
 
       <ContentImages url={`movie/${params.id}/images`} />
 
-      <ProductionCompanies res={movieData} type={"movie"} />
+      <ProductionCompanies res={movieData} />
 
       <ReviewSection id={params.id} type={"movie"} />
 

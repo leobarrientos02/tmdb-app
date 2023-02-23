@@ -1,6 +1,7 @@
 import { Banner } from "../components/Banner/Banner";
 import GenrePreview from "../components/GenrePreview/GenrePreview";
 import React, { useEffect, useState } from "react";
+import "../styles/homePage.scss";
 
 const HomePage = () => {
   const [genres, setGenres] = useState([]);

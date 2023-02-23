@@ -38,10 +38,6 @@ body {
     background: #1c1c1c;
 }
 
-.pages{
-    height: 100vh;
-}
-
 .page-grid{
     display: grid;
     column-gap: 3rem;
@@ -53,49 +49,11 @@ body {
     font-size: 2.5rem;
 }
 
-.FilterPage, .GenrePage, .SearchPage{
-    min-height: 200%;
-
-    .page-heading{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-}
-
-.homepage{
-    .toggle_media{
-        margin: .5rem 0;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-
-        .movie{
-            font-size: 1.2rem;
-            border-radius: 1rem 0 0 1rem;
-            padding: .3rem .6rem;
-            background-color: #2f2f2f;
-            border-right: 1px solid #0f0f0f;
-            cursor: pointer;
-            &:hover{
-                color: $blue;
-                transition: all 0.3s ease-in-out;
-            }
-        }
-        .tv{
-            font-size: 1.2rem;
-            border-radius: 0 1rem 1rem 0;
-            padding: .3rem .6rem;
-            background-color: #2f2f2f;
-            border-left: 1px solid #0f0f0f;
-            cursor: pointer;
-            &:hover{
-                color: $blue;
-                transition: all 0.3s ease-in-out;
-            }
-        }
-    }
+.page-heading{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .movie-active{
