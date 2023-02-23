@@ -11,7 +11,7 @@ const Carousel = ({ data, type }) => {
   return (
     <Splide
       options={{
-        perPage: 4,
+        perPage: 5,
         drag: "free",
         gap: "2rem",
         arrows: true,
