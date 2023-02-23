@@ -27,7 +27,12 @@ const ShowPage = () => {
     getShow(params.id);
   });
   return (
-    <div className="tvPage">
+    <motion.div
+      animate={{ x: 0 }}
+      initial={{ x: "-150%" }}
+      transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+      className="tvPage"
+    >
       <h2 className="page-title">{show?.name}</h2>
       <p>
         {FormatDate(show?.first_air_date)} to {FormatDate(show?.last_air_date)}
@@ -69,14 +74,7 @@ const ShowPage = () => {
         })}
       </div>
 
-      <motion.img
-        src={imagePath + show?.backdrop_path}
-        alt={show?.title}
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      />
+      <motion.img src={imagePath + show?.backdrop_path} alt={show?.title} />
 
       <div className="tv-overview">
         <h2 className="section-title">
@@ -87,7 +85,7 @@ const ShowPage = () => {
 
       <ContentImages url={`tv/${show?.id}/images`} />
 
-      <ProductionCompanies res={show} type="show" />
+      <ProductionCompanies res={show} />
 
       <div className="tv-seasons">
         <h2 className="title">Seasons</h2>
@@ -125,7 +123,7 @@ const ShowPage = () => {
       <ReviewSection id={params.id} type={"tv"} />
 
       <SimilarContent id={params.id} type={"tv"} />
-    </div>
+    </motion.div>
   );
 };
 

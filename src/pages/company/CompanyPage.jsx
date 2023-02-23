@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import CompanyBanner from "../../components/CompanyBanner/CompanyBanner";
 import Card from "../../components/Card/Card";
 import Pagination from "../../components/Pagination/Pagination";
+import { motion } from "framer-motion";
 // import { scrollToTop } from "../shared";
 
 const CompanyPage = () => {
@@ -31,7 +32,11 @@ const CompanyPage = () => {
   }, [params.id]);
 
   return (
-    <div>
+    <motion.div
+      animate={{ x: 0 }}
+      initial={{ x: "-150%" }}
+      transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+    >
       <CompanyBanner companyId={params.id} />
       <div className="page-grid">
         {movies.map((movie) => {
@@ -56,7 +61,7 @@ const CompanyPage = () => {
         pagination={pagination}
         type={"company"}
       />
-    </div>
+    </motion.div>
   );
 };
 

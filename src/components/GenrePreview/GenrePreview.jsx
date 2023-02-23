@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import "./genrePreview.scss";
 import Carousel from "../Carousel/Carousel";
 
@@ -17,17 +18,20 @@ const GenrePreview = ({ name, genreId, type }) => {
     getData(genreId);
   });
   return (
-    <div className="genrePreview">
+    <motion.div
+      className="genrePreview"
+      animate={{ x: 0 }}
+      initial={{ x: "-150%" }}
+      transition={{ type: "spring", stiffness: 100 }}
+    >
       <div className="genre-heading">
-        <h2>
-          {name} {type === "movie" ? "Movies" : "Shows"}
-        </h2>
+        <h2>{name}</h2>
         <Link to={`/${type}/genre/${genreId}`} className="link">
           View More
         </Link>
       </div>
       <Carousel data={data} type={type} />
-    </div>
+    </motion.div>
   );
 };
 

@@ -39,29 +39,27 @@ $green: #90cea1;
                     font-weight: 600;
                     color: white;
                     cursor: pointer;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
                 }
 
                 .links{
                     z-index: 100;
-                    position: fixed;
+                    position:absolute;
                     background: white;
-                    padding: .5rem;
-                    border: 1px solid grey;
-                    border-radius: 0.5rem;
+                    border-radius: 0.3rem;
                     flex-direction: column;
                     display: none;
                     .link{
                         text-decoration: none;
                         width: 100%;
-                        font-size: 1rem;
+                        font-size: .9rem;
                         text-align: left;
                         color: #2f2f2f;
-                        padding: .2rem 0;
+                        padding: .2rem .4rem;
                         cursor: pointer;
                         &:hover{
-                            color: $blue;
-                        }
-                        &:focus{
                             color: $blue;
                         }
                     }
@@ -70,13 +68,45 @@ $green: #90cea1;
         }
 
         .search{
-            width: 30%;
+            width: 40%;
             display: flex;
             flex-direction: row;
+            .search-type-wrapper{
+                width: fit-content;
+                .search-type{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    background: $green;
+                    padding: 0.4rem;
+                    font-size: .9rem;
+                    border-radius: .75rem 0 0 .75rem;
+                    cursor: pointer;
+                }
+                .search-types{
+                    z-index: 100;
+                    position: absolute;
+                    background: white;
+                    border-radius: 0.25rem 0.25rem .5rem .5rem;
+                    flex-direction: column;
+                    display: none;
+                    width: 10%;
+                    p{
+                        width: 100%;
+                        font-size: .9rem;
+                        text-align: left;
+                        color: #2f2f2f;
+                        padding: .2rem .4rem;
+                        cursor: pointer;
+                        &:hover{
+                            color: $blue;
+                        }
+                    }
+                }
+            }
             input{
                 border: none;
-                width: 100%;
-                border-radius: .75rem 0 0 .75rem;
+                width: 80%;
                 background: white;
                 color: #2f2f2f;
                 font-size: .9rem;
@@ -84,11 +114,12 @@ $green: #90cea1;
                 outline: none;
             }
             button{
+                width: 15%;
                 cursor: pointer;
                 border: none;
                 color: white;
                 font-size: .9rem;
-                padding: 0.3rem 0.5rem;
+                padding: 0.3rem 0;
                 border-radius: 0 .75rem .75rem 0;
                 background: $blue;
                 &:hover{
@@ -141,4 +172,11 @@ $green: #90cea1;
     //         }
     //     }
     // }
+}
+
+.hide{
+    display: none;
+}
+.arrow{
+    margin-top: .1rem;
 }

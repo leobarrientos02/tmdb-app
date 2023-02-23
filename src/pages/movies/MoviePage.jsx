@@ -25,7 +25,12 @@ const MoviePage = () => {
     getMovieData(params.id);
   });
   return (
-    <div className="moviePage">
+    <motion.div
+      animate={{ x: 0 }}
+      initial={{ x: "-150%" }}
+      transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+      className="moviePage"
+    >
       <h2>{movieData?.title}</h2>
       <p>Released Date: {FormatDate(movieData?.release_date)}</p>
       <p>Runtime: {movieData?.runtime} minutes</p>
@@ -46,17 +51,13 @@ const MoviePage = () => {
         })}
       </div>
 
-      <motion.img
+      <img
         src={
           movieData?.backdrop_path === null
             ? imagePath + movieData?.poster_path
             : imagePath + movieData?.backdrop_path
         }
         alt={movieData?.title}
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
       />
 
       <div>
@@ -66,12 +67,12 @@ const MoviePage = () => {
 
       <ContentImages url={`movie/${params.id}/images`} />
 
-      <ProductionCompanies res={movieData} type={"movie"} />
+      <ProductionCompanies res={movieData} />
 
       <ReviewSection id={params.id} type={"movie"} />
 
       <SimilarContent id={params.id} type={"movie"} />
-    </div>
+    </motion.div>
   );
 };
 

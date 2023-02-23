@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import VotePercentage, { FormatDate } from "../../shared";
 import NotFound from "../../images/imageNotFound.png";
 import "../../styles/episodePage.scss";
@@ -21,7 +22,12 @@ const EpisodePage = () => {
   });
 
   return (
-    <div className="EpisodePage">
+    <motion.div
+      animate={{ x: 0 }}
+      initial={{ x: "-150%" }}
+      transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+      className="EpisodePage"
+    >
       <h2 className="page-title">{episode?.name}</h2>
       <p className="season-episode">
         Season {episode?.season_number}, Episode {episode?.episode_number}
@@ -92,7 +98,7 @@ const EpisodePage = () => {
           })}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default EpisodePage;

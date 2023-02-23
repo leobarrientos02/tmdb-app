@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Credits from "../../components/Credits/Credits";
 import { FormatBirthDate } from "../../shared";
+import { motion } from "framer-motion";
 import "../../styles/personPage.scss";
 
 const PersonPage = () => {
@@ -20,7 +21,12 @@ const PersonPage = () => {
     getPerson(params.id);
   });
   return (
-    <div className="PeoplePage">
+    <motion.div
+      animate={{ x: 0 }}
+      initial={{ x: "-150%" }}
+      transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+      className="PeoplePage"
+    >
       <div className="header">
         <div className="image-wrapper">
           <img src={imagePath + person?.profile_path} alt="" />
@@ -48,7 +54,7 @@ const PersonPage = () => {
       </div>
 
       <Credits id={params.id} />
-    </div>
+    </motion.div>
   );
 };
 export default PersonPage;

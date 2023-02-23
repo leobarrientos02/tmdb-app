@@ -4,10 +4,13 @@ import React, { useState } from "react";
 import Logo from "../../images/tmdb_short.svg";
 import "./navbar.scss";
 import { motion } from "framer-motion";
+import { FiChevronDown } from "react-icons/fi";
+import { checkType, handleMouseEnter, handleMouseLeave } from "../../shared";
 
 const Navbar = () => {
   // const [genres, setGenres] = useState([]);
   const [input, setInput] = useState("");
+  const [type, setType] = useState("movie");
   const navigate = useNavigate();
 
   // const getGenres = async () => {
@@ -20,18 +23,8 @@ const Navbar = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    navigate(`/search/${input}`);
+    navigate(`/search/${type}/${input}`);
     setInput("");
-  };
-
-  const handleMouseEnter = (id) => {
-    let dropdown = document.getElementById(id);
-    dropdown.style.display = "flex";
-  };
-
-  const handleMouseLeave = (id) => {
-    let dropdown = document.getElementById(id);
-    dropdown.style.display = "none";
   };
 
   // useEffect(() => {
@@ -52,10 +45,21 @@ const Navbar = () => {
           <div className="dropdowns">
             <div
               className="movies-dropdown"
-              onMouseEnter={() => handleMouseEnter("movie-links")}
-              onMouseLeave={() => handleMouseLeave("movie-links")}
+              onMouseEnter={() =>
+                handleMouseEnter("movie-links", "movie-nav-arrow")
+              }
+              onMouseLeave={() =>
+                handleMouseLeave("movie-links", "movie-nav-arrow")
+              }
             >
-              <h2>Movies</h2>
+              <h2>
+                Movies
+                <FiChevronDown
+                  size="1.2em"
+                  id="movie-nav-arrow"
+                  className="arrow"
+                />
+              </h2>
               <div className="links" id="movie-links">
                 <Link to="/movies/popular" className="link">
                   Popular
@@ -73,10 +77,17 @@ const Navbar = () => {
             </div>
             <div
               className="tv-dropdown"
-              onMouseEnter={() => handleMouseEnter("tv-links")}
-              onMouseLeave={() => handleMouseLeave("tv-links")}
+              onMouseEnter={() => handleMouseEnter("tv-links", "tv-nav-arrow")}
+              onMouseLeave={() => handleMouseLeave("tv-links", "tv-nav-arrow")}
             >
-              <h2>TV Shows</h2>
+              <h2>
+                TV Shows
+                <FiChevronDown
+                  size="1.2em"
+                  id="tv-nav-arrow"
+                  className="arrow"
+                />
+              </h2>
               <div className="links" id="tv-links">
                 <Link to="/tvs/popular" className="link">
                   Popular
@@ -94,10 +105,21 @@ const Navbar = () => {
             </div>
             <div
               className="people-dropdown"
-              onMouseEnter={() => handleMouseEnter("people-links")}
-              onMouseLeave={() => handleMouseLeave("people-links")}
+              onMouseEnter={() =>
+                handleMouseEnter("people-links", "people-nav-arrow")
+              }
+              onMouseLeave={() =>
+                handleMouseLeave("people-links", "people-nav-arrow")
+              }
             >
-              <h2>People</h2>
+              <h2>
+                People
+                <FiChevronDown
+                  size="1.2em"
+                  id="people-nav-arrow"
+                  className="arrow"
+                />
+              </h2>
               <div className="links" id="people-links">
                 <Link to="/persons/popular" className="link">
                   Popular People
@@ -108,12 +130,56 @@ const Navbar = () => {
         </div>
 
         <form onSubmit={submitHandler} className="search">
+          <div
+            className="search-type-wrapper"
+            onMouseEnter={() =>
+              handleMouseEnter("search-options", "search-type-arrow")
+            }
+            onMouseLeave={() =>
+              handleMouseLeave("search-options", "search-type-arrow")
+            }
+          >
+            <div className="search-type">
+              <p>{checkType(type)}</p>
+              <FiChevronDown
+                size="1.2em"
+                id="search-type-arrow"
+                className="arrow"
+              />
+            </div>
+            <div className="search-types" id="search-options">
+              <p
+                onClick={() => setType("movie")}
+                className={type === "movie" ? "hide" : ""}
+              >
+                Movies
+              </p>
+              <p
+                onClick={() => setType("tv")}
+                className={type === "tv" ? "hide" : ""}
+              >
+                Shows
+              </p>
+              <p
+                onClick={() => setType("company")}
+                className={type === "company" ? "hide" : ""}
+              >
+                Company
+              </p>
+              <p
+                onClick={() => setType("person")}
+                className={type === "person" ? "hide" : ""}
+              >
+                Person
+              </p>
+            </div>
+          </div>
           <input
             type="text"
             required
             onChange={(e) => setInput(e.target.value)}
             value={input}
-            placeholder="Search Movies, TV Shows, or People"
+            placeholder={`Search for ${checkType(type)}`}
           />
           <button>Search</button>
         </form>

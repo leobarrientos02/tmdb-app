@@ -62,3 +62,31 @@ export const CheckAvatar = (avatar) => {
 export const scrollToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 };
+
+export const handleMouseEnter = (id, arrow) => {
+    let dropdown = document.getElementById(id);
+    dropdown.style.display = "flex";
+
+    let arrow_element = document.getElementById(arrow);
+    arrow_element.style.transform = "rotate(180deg)"
+};
+
+export const handleMouseLeave = (id, arrow) => {
+    let dropdown = document.getElementById(id);
+    dropdown.style.display = "none";
+
+    let arrow_element = document.getElementById(arrow);
+    arrow_element.style.transform = "rotate(0deg)"
+};
+
+export const checkType = (type) => {
+    if (type === "movie") {
+        return "Movies";
+    } else if (type === "tv") {
+        return "Shows";
+    } else if (type === "person") {
+        return "Person";
+    } else {
+        return "Company";
+    }
+};

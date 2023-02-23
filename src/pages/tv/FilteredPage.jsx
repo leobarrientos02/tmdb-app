@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { FormatTitle } from "../../shared";
 import Pagination from "../../components/Pagination/Pagination";
 import Card from "../../components/Card/Card";
+import { motion } from "framer-motion";
 
 const FilteredTVPage = () => {
   const [shows, setShows] = useState([]);
@@ -28,7 +29,12 @@ const FilteredTVPage = () => {
     getShows(params.filter);
   });
   return (
-    <div className="FilterPage">
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      transition={{ duration: 1, delay: 0.5 }}
+      className="FilterPage"
+    >
       <div className="page-heading">
         <h2 className="page-title">{FormatTitle(params.filter)} TV Shows</h2>
         <div className="sort">
@@ -58,7 +64,7 @@ const FilteredTVPage = () => {
         pagination={pagination}
         type={"OneParameter"}
       />
-    </div>
+    </motion.div>
   );
 };
 
