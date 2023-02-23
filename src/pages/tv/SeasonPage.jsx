@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
+import { motion } from "framer-motion";
 import VotePercentage, { FormatDate } from "../../shared";
 import NotFound from "../../images/imageNotFound.png";
 import "../../styles/seasonPage.scss";
@@ -23,7 +24,12 @@ const Season = () => {
   });
 
   return (
-    <div className="SeasonPage">
+    <motion.div
+      animate={{ x: 0 }}
+      initial={{ x: "-150%" }}
+      transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+      className="SeasonPage"
+    >
       <h2 className="page-title">{season?.name}</h2>
       <p className="date">Air Date: {FormatDate(season?.air_date)}</p>
 
@@ -75,7 +81,7 @@ const Season = () => {
           })}
         </Splide>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default Season;

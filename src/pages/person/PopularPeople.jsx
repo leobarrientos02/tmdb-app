@@ -37,8 +37,7 @@ const PopularPeople = () => {
               <motion.div
                 animate={{ opacity: 1 }}
                 initial={{ opacity: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.3 }}
                 whileHover={{ scale: 1.03 }}
                 className="person"
               >

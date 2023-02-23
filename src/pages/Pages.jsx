@@ -9,7 +9,7 @@ import FilteredTVPage from "./tv/FilteredPage";
 import ShowPage from "./tv/ShowPage";
 import SeasonPage from "./tv/SeasonPage";
 import EpisodePage from "./tv/EpisodePage";
-import SearchPage from "./tv/SearchPage";
+import SearchPage from "./SearchPage";
 import PersonPage from "./person/PersonPage";
 import PopularPeople from "./person/PopularPeople";
 
@@ -30,7 +30,7 @@ const Pages = () => {
       <Route path="/:type/genre/:id" element={<GenrePage />} />
       <Route path="/persons/popular" element={<PopularPeople />} />
       <Route path="/person/:id" element={<PersonPage />} />
-      <Route path="/search/:search" element={<SearchPage />} />
+      <Route path="/search/:type/:search" element={<SearchPage />} />
     </Routes>
   );
 };

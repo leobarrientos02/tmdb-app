@@ -25,8 +25,6 @@ const Carousel = ({ data, type }) => {
               className="mediaCard"
               animate={{ opacity: 1 }}
               initial={{ opacity: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.7 }}
             >
               <p
                 className="vote-bubble"
