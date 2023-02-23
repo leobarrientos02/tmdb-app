@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import Pagination from "../../components/Pagination/Pagination";
 import { FormatTitle } from "../../shared";
+import { motion } from "framer-motion";
 
 const FilteredMoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -28,7 +29,12 @@ const FilteredMoviesPage = () => {
     getMovies(params.filter);
   });
   return (
-    <div className="FilterPage">
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      transition={{ duration: 1, delay: 0.5 }}
+      className="FilterPage"
+    >
       <h2 className="page-title">{FormatTitle(params.filter)} Movies</h2>
       <div className="page-grid">
         {movies.map((movie) => {
@@ -53,7 +59,7 @@ const FilteredMoviesPage = () => {
         pagination={pagination}
         type={"OneParameter"}
       />
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./companyBanner.scss";
+import NotFound from "../../images/imageNotFound.png";
 
 const CompanyBanner = ({ companyId }) => {
   const [company, setCompany] = useState({});
@@ -24,7 +25,11 @@ const CompanyBanner = ({ companyId }) => {
       transition={{ duration: 0.7 }}
     >
       <div className="image">
-        <img src={imagePath + company?.logo_path} alt={company?.name} />
+        <img
+          src={imagePath + company?.logo_path}
+          alt={company?.name}
+          onError={(e) => (e.currentTarget.src = NotFound)}
+        />
       </div>
       <div className="details">
         <h2>{company?.name}</h2>

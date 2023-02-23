@@ -28,19 +28,18 @@ const PopularPeople = () => {
     getPersons();
   });
   return (
-    <div className="PopularPeoplePage">
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      transition={{ duration: 1, delay: 0.5 }}
+      className="PopularPeoplePage"
+    >
       <h2 className="page-title">Popular People</h2>
       <div className="page-grid">
         {persons.map((person) => {
           return (
             <Link to={`/person/${person.id}`} key={person.id} className="link">
-              <motion.div
-                animate={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                whileHover={{ scale: 1.03 }}
-                className="person"
-              >
+              <motion.div whileHover={{ scale: 1.03 }} className="person">
                 <img src={imagePath + person?.profile_path} alt="" />
                 <h2>{person?.name}</h2>
                 <p>{person?.known_for_department}</p>
@@ -57,7 +56,7 @@ const PopularPeople = () => {
         pagination={pagination}
         type={"OneParameter"}
       />
-    </div>
+    </motion.div>
   );
 };
 export default PopularPeople;

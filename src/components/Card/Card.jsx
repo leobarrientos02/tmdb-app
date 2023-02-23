@@ -11,8 +11,7 @@ const Card = ({ id, vote, poster_path, title, release_date, type }) => {
       className="card"
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
-      transition={{ duration: 0.5, delay: 0.3 }}
-      whileHover={{ scale: 1.07 }}
+      transition={{ duration: 1, delay: 0.5 }}
     >
       <p className="vote-bubble" title={VotePercentage(vote) + "% Rating"}>
         {VotePercentage(vote)}%

@@ -22,7 +22,7 @@ const GenrePreview = ({ name, genreId, type }) => {
       className="genrePreview"
       animate={{ x: 0 }}
       initial={{ x: "-150%" }}
-      transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+      transition={{ type: "spring", stiffness: 100 }}
     >
       <div className="genre-heading">
         <h2>{name}</h2>
