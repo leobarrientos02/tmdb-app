@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
-import GenrePage from "./movies/GenrePage";
+import GenrePage from "./GenrePage";
 import MoviePage from "./movies/MoviePage";
 import CompanyPage from "./movies/CompanyPage";
 import FilteredMoviesPage from "./movies/FilteredPage";
@@ -19,7 +19,6 @@ const Pages = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/movie/:id" element={<MoviePage />} />
       <Route path="/movies/:filter" element={<FilteredMoviesPage />} />
-      <Route path="/movies/genre/:id" element={<GenrePage />} />
       <Route path="/movie/company/:id" element={<CompanyPage />} />
       <Route path="/tvs/:filter" element={<FilteredTVPage />} />
       <Route path="/tv/:id" element={<ShowPage />} />
@@ -28,6 +27,7 @@ const Pages = () => {
         path="/tv/:id/season/:seasonNumber/episode/:episodeNumber"
         element={<EpisodePage />}
       />
+      <Route path="/:type/genre/:id" element={<GenrePage />} />
       <Route path="/persons/popular" element={<PopularPeople />} />
       <Route path="/person/:id" element={<PersonPage />} />
       <Route path="/search/:search" element={<SearchPage />} />

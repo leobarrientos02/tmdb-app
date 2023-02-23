@@ -3,7 +3,7 @@ $blue: #01b4e4;
 $green: #90cea1;
 
 .genrePreview{
-    margin: 1.5rem 0;
+    margin-bottom: 2rem;
     .genre-heading{
         display: flex;
         flex-direction: row;
@@ -12,6 +12,7 @@ $green: #90cea1;
         
         h2{
             font-size: 2rem;
+            margin-bottom: .5rem;
         }
         .link{
             text-decoration: none;
