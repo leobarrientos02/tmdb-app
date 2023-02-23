@@ -3,28 +3,30 @@ import React, { useEffect, useState } from "react";
 import "./genrePreview.scss";
 import Carousel from "../Carousel/Carousel";
 
-const GenrePreview = ({ name, genreId }) => {
-  const [movies, setMovies] = useState([]);
+const GenrePreview = ({ name, genreId, type }) => {
+  const [data, setData] = useState([]);
 
-  const getMovies = async (id) => {
+  const getData = async (id) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?with_genres=${id}&api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/discover/${type}?with_genres=${id}&api_key=${process.env.REACT_APP_API_KEY}`
     );
-    const movies = await data.json();
-    setMovies(movies.results);
+    const res = await data.json();
+    setData(res.results);
   };
   useEffect(() => {
-    getMovies(genreId);
+    getData(genreId);
   });
   return (
     <div className="genrePreview">
       <div className="genre-heading">
-        <h2>{name}</h2>
-        <Link to={`/movies/genre/${genreId}`} className="link">
+        <h2>
+          {name} {type === "movie" ? "Movies" : "Shows"}
+        </h2>
+        <Link to={`/${type}/genre/${genreId}`} className="link">
           View More
         </Link>
       </div>
-      <Carousel movies={movies} />
+      <Carousel data={data} type={type} />
     </div>
   );
 };

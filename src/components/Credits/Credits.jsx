@@ -82,7 +82,13 @@ const Credits = ({ id }) => {
                     onError={(e) => (e.currentTarget.src = NotFound)}
                   />
                   <h2>{crew?.title}</h2>
-                  <p>{FormatDate(crew?.release_date)}</p>
+                  <p>
+                    {FormatDate(
+                      crew?.media_type === "movie"
+                        ? crew?.release_date
+                        : crew?.first_air_date
+                    )}
+                  </p>
                   <p>
                     {crew?.job === "" || crew?.job === undefined
                       ? ""

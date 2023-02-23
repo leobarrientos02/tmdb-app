@@ -6,7 +6,7 @@ import "./Carousel.scss";
 import { motion } from "framer-motion";
 import NotFound from "../../images/imageNotFound.png";
 
-const Carousel = ({ movies }) => {
+const Carousel = ({ data, type }) => {
   let imagePath = "https://image.tmdb.org/t/p/original";
   return (
     <Splide
@@ -18,11 +18,11 @@ const Carousel = ({ movies }) => {
         pagination: false,
       }}
     >
-      {movies.map((movie) => {
+      {data.map((content) => {
         return (
-          <SplideSlide key={movie?.id}>
+          <SplideSlide key={content?.id}>
             <motion.div
-              className="movieCard"
+              className="mediaCard"
               animate={{ opacity: 1 }}
               initial={{ opacity: 0 }}
               exit={{ opacity: 0 }}
@@ -30,20 +30,27 @@ const Carousel = ({ movies }) => {
             >
               <p
                 className="vote-bubble"
-                title={VotePercentage(movie?.vote) + "% Rating"}
+                title={VotePercentage(content?.vote) + "% Rating"}
               >
-                {VotePercentage(movie?.vote_average)}%
+                {VotePercentage(content?.vote_average)}%
               </p>
-              <Link to={`/movie/${movie?.id}`}>
+              <Link to={`/${type}/${content?.id}`}>
                 <img
-                  src={imagePath + movie?.poster_path}
+                  src={imagePath + content?.poster_path}
                   alt=""
                   onError={(e) => (e.currentTarget.src = NotFound)}
                 />
               </Link>
-              <h2 className="movie-title">{movie?.title}</h2>
+              <h2 className="title">
+                {type === "movie" ? content?.title : content?.name}
+              </h2>
               <p className="release">
-                Release date: {FormatDate(movie?.release_date)}
+                Release date:{" "}
+                {FormatDate(
+                  type === "movie"
+                    ? content?.release_date
+                    : content?.first_air_date
+                )}
               </p>
             </motion.div>
           </SplideSlide>

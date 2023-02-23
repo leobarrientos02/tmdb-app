@@ -1,7 +1,7 @@
 // Global Variables
 $blue: #01b4e4;
 $green: #90cea1;
-.movieCard{
+.mediaCard{
     min-height: 20rem;
     overflow: hidden;
     position: relative;
@@ -14,7 +14,7 @@ $green: #90cea1;
         object-fit: cover;
         width: 100%;
         &:hover{
-            border: solid .5px $blue;
+            border: solid 1.5px $blue;
         }
     }
 
@@ -29,7 +29,7 @@ $green: #90cea1;
         right:0;
     }
 
-    .movie-title{
+    .title{
         width: 100%;
         text-align: left;
         font-size: 1.2rem;

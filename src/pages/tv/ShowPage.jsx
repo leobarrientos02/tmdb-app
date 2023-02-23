@@ -62,11 +62,7 @@ const ShowPage = () => {
       <div className="genres-section">
         {show?.genres?.map((genre) => {
           return (
-            <Link
-              key={genre.id}
-              to={`/movies/genre/${genre.id}`}
-              className="genre"
-            >
+            <Link key={genre.id} to={`/tv/genre/${genre.id}`} className="genre">
               {genre.name}
             </Link>
           );
