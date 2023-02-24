@@ -5,7 +5,7 @@ import Card from "../components/Card/Card";
 import Pagination from "../components/Pagination/Pagination";
 import "../styles/searchPage.scss";
 
-const SearchPage = () => {
+const SearchPage = ({ language }) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
@@ -14,7 +14,7 @@ const SearchPage = () => {
 
   const getData = async (media_type, search) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}search/${media_type}?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&page=${page}&language=en-US`
+      `${process.env.REACT_APP_API_URL}search/${media_type}?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&page=${page}&language=${language}`
     );
     const res = await data.json();
     setTotal(res.total_pages);

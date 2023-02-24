@@ -12,14 +12,14 @@ import ContentImages from "../../components/ContentImages/ContentImages";
 import Credits from "../../components/Credits/Credits";
 import "../../styles/tvPage.scss";
 
-const ShowPage = () => {
+const ShowPage = ({ language }) => {
   const [show, setShow] = useState([]);
   let params = useParams();
   let imagePath = "https://image.tmdb.org/t/p/original";
 
   const getShow = async (show_id) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}tv/${show_id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `${process.env.REACT_APP_API_URL}tv/${show_id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setShow(res);
@@ -121,11 +121,11 @@ const ShowPage = () => {
         </Splide>
       </div>
 
-      <ReviewSection api_path={`tv/${params.id}`} />
+      <ReviewSection api_path={`tv/${params.id}`} language={language} />
 
-      <Credits api_path={`tv/${params.id}`} />
+      <Credits api_path={`tv/${params.id}`} language={language} />
 
-      <SimilarContent id={params.id} media_type={"tv"} />
+      <SimilarContent id={params.id} media_type={"tv"} language={language} />
     </motion.div>
   );
 };

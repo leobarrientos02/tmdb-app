@@ -7,12 +7,12 @@ import "./similarContent.scss";
 import { motion } from "framer-motion";
 import NotFound from "../../images/imageNotFound.png";
 
-const SimilarContent = ({ id, media_type }) => {
+const SimilarContent = ({ id, media_type, language }) => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}${media_type}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `${process.env.REACT_APP_API_URL}${media_type}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setData(res.results);

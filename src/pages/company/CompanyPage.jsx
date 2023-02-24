@@ -5,7 +5,7 @@ import Card from "../../components/Card/Card";
 import Pagination from "../../components/Pagination/Pagination";
 import { motion } from "framer-motion";
 
-const CompanyPage = () => {
+const CompanyPage = ({ language }) => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);

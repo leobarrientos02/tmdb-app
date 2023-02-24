@@ -5,14 +5,14 @@ import VotePercentage, { FormatDate } from "../../shared";
 import NotFound from "../../images/imageNotFound.png";
 import "../../styles/episodePage.scss";
 
-const EpisodePage = () => {
+const EpisodePage = ({ language }) => {
   const [episode, setEpisode] = useState({});
   let params = useParams();
   let imagePath = "https://image.tmdb.org/t/p/original";
 
   const getEpisode = async (id, seasonNumber, episodeNumber) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}tv/${id}/season/${seasonNumber}/episode/${episodeNumber}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `${process.env.REACT_APP_API_URL}tv/${id}/season/${seasonNumber}/episode/${episodeNumber}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setEpisode(res);

@@ -8,14 +8,14 @@ import NotFound from "../../images/imageNotFound.png";
 import "../../styles/seasonPage.scss";
 import Credits from "../../components/Credits/Credits";
 
-const Season = () => {
+const Season = ({ language }) => {
   const [season, setSeason] = useState({});
   let params = useParams();
   let imagePath = "https://image.tmdb.org/t/p/original";
 
   const getSeason = async (id, seasonNumber) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}tv/${id}/season/${seasonNumber}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `${process.env.REACT_APP_API_URL}tv/${id}/season/${seasonNumber}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setSeason(res);
@@ -82,7 +82,10 @@ const Season = () => {
           })}
         </Splide>
       </div>
-      <Credits api_path={`tv/${params.id}/season/${params.seasonNumber}`} />
+      <Credits
+        api_path={`tv/${params.id}/season/${params.seasonNumber}`}
+        language={language}
+      />
     </motion.div>
   );
 };

@@ -13,24 +13,45 @@ import SearchPage from "./SearchPage";
 import PersonPage from "./person/PersonPage";
 import PopularPeople from "./person/PopularPeople";
 
-const Pages = () => {
+const Pages = ({ language }) => {
   return (
     <Routes className="pages">
-      <Route path="/" element={<HomePage />} />
-      <Route path="/movie/:id" element={<MoviePage />} />
-      <Route path="/movies/:filter" element={<FilteredMoviesPage />} />
-      <Route path="/shows/:filter" element={<FilteredTVPage />} />
-      <Route path="/tv/:id" element={<ShowPage />} />
-      <Route path="/tv/:id/season/:seasonNumber" element={<SeasonPage />} />
+      <Route path="/" element={<HomePage language={language} />} />
+      <Route path="/movie/:id" element={<MoviePage language={language} />} />
+      <Route
+        path="/movies/:filter"
+        element={<FilteredMoviesPage language={language} />}
+      />
+      <Route
+        path="/shows/:filter"
+        element={<FilteredTVPage language={language} />}
+      />
+      <Route path="/tv/:id" element={<ShowPage language={language} />} />
+      <Route
+        path="/tv/:id/season/:seasonNumber"
+        element={<SeasonPage language={language} />}
+      />
       <Route
         path="/tv/:id/season/:seasonNumber/episode/:episodeNumber"
-        element={<EpisodePage />}
+        element={<EpisodePage language={language} />}
       />
-      <Route path="/persons/popular" element={<PopularPeople />} />
-      <Route path="/person/:id" element={<PersonPage />} />
-      <Route path="/:media/genre/:id" element={<GenrePage />} />
-      <Route path="/company/:id" element={<CompanyPage />} />
-      <Route path="/search/:media/:search" element={<SearchPage />} />
+      <Route
+        path="/persons/popular"
+        element={<PopularPeople language={language} />}
+      />
+      <Route path="/person/:id" element={<PersonPage language={language} />} />
+      <Route
+        path="/:media/genre/:id"
+        element={<GenrePage language={language} />}
+      />
+      <Route
+        path="/company/:id"
+        element={<CompanyPage language={language} />}
+      />
+      <Route
+        path="/search/:media/:search"
+        element={<SearchPage language={language} />}
+      />
     </Routes>
   );
 };

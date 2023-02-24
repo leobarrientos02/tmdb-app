@@ -5,7 +5,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import Card from "../../components/Card/Card";
 import { motion } from "framer-motion";
 
-const FilteredTVPage = () => {
+const FilteredTVPage = ({ language }) => {
   const [shows, setShows] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
@@ -13,7 +13,7 @@ const FilteredTVPage = () => {
 
   const getShows = async (filter) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/tv/${filter}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
+      `${process.env.REACT_APP_API_URL}tv/${filter}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}&language=${language}`
     );
     const res = await data.json();
     setTotal(res.total_pages > 500 ? 500 : res.total_pages);
@@ -21,7 +21,6 @@ const FilteredTVPage = () => {
   };
 
   const pagination = (num) => {
-    // scrollToTop();
     setPage(num);
   };
 

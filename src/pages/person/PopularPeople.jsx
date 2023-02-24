@@ -4,7 +4,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import { motion } from "framer-motion";
 import "../../styles/popularPage.scss";
 
-const PopularPeople = () => {
+const PopularPeople = ({ language }) => {
   const [persons, setPersons] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
@@ -12,7 +12,7 @@ const PopularPeople = () => {
 
   const getPersons = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}person/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${page}&language=en-US`
+      `${process.env.REACT_APP_API_URL}person/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${page}&language=${language}`
     );
     const res = await data.json();
     setTotal(res.total_pages > 500 ? 500 : res.total_pages);

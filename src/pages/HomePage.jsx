@@ -3,13 +3,13 @@ import GenrePreview from "../components/GenrePreview/GenrePreview";
 import React, { useEffect, useState } from "react";
 import "../styles/homePage.scss";
 
-const HomePage = () => {
+const HomePage = ({ language }) => {
   const [genres, setGenres] = useState([]);
   const [mediaType, setMediaType] = useState("movie");
 
   const getGenres = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}genre/${mediaType}/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `${process.env.REACT_APP_API_URL}genre/${mediaType}/list?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setGenres(res.genres);

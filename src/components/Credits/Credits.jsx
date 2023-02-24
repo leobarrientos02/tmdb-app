@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import NotFound from "../../images/imageNotFound.png";
 import "./credits.scss";
 
-const Credits = ({ api_path }) => {
+const Credits = ({ api_path, language }) => {
   const [credits, setCredits] = useState([]);
   let imagePath = "https://image.tmdb.org/t/p/original";
 
   const getCredits = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}${api_path}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `${process.env.REACT_APP_API_URL}${api_path}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setCredits(res.cast);

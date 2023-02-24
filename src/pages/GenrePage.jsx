@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Card from "../components/Card/Card";
 import Pagination from "../components/Pagination/Pagination";
 
-const GenrePage = () => {
+const GenrePage = ({ language }) => {
   const [data, setData] = useState([]);
   const [genre, setGenre] = useState("");
   const [page, setPage] = useState(1);

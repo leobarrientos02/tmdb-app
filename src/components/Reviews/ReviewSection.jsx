@@ -3,12 +3,12 @@ import { FormatLocaleDate } from "../../shared";
 import Author from "./Author";
 import "./reviews.scss";
 
-const ReviewSection = ({ api_path }) => {
+const ReviewSection = ({ api_path, language }) => {
   const [reviews, setReviews] = useState([]);
 
   const getReviews = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}${api_path}/reviews?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `${process.env.REACT_APP_API_URL}${api_path}/reviews?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setReviews(res.results);
