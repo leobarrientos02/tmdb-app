@@ -35,12 +35,7 @@ const FilteredTVPage = () => {
       transition={{ duration: 1, delay: 0.5 }}
       className="FilterPage"
     >
-      <div className="page-heading">
-        <h2 className="page-title">{FormatTitle(params.filter)} TV Shows</h2>
-        <div className="sort">
-          <h2>Sort</h2>
-        </div>
-      </div>
+      <h2 className="page-title">{FormatTitle(params.filter)} TV Shows</h2>
       <div className="page-grid">
         {shows.map((show) => {
           return (
