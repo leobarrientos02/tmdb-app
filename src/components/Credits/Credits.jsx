@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import NotFound from "../../images/imageNotFound.png";
 import "./credits.scss";
 
-const Credits = ({ type, id }) => {
+const Credits = ({ api_path }) => {
   const [credits, setCredits] = useState([]);
   let imagePath = "https://image.tmdb.org/t/p/original";
 
   const getCredits = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/${api_path}/credits?api_key=${process.env.REACT_APP_API_KEY}`
     );
     const res = await data.json();
     setCredits(res.cast);
@@ -30,11 +30,14 @@ const Credits = ({ type, id }) => {
               className="link"
             >
               <div className="person">
-                <img
-                  src={imagePath + person?.profile_path}
-                  alt=""
-                  onError={(e) => (e.currentTarget.src = NotFound)}
-                />
+                <div className="person-image-wrapper">
+                  <img
+                    src={imagePath + person?.profile_path}
+                    alt=""
+                    onError={(e) => (e.currentTarget.src = NotFound)}
+                  />
+                </div>
+
                 <div className="details">
                   <h2>{person.name}</h2>
                   <p>{person?.character}</p>

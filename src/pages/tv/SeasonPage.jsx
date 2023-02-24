@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import VotePercentage, { FormatDate } from "../../shared";
 import NotFound from "../../images/imageNotFound.png";
 import "../../styles/seasonPage.scss";
+import Credits from "../../components/Credits/Credits";
 
 const Season = () => {
   const [season, setSeason] = useState({});
@@ -81,6 +82,7 @@ const Season = () => {
           })}
         </Splide>
       </div>
+      <Credits api_path={`tv/${params.id}/season/${params.seasonNumber}`} />
     </motion.div>
   );
 };

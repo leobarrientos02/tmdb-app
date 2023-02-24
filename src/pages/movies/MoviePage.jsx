@@ -72,7 +72,7 @@ const MoviePage = () => {
 
       <ReviewSection id={params.id} type={"movie"} />
 
-      <Credits type={"movie"} id={params.id} />
+      <Credits api_path={`movie/${params.id}`} />
 
       <SimilarContent id={params.id} type={"movie"} />
     </motion.div>

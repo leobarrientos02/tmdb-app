@@ -123,7 +123,7 @@ const ShowPage = () => {
 
       <ReviewSection id={params.id} type={"tv"} />
 
-      <Credits type={"tv"} id={params.id} />
+      <Credits api_path={`tv/${params.id}`} />
 
       <SimilarContent id={params.id} type={"tv"} />
     </motion.div>
