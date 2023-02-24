@@ -13,7 +13,7 @@ const FilteredMoviesPage = () => {
 
   const getMovies = async (filter) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${filter}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
+      `${process.env.REACT_APP_API_URL}movie/${filter}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}&language=en-US`
     );
     const movies = await data.json();
     setTotal(movies.total_pages > 500 ? 500 : movies.total_pages);
@@ -21,7 +21,6 @@ const FilteredMoviesPage = () => {
   };
 
   const pagination = (num) => {
-    // scrollToTop();
     setPage(num);
   };
 

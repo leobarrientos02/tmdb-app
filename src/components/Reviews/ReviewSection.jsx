@@ -3,12 +3,12 @@ import { FormatLocaleDate } from "../../shared";
 import Author from "./Author";
 import "./reviews.scss";
 
-const ReviewSection = ({ id, type }) => {
+const ReviewSection = ({ api_path }) => {
   const [reviews, setReviews] = useState([]);
 
   const getReviews = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/${type}/${id}/reviews?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}${api_path}/reviews?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     const res = await data.json();
     setReviews(res.results);

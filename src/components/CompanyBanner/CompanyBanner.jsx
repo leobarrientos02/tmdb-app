@@ -3,18 +3,18 @@ import { motion } from "framer-motion";
 import "./companyBanner.scss";
 import NotFound from "../../images/imageNotFound.png";
 
-const CompanyBanner = ({ companyId }) => {
+const CompanyBanner = ({ company_id }) => {
   const [company, setCompany] = useState({});
   let imagePath = "https://image.tmdb.org/t/p/original";
-  const getCompany = async (id) => {
+  const getCompany = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/company/${id}?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}company/${company_id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     const res = await data.json();
     setCompany(res);
   };
   useEffect(() => {
-    getCompany(companyId);
+    getCompany();
   });
   return (
     <motion.div

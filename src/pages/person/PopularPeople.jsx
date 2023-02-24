@@ -12,7 +12,7 @@ const PopularPeople = () => {
 
   const getPersons = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
+      `${process.env.REACT_APP_API_URL}person/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${page}&language=en-US`
     );
     const res = await data.json();
     setTotal(res.total_pages > 500 ? 500 : res.total_pages);
@@ -20,7 +20,6 @@ const PopularPeople = () => {
   };
 
   const pagination = (num) => {
-    // scrollToTop();
     setPage(num);
   };
 

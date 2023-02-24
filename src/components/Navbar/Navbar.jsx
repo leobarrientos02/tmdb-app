@@ -89,16 +89,16 @@ const Navbar = () => {
                 />
               </h2>
               <div className="links" id="tv-links">
-                <Link to="/tvs/popular" className="link">
+                <Link to="/shows/popular" className="link">
                   Popular
                 </Link>
-                <Link to="/tvs/airing_today" className="link">
+                <Link to="/shows/airing_today" className="link">
                   Airing Today
                 </Link>
-                <Link to="/tvs/on_the_air" className="link">
+                <Link to="/shows/on_the_air" className="link">
                   On TV
                 </Link>
-                <Link to="/tvs/top_rated" className="link">
+                <Link to="/shows/top_rated" className="link">
                   Top Rated
                 </Link>
               </div>

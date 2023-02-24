@@ -15,7 +15,7 @@ const Season = () => {
 
   const getSeason = async (id, seasonNumber) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}tv/${id}/season/${seasonNumber}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     const res = await data.json();
     setSeason(res);
@@ -54,8 +54,8 @@ const Season = () => {
             perPage: 3,
             drag: "free",
             gap: "2rem",
-            arrows: true,
-            pagination: false,
+            arrows: false,
+            pagination: true,
           }}
           className="episodes"
         >

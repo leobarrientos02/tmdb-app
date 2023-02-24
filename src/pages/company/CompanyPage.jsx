@@ -4,7 +4,6 @@ import CompanyBanner from "../../components/CompanyBanner/CompanyBanner";
 import Card from "../../components/Card/Card";
 import Pagination from "../../components/Pagination/Pagination";
 import { motion } from "framer-motion";
-// import { scrollToTop } from "../shared";
 
 const CompanyPage = () => {
   const [movies, setMovies] = useState([]);
@@ -12,18 +11,17 @@ const CompanyPage = () => {
   const [total, setTotal] = useState(0);
   let params = useParams();
 
-  const getMovies = async (id, pageNum) => {
+  const getMovies = async (company_id, page_num) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?with_companies=${id}&page=${pageNum}&api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}discover/movie?with_companies=${company_id}&page=${page_num}&api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     const movies = await data.json();
-    setPage(pageNum);
+    setPage(page_num);
     setTotal(movies.total_pages);
     setMovies(movies.results);
   };
 
   const pagination = (id, page) => {
-    // scrollToTop();
     getMovies(id, page);
   };
 
@@ -37,7 +35,7 @@ const CompanyPage = () => {
       initial={{ x: "-150%" }}
       transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
     >
-      <CompanyBanner companyId={params.id} />
+      <CompanyBanner company_id={params.id} />
       <div className="page-grid">
         {movies.map((movie) => {
           return (

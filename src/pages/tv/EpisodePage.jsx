@@ -12,7 +12,7 @@ const EpisodePage = () => {
 
   const getEpisode = async (id, seasonNumber, episodeNumber) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}/episode/${episodeNumber}?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}tv/${id}/season/${seasonNumber}/episode/${episodeNumber}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     const res = await data.json();
     setEpisode(res);

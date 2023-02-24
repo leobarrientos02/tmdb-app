@@ -9,7 +9,7 @@ const HomePage = () => {
 
   const getGenres = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/genre/${mediaType}/list?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}genre/${mediaType}/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     const res = await data.json();
     setGenres(res.genres);
@@ -41,9 +41,9 @@ const HomePage = () => {
         return (
           <GenrePreview
             key={genre?.id}
-            name={genre?.name}
-            genreId={genre?.id}
-            type={mediaType}
+            genre={genre?.name}
+            genre_id={genre?.id}
+            media_type={mediaType}
           />
         );
       })}

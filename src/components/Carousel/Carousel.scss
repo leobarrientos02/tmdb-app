@@ -1,9 +1,11 @@
 // Global Variables
 $blue: #01b4e4;
 $green: #90cea1;
+
+.carousel-splide-wrapper{
+    margin-bottom: .75rem;
+}
 .mediaCard{
-    min-height: 20rem;
-    overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;

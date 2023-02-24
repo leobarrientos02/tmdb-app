@@ -19,7 +19,7 @@ const Pages = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/movie/:id" element={<MoviePage />} />
       <Route path="/movies/:filter" element={<FilteredMoviesPage />} />
-      <Route path="/tvs/:filter" element={<FilteredTVPage />} />
+      <Route path="/shows/:filter" element={<FilteredTVPage />} />
       <Route path="/tv/:id" element={<ShowPage />} />
       <Route path="/tv/:id/season/:seasonNumber" element={<SeasonPage />} />
       <Route
@@ -28,9 +28,9 @@ const Pages = () => {
       />
       <Route path="/persons/popular" element={<PopularPeople />} />
       <Route path="/person/:id" element={<PersonPage />} />
-      <Route path="/:type/genre/:id" element={<GenrePage />} />
+      <Route path="/:media/genre/:id" element={<GenrePage />} />
       <Route path="/company/:id" element={<CompanyPage />} />
-      <Route path="/search/:type/:search" element={<SearchPage />} />
+      <Route path="/search/:media/:search" element={<SearchPage />} />
     </Routes>
   );
 };

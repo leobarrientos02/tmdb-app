@@ -10,7 +10,7 @@ const PersonCredits = ({ id }) => {
 
   const getCredits = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}person/${id}/combined_credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     const res = await data.json();
     setCredits(res);

@@ -14,9 +14,9 @@ const MoviePage = () => {
   let params = useParams();
   let imagePath = "https://image.tmdb.org/t/p/original";
 
-  const getMovieData = async (id) => {
+  const getMovieData = async (movie_id) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}movie/${movie_id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     const movie = await data.json();
     setMovieData(movie);
@@ -66,15 +66,15 @@ const MoviePage = () => {
         <p>{movieData?.overview}</p>
       </div>
 
-      <ContentImages url={`movie/${params.id}/images`} />
+      <ContentImages api_path={`movie/${params.id}`} />
 
-      <ProductionCompanies res={movieData} />
+      <ProductionCompanies data={movieData} />
 
-      <ReviewSection id={params.id} type={"movie"} />
+      <ReviewSection api_path={`movie/${params.id}`} />
 
       <Credits api_path={`movie/${params.id}`} />
 
-      <SimilarContent id={params.id} type={"movie"} />
+      <SimilarContent id={params.id} media_type={"movie"} />
     </motion.div>
   );
 };

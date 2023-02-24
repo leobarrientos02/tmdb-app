@@ -9,7 +9,7 @@ const Credits = ({ api_path }) => {
 
   const getCredits = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/${api_path}/credits?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}${api_path}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     const res = await data.json();
     setCredits(res.cast);
@@ -18,37 +18,42 @@ const Credits = ({ api_path }) => {
   useEffect(() => {
     getCredits();
   });
-  return (
-    <div className="credits">
-      <h2 className="section-title">Credits</h2>
-      <div className="persons">
-        {credits?.map((person) => {
-          return (
-            <Link
-              to={`/person/${person.id}`}
-              key={person?.credit_id}
-              className="link"
-            >
-              <div className="person">
-                <div className="person-image-wrapper">
-                  <img
-                    src={imagePath + person?.profile_path}
-                    alt=""
-                    onError={(e) => (e.currentTarget.src = NotFound)}
-                  />
-                </div>
 
-                <div className="details">
-                  <h2>{person.name}</h2>
-                  <p>{person?.character}</p>
+  if (credits !== undefined) {
+    return (
+      <div className="credits">
+        <h2 className="section-title">Credits</h2>
+        <div className="persons">
+          {credits?.map((person) => {
+            return (
+              <Link
+                to={`/person/${person.id}`}
+                key={person?.credit_id}
+                className="link"
+              >
+                <div className="person">
+                  <div className="person-image-wrapper">
+                    <img
+                      src={imagePath + person?.profile_path}
+                      alt=""
+                      onError={(e) => (e.currentTarget.src = NotFound)}
+                    />
+                  </div>
+
+                  <div className="details">
+                    <h2>{person.name}</h2>
+                    <p>{person?.character}</p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <div></div>;
+  }
 };
 
 export default Credits;
