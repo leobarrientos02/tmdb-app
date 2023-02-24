@@ -5,9 +5,11 @@ import Logo from "../../images/tmdb_short.svg";
 import "./navbar.scss";
 import { motion } from "framer-motion";
 import { FiChevronDown } from "react-icons/fi";
+// import { AiOutlineSearch } from "react-icons/ai";
+import { GrLanguage } from "react-icons/gr";
 import { checkType, handleMouseEnter, handleMouseLeave } from "../../shared";
 
-const Navbar = ({ setLanguage }) => {
+const Navbar = ({ setLanguage, language }) => {
   const [input, setInput] = useState("");
   const [type, setType] = useState("movie");
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const Navbar = ({ setLanguage }) => {
   return (
     <div className="navbar">
       <div className="top-nav">
-        <div className="left-nav">
+        <div className="top-left-nav">
           <Link to="/">
             <motion.img
               src={Logo}
@@ -116,6 +118,41 @@ const Navbar = ({ setLanguage }) => {
           </div>
         </div>
 
+        <div className="top-right-nav">
+          <div className="languages">
+            <GrLanguage size="2em" />
+            {language}
+            <button onClick={() => setLanguage("ar")}>Arabic</button>
+            <button onClick={() => setLanguage("bg")}>Bulgarian</button>
+            <button onClick={() => setLanguage("zh")}>Chinese</button>
+            <button onClick={() => setLanguage("cs")}>Czech</button>
+            <button onClick={() => setLanguage("da")}>Danish</button>
+            <button onClick={() => setLanguage("nl")}>Dutch</button>
+            <button onClick={() => setLanguage("en")}>English</button>
+            <button onClick={() => setLanguage("fr")}>French</button>
+            <button onClick={() => setLanguage("de")}>German</button>
+            <button onClick={() => setLanguage("el")}>Greek</button>
+            <button onClick={() => setLanguage("he")}>Hebrew</button>
+            <button onClick={() => setLanguage("hu")}>Hungarian</button>
+            <button onClick={() => setLanguage("id")}>Indonesian</button>
+            <button onClick={() => setLanguage("it")}>Italian</button>
+            <button onClick={() => setLanguage("ja")}>Japanese</button>
+            <button onClick={() => setLanguage("ko")}>Korean</button>
+            <button onClick={() => setLanguage("pl")}>Polish</button>
+            <button onClick={() => setLanguage("pt")}>Portuguese</button>
+            <button onClick={() => setLanguage("ro")}>Romanian</button>
+            <button onClick={() => setLanguage("ru")}>Russian</button>
+            <button onClick={() => setLanguage("sr")}>Serbian</button>
+            <button onClick={() => setLanguage("es")}>Spanish</button>
+            <button onClick={() => setLanguage("sv")}>Swedish</button>
+            <button onClick={() => setLanguage("tr")}>Turkish</button>
+            <button onClick={() => setLanguage("uk")}>Ukranian</button>
+            <button onClick={() => setLanguage("vi")}>Vietnamese</button>
+          </div>
+        </div>
+      </div>
+
+      <div className="bottom-nav">
         <form onSubmit={submitHandler} className="search">
           <div
             className="search-type-wrapper"
@@ -171,7 +208,6 @@ const Navbar = ({ setLanguage }) => {
           <button>Search</button>
         </form>
       </div>
-      <button onClick={() => setLanguage("pt-BR")}>Lang</button>
     </div>
   );
 };

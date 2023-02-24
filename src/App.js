@@ -7,7 +7,7 @@ const App = () => {
     const [language, setLanguage] = useState("en-US");
     return (
         <div>
-            <Navbar setLanguage={setLanguage} />
+            <Navbar setLanguage={setLanguage} language={language} />
             <Pages language={language} />
             <Footer />
         </div>
