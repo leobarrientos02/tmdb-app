@@ -10,6 +10,7 @@ import ProductionCompanies from "../../components/ProductionCompanies/Production
 import ReviewSection from "../../components/Reviews/ReviewSection";
 import SimilarContent from "../../components/SimilarContent/SimilarContent";
 import ContentImages from "../../components/ContentImages/ContentImages";
+import Credits from "../../components/Credits/Credits";
 
 const ShowPage = () => {
   const [show, setShow] = useState([]);
@@ -121,6 +122,8 @@ const ShowPage = () => {
       </div>
 
       <ReviewSection id={params.id} type={"tv"} />
+
+      <Credits type={"tv"} id={params.id} />
 
       <SimilarContent id={params.id} type={"tv"} />
     </motion.div>

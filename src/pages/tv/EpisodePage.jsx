@@ -45,8 +45,8 @@ const EpisodePage = () => {
         <p>{episode?.overview}</p>
       </div>
 
-      <div className="cast">
-        <h2 className="section-title">Cast</h2>
+      <div className="crew">
+        <h2 className="section-title">Crew</h2>
         <div className="persons">
           {episode?.crew?.map((person) => {
             return (

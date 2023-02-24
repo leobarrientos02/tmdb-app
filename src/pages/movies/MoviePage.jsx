@@ -7,6 +7,7 @@ import "../../styles/moviePage.scss";
 import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
 import SimilarContent from "../../components/SimilarContent/SimilarContent";
 import ContentImages from "../../components/ContentImages/ContentImages";
+import Credits from "../../components/Credits/Credits";
 
 const MoviePage = () => {
   const [movieData, setMovieData] = useState([]);
@@ -70,6 +71,8 @@ const MoviePage = () => {
       <ProductionCompanies res={movieData} />
 
       <ReviewSection id={params.id} type={"movie"} />
+
+      <Credits type={"movie"} id={params.id} />
 
       <SimilarContent id={params.id} type={"movie"} />
     </motion.div>

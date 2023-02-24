@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Credits from "../../components/Credits/Credits";
+import PersonCredits from "../../components/Credits/PersonCredits";
 import { FormatBirthDate } from "../../shared";
 import { motion } from "framer-motion";
 import "../../styles/personPage.scss";
@@ -53,7 +53,7 @@ const PersonPage = () => {
         </div>
       </div>
 
-      <Credits id={params.id} />
+      <PersonCredits id={params.id} />
     </motion.div>
   );
 };
