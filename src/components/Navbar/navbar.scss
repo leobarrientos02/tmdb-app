@@ -66,71 +66,52 @@ $green: #90cea1;
                 }
             }
         }
-    }
-
-    .bottom-nav{
-        width: 100%;
-        .search{
-            width: 100%;
+        .top-right-nav{
             display: flex;
             flex-direction: row;
-
-            input{
-                width: 100%;
-                border: none;
-                background: white;
-                color: #2f2f2f;
-                font-size: .9rem;
-                padding: 0.3rem .5rem;
-                outline: none;
-            }
-            .search-type-wrapper{
-                width: 15%;
-                .search-type{
+            .languages-wrapper {
+                .language-btn{
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    background: $green;
-                    padding: 0.4rem;
-                    font-size: 1.2rem;
-                    cursor: pointer;
+                    color: white;
                 }
-                .search-types{
-                    z-index: 100;
+                .languages{
                     position: absolute;
-                    background: white;
+                    width: 16rem;
+                    max-height: 12rem;
+                    overflow:scroll;
+                    display: flex;
                     flex-direction: column;
+                    padding: .5rem 1rem;
+                    background-color: white;
+                    border-radius: .5rem;
+                    scrollbar-width: auto;
+                    scrollbar-color: $green #222222;
                     display: none;
-                    width: 10%;
-                    p{
-                        width: 100%;
-                        font-size: .9rem;
-                        text-align: left;
+                    h2{
                         color: #2f2f2f;
-                        padding: .2rem .4rem;
+                    }
+                    button{
+                        border: none;
+                        padding: 0.2rem;
                         cursor: pointer;
-                        &:hover{
-                            color: $blue;
-                        }
+                        font-size: 1rem;
+                        margin-bottom: .5rem;
+                        background-color: rgb(226, 226, 226);
                     }
                 }
             }
-            button{
-                width: 15%;
-                cursor: pointer;
-                border: none;
-                color: white;
-                font-size: 1rem;
-                padding: 0.3rem 0;
-                background-color: grey;
-                &:hover{
-                    background: $green;
-                }
-            }
 
+            .search-btn-wrapper{
+                margin-left: 1rem;
+            }
         }
     }
 
+    .bottom-nav{
+        display: none;
+    }
 
     // ul{
     //     width: 100%;

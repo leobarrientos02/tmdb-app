@@ -11,23 +11,22 @@ const CompanyPage = ({ language }) => {
   const [total, setTotal] = useState(0);
   let params = useParams();
 
-  const getMovies = async (company_id, page_num) => {
+  const getMovies = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}discover/movie?with_companies=${company_id}&page=${page_num}&api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `${process.env.REACT_APP_API_URL}discover/movie?with_companies=${params.id}&page=${page}&api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const movies = await data.json();
-    setPage(page_num);
     setTotal(movies.total_pages);
     setMovies(movies.results);
   };
 
-  const pagination = (id, page) => {
-    getMovies(id, page);
+  const pagination = (page) => {
+    setPage(page);
   };
 
   useEffect(() => {
-    getMovies(params.id, 1);
-  }, [params.id]);
+    getMovies();
+  });
 
   return (
     <motion.div
@@ -57,7 +56,7 @@ const CompanyPage = ({ language }) => {
         page={page}
         total={total}
         pagination={pagination}
-        type={"company"}
+        type="OneParameter"
       />
     </motion.div>
   );

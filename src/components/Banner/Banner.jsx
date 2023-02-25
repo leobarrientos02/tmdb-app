@@ -1,20 +1,8 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import { checkType, handleMouseEnter, handleMouseLeave } from "../../shared";
-import { FiChevronDown } from "react-icons/fi";
 import "./banner.scss";
+import Search from "../Search/Search";
 
 export function Banner() {
-  const [input, setInput] = useState("");
-  const [type, setType] = useState("movie");
-  const navigate = useNavigate();
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    navigate(`/search/${type}/${input}`);
-    setInput("");
-  };
   return (
     <motion.div
       className="banner"
@@ -28,7 +16,9 @@ export function Banner() {
           Explore our large variety of movies.
         </h3>
       </div>
-      <form onSubmit={submitHandler} className="search">
+
+      <Search location={"banner"} />
+      {/* <form onSubmit={submitHandler} className="search">
         <div
           className="search-type-wrapper"
           onMouseEnter={() =>
@@ -82,7 +72,7 @@ export function Banner() {
           placeholder={`Search for ${checkType(type)}`}
         />
         <input className="search-btn" type="submit" value="Search" />
-      </form>
+      </form> */}
     </motion.div>
   );
 }
