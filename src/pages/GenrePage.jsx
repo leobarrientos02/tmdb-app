@@ -10,19 +10,18 @@ const GenrePage = ({ language }) => {
   const [total, setTotal] = useState(0);
   let params = useParams();
 
-  const getData = async (genre_id, page_num, media_type) => {
+  const getData = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}discover/${media_type}?with_genres=${genre_id}&page=${page_num}&api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `${process.env.REACT_APP_API_URL}discover/${params.media}?with_genres=${params.id}&page=${page}&api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const movies = await data.json();
-    setPage(page_num);
     setTotal(movies.total_pages > 500 ? 500 : movies.total_pages);
     setData(movies.results);
   };
 
-  const getGenreName = async (id, type) => {
+  const getGenreName = async (id) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}genre/${type}/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `${process.env.REACT_APP_API_URL}genre/${params.media}/list?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     var result = res.genres.filter(function (obj) {
@@ -31,14 +30,14 @@ const GenrePage = ({ language }) => {
     setGenre(result.name);
   };
 
-  const pagination = (id, page) => {
-    getData(id, page, params.media);
+  const pagination = (page) => {
+    setPage(page);
   };
 
   useEffect(() => {
-    getData(params.id, page, params.type);
-    getGenreName(params.id, params.type);
-  }, [page, params.id, params.type]);
+    getData();
+    getGenreName(params.id);
+  });
   return (
     <div className="GenrePage">
       <h2 className="page-title">
@@ -69,7 +68,6 @@ const GenrePage = ({ language }) => {
         page={page}
         total={total}
         pagination={pagination}
-        type={"genre"}
       />
     </div>
   );

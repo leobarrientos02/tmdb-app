@@ -56,7 +56,6 @@ const CompanyPage = ({ language }) => {
         page={page}
         total={total}
         pagination={pagination}
-        type="OneParameter"
       />
     </motion.div>
   );

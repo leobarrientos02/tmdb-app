@@ -1,5 +1,5 @@
 import "./pagination.scss";
-const Pagination = ({ param, page, total, pagination, type }) => {
+const Pagination = ({ param, page, total, pagination }) => {
   let pages = Array.from(Array(total), (_, i) => i + 1);
   return (
     <div>
@@ -7,11 +7,7 @@ const Pagination = ({ param, page, total, pagination, type }) => {
         <div className="pagination">
           <button
             className={page === 1 ? "block-link" : "pagination-btn"}
-            onClick={
-              type === "OneParameter"
-                ? () => pagination(page - 1)
-                : () => pagination(param, page - 1)
-            }
+            onClick={() => pagination(page - 1)}
           >
             {"<"} Previous
           </button>
@@ -20,11 +16,7 @@ const Pagination = ({ param, page, total, pagination, type }) => {
               return (
                 <button
                   className={page === i ? "current-link" : "pagination-btn"}
-                  onClick={
-                    type === "OneParameter"
-                      ? () => pagination(i)
-                      : () => pagination(param, i)
-                  }
+                  onClick={() => pagination(i)}
                   key={i}
                 >
                   {i}
@@ -34,11 +26,7 @@ const Pagination = ({ param, page, total, pagination, type }) => {
           </div>
           <button
             className={page === total ? "block-link" : "pagination-btn"}
-            onClick={
-              type === "OneParameter"
-                ? () => pagination(page + 1)
-                : () => pagination(param, page + 1)
-            }
+            onClick={() => pagination(page + 1)}
           >
             Next {">"}
           </button>
