@@ -12,15 +12,17 @@ $green: #90cea1;
 
     .search-type-wrapper{
         width: 10rem;
-        background-color: $blue;
+        background-color: lightgray;
         .search-type-icon{
             height: 100%;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-evenly;
+            cursor: pointer;
             p{
-                font-size: 1.2rem;
+                color: #2f2f2f;
+                font-size: 1rem;
             }
         }
         .search-types{
@@ -29,9 +31,11 @@ $green: #90cea1;
             flex-direction: column;
             text-align: center;
             background-color: white;
-            color: #2f2f2f;
+            border: 1px solid $blue;
+            border-radius: 0 0 .5rem .5rem;
             width: 10rem;
             p{
+                color: #2f2f2f;
                 font-size: 1rem;
                 padding: .25rem 0;
                 cursor: pointer;
@@ -52,8 +56,9 @@ $green: #90cea1;
 
     .nav-search-btn{
         width: 10%;
-        background-image: linear-gradient(to right, #90cea1, #01b4e4);
-        color: white;
+        // background-image: linear-gradient(to right, #90cea1, #01b4e4);
+        background: lightgray;
+        color: #2f2f2f;
         cursor: pointer;
         padding: 0.5rem;
         font-size: 1rem;

@@ -3,12 +3,20 @@ import Logo from "../../images/tmdb_short.svg";
 import { motion } from "framer-motion";
 import { FiChevronDown } from "react-icons/fi";
 import { AiOutlineSearch } from "react-icons/ai";
-import { GrLanguage } from "react-icons/gr";
 import { handleMouseEnter, handleMouseLeave } from "../../shared";
 import "./navbar.scss";
 import Search from "../Search/Search";
 
 const Navbar = ({ setLanguage, language }) => {
+  const ToggleSearch = () => {
+    let BottomNav = document.getElementById("bottom-nav");
+    let display = BottomNav.style.display;
+    if (display === "none") {
+      BottomNav.style.display = "flex";
+    } else {
+      BottomNav.style.display = "none";
+    }
+  };
   return (
     <div className="navbar">
       <div className="top-nav">
@@ -111,7 +119,6 @@ const Navbar = ({ setLanguage, language }) => {
         <div className="top-right-nav">
           <div className="languages-wrapper">
             <div className="language-btn">
-              <GrLanguage size="2em" />
               <p>{language}</p>
             </div>
             <div className="languages">
@@ -145,11 +152,15 @@ const Navbar = ({ setLanguage, language }) => {
             </div>
           </div>
           <div className="search-btn-wrapper">
-            <AiOutlineSearch size="2em" className="search-btn" />
+            <AiOutlineSearch
+              size="1.5rem"
+              onClick={() => ToggleSearch()}
+              className="search-btn"
+            />
           </div>
         </div>
       </div>
-      <div className="bottom-nav">
+      <div className="bottom-nav" id="bottom-nav">
         <Search location={"nav"} />
       </div>
     </div>
