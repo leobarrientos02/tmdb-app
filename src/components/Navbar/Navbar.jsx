@@ -10,15 +10,10 @@ import Search from "../Search/Search";
 
 const Navbar = ({ setLanguage, language }) => {
   const [showSearch, setShowSearch] = useState(false);
-  // const ToggleSearch = () => {
-  //   let BottomNav = document.getElementById("bottom-nav");
-  //   let display = BottomNav.style.display;
-  //   if (display === "none") {
-  //     BottomNav.style.display = "flex";
-  //   } else {
-  //     BottomNav.style.display = "none";
-  //   }
-  // };
+  const [showLanguages, setShowLanguages] = useState(false);
+  const getLanguageValue = (e) => {
+    setLanguage(e.target.value);
+  };
   return (
     <div className="navbar">
       <div className="top-nav">
@@ -120,47 +115,51 @@ const Navbar = ({ setLanguage, language }) => {
 
         <div className="top-right-nav">
           <div className="languages-wrapper">
-            <div className="language-btn">
-              <p>{language}</p>
-            </div>
-            <div className="languages">
-              <h2>Language Preferences</h2>
-              <button onClick={() => setLanguage("ar")}>Arabic</button>
-              <button onClick={() => setLanguage("bg")}>Bulgarian</button>
-              <button onClick={() => setLanguage("zh")}>Chinese</button>
-              <button onClick={() => setLanguage("cs")}>Czech</button>
-              <button onClick={() => setLanguage("da")}>Danish</button>
-              <button onClick={() => setLanguage("nl")}>Dutch</button>
-              <button onClick={() => setLanguage("en")}>English</button>
-              <button onClick={() => setLanguage("fr")}>French</button>
-              <button onClick={() => setLanguage("de")}>German</button>
-              <button onClick={() => setLanguage("el")}>Greek</button>
-              <button onClick={() => setLanguage("he")}>Hebrew</button>
-              <button onClick={() => setLanguage("hu")}>Hungarian</button>
-              <button onClick={() => setLanguage("id")}>Indonesian</button>
-              <button onClick={() => setLanguage("it")}>Italian</button>
-              <button onClick={() => setLanguage("ja")}>Japanese</button>
-              <button onClick={() => setLanguage("ko")}>Korean</button>
-              <button onClick={() => setLanguage("pl")}>Polish</button>
-              <button onClick={() => setLanguage("pt")}>Portuguese</button>
-              <button onClick={() => setLanguage("ro")}>Romanian</button>
-              <button onClick={() => setLanguage("ru")}>Russian</button>
-              <button onClick={() => setLanguage("sr")}>Serbian</button>
-              <button onClick={() => setLanguage("es")}>Spanish</button>
-              <button onClick={() => setLanguage("sv")}>Swedish</button>
-              <button onClick={() => setLanguage("tr")}>Turkish</button>
-              <button onClick={() => setLanguage("uk")}>Ukranian</button>
-              <button onClick={() => setLanguage("vi")}>Vietnamese</button>
+            <button onClick={() => setShowLanguages(!showLanguages)}>
+              {language}
+            </button>
+            <div className={showLanguages === false ? "hide" : "show"}>
+              <div className="languages">
+                <h2>Language Preferences</h2>
+                <select onChange={getLanguageValue}>
+                  <option value="ar">Arabic (ar)</option>
+                  <option value="bg">Bulgarian (bg)</option>
+                  <option value="zh">Chinese (zh)</option>
+                  <option value="cs">Czech (cs)</option>
+                  <option value="da">Danish (da)</option>
+                  <option value="nl">Dutch (nl)</option>
+                  <option value="en">English (en)</option>
+                  <option value="fr">French (fr)</option>
+                  <option value="de">German (de)</option>
+                  <option value="el">Greek (el)</option>
+                  <option value="he">Hebrew (he)</option>
+                  <option value="hu">Hungarian (hu)</option>
+                  <option value="id">Indonesian (id)</option>
+                  <option value="it">Italian (it)</option>
+                  <option value="ja">Japanese (ja)</option>
+                  <option value="ko">Korean (ko)</option>
+                  <option value="pl">Polish (pl)</option>
+                  <option value="pt">Portuguese (pt)</option>
+                  <option value="ro">Romanian (ro)</option>
+                  <option value="ru">Russian (ru)</option>
+                  <option value="sr">Serbian (sr)</option>
+                  <option value="es">Spanish (es)</option>
+                  <option value="sv">Swedish (sv)</option>
+                  <option value="tr">Turkish (tr)</option>
+                  <option value="uk">Ukranian (uk)</option>
+                  <option value="vi">Vietnamese (vi)</option>
+                </select>
+              </div>
             </div>
           </div>
           <div className="search-btn-wrapper">
             {showSearch === false ? (
               <AiOutlineSearch
-                size="1.3rem"
+                size="1.2rem"
                 onClick={() => setShowSearch(!showSearch)}
               />
             ) : (
-              <FiX size="1.3rem" onClick={() => setShowSearch(!showSearch)} />
+              <FiX size="1.2rem" onClick={() => setShowSearch(!showSearch)} />
             )}
           </div>
         </div>
