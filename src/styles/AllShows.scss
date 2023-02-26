@@ -1,4 +1,4 @@
-.AllMovies{
+.AllShows{
 
     .title{
         width: 100%;
@@ -7,7 +7,7 @@
         }
     }
 
-    .sort-filter-movies-wrapper{
+    .sort-filter-shows-wrapper{
         display:flex;
         justify-content: space-between;
 
@@ -51,10 +51,10 @@
             }
         }
 
-        .movies-wrapper{
+        .shows-wrapper{
             width: 74%;
 
-            .movies{
+            .shows{
                 display: grid;
                 column-gap: 2rem;
                 row-gap: 2rem;

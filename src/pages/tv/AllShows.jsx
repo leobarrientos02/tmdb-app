@@ -2,22 +2,22 @@ import { useState, useEffect } from "react";
 import Pagination from "../../components/Pagination/Pagination";
 import Card from "../../components/Card/Card";
 import { FiChevronRight } from "react-icons/fi";
-import "../../styles/AllMovies.scss";
+import "../../styles/AllShows.scss";
 
-const AllMovies = ({ language }) => {
-  const [movies, setMovies] = useState([]);
+const AllShows = ({ language }) => {
+  const [shows, setShows] = useState([]);
   const [sortBy, setSortBy] = useState("popularity.desc");
   const [showSort, setShowSort] = useState(false);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
 
-  const getMovies = async () => {
+  const getShows = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}discover/movie/?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${sortBy}&page=${page}&language=${language}`
+      `${process.env.REACT_APP_API_URL}discover/tv/?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${sortBy}&page=${page}&language=${language}`
     );
-    const movies = await data.json();
-    setTotal(movies.total_pages > 500 ? 500 : movies.total_pages);
-    setMovies(movies.results);
+    const shows = await data.json();
+    setTotal(shows.total_pages > 500 ? 500 : shows.total_pages);
+    setShows(shows.results);
   };
 
   const pagination = (num) => {
@@ -30,15 +30,15 @@ const AllMovies = ({ language }) => {
   };
 
   useEffect(() => {
-    getMovies();
+    getShows();
   });
   return (
-    <div className="AllMovies">
+    <div className="AllShows">
       <div className="title">
-        <h2>All Movies</h2>
+        <h2>All Shows</h2>
       </div>
 
-      <div className="sort-filter-movies-wrapper">
+      <div className="sort-filter-shows-wrapper">
         <div className="sort-filter">
           <div className="sort">
             <div className="sort-btn" onClick={() => setShowSort(!showSort)}>
@@ -49,7 +49,7 @@ const AllMovies = ({ language }) => {
               />
             </div>
             <div className={showSort === false ? "hide" : "show"}>
-              <p>Sort movies by</p>
+              <p>Sort shows by</p>
               <select onChange={getSortValue}>
                 <option value="popularity.desc">Popularity Descending</option>
                 <option value="popularity.asc">Popularity Ascending</option>
@@ -66,18 +66,18 @@ const AllMovies = ({ language }) => {
           </div>
         </div>
 
-        <div className="movies-wrapper">
-          <div className="movies">
-            {movies.map((movie) => {
+        <div className="shows-wrapper">
+          <div className="shows">
+            {shows.map((show) => {
               return (
                 <Card
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.title}
-                  poster_path={movie.poster_path}
-                  release_date={movie.release_date}
-                  vote={movie.vote_average}
-                  type={"movie"}
+                  key={show.id}
+                  id={show.id}
+                  title={show.title}
+                  poster_path={show.poster_path}
+                  release_date={show.release_date}
+                  vote={show.vote_average}
+                  type={"tv"}
                 />
               );
             })}
@@ -94,4 +94,4 @@ const AllMovies = ({ language }) => {
     </div>
   );
 };
-export default AllMovies;
+export default AllShows;

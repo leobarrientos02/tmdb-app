@@ -13,6 +13,7 @@ import EpisodePage from "./tv/EpisodePage";
 import SearchPage from "./SearchPage";
 import PersonPage from "./person/PersonPage";
 import PopularPeople from "./person/PopularPeople";
+import AllShows from "./tv/AllShows";
 
 const Pages = ({ language }) => {
   return (
@@ -24,6 +25,7 @@ const Pages = ({ language }) => {
         element={<FilteredMoviesPage language={language} />}
       />
       <Route path="/movie/:id" element={<MoviePage language={language} />} />
+      <Route path="/shows" element={<AllShows language={language} />} />
       <Route
         path="/shows/:filter"
         element={<FilteredTVPage language={language} />}
