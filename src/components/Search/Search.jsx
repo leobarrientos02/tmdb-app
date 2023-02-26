@@ -1,74 +1,53 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import { checkType, handleMouseEnter, handleMouseLeave } from "../../shared";
-import { FiChevronDown } from "react-icons/fi";
+import { checkType } from "../../shared";
 import "./search.scss";
 
 const Search = ({ location }) => {
   const [input, setInput] = useState("");
-  const [type, setType] = useState("movie");
+  const [searchType, setSearchType] = useState("movie");
   const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    navigate(`/search/${type}/${input}`);
+    navigate(`/search/${searchType}/${input}`);
     setInput("");
+  };
+
+  const getValue = (e) => {
+    setSearchType(e.target.value);
   };
   return (
     <form
       onSubmit={submitHandler}
       className={location === "nav" ? "nav-search" : "banner-search"}
     >
-      <div
-        className="search-type-wrapper"
-        onMouseEnter={() =>
-          handleMouseEnter("search-options", "search-type-arrow")
-        }
-        onMouseLeave={() =>
-          handleMouseLeave("search-options", "search-type-arrow")
-        }
-      >
-        <div className="search-type-icon">
-          <p>{checkType(type)}</p>
-          <FiChevronDown
-            size="1.2em"
-            id="search-type-arrow"
-            className="arrow"
-          />
-        </div>
-        <div className="search-types" id="search-options">
-          <p
-            onClick={() => setType("movie")}
-            className={type === "movie" ? "hide" : ""}
-          >
-            Movies
-          </p>
-          <p
-            onClick={() => setType("tv")}
-            className={type === "tv" ? "hide" : ""}
-          >
-            Shows
-          </p>
-          <p
-            onClick={() => setType("company")}
-            className={type === "company" ? "hide" : ""}
-          >
-            Company
-          </p>
-          <p
-            onClick={() => setType("person")}
-            className={type === "person" ? "hide" : ""}
-          >
-            Person
-          </p>
-        </div>
-      </div>
+      <select onChange={getValue}>
+        <option value="movie" className={searchType === "movie" ? "hide" : ""}>
+          Movies
+        </option>
+        <option value="tv" className={searchType === "tv" ? "hide" : ""}>
+          Shows
+        </option>
+        <option
+          value="company"
+          className={searchType === "company" ? "hide" : ""}
+        >
+          Companies
+        </option>
+        <option
+          value="person"
+          className={searchType === "person" ? "hide" : ""}
+        >
+          Person
+        </option>
+      </select>
       <input
         type="text"
         required
         onChange={(e) => setInput(e.target.value)}
         value={input}
-        placeholder={`Search for ${checkType(type)}`}
+        placeholder={`Search for ${checkType(searchType)}`}
         className="nav-input"
       />
       <button className="nav-search-btn">Search</button>
