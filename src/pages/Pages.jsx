@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
 import GenrePage from "./GenrePage";
+import AllMovies from "./movies/AllMovies";
 import MoviePage from "./movies/MoviePage";
 import CompanyPage from "./company/CompanyPage";
 import FilteredMoviesPage from "./movies/FilteredPage";
@@ -17,11 +18,12 @@ const Pages = ({ language }) => {
   return (
     <Routes className="pages">
       <Route path="/" element={<HomePage language={language} />} />
-      <Route path="/movie/:id" element={<MoviePage language={language} />} />
+      <Route path="/movies" element={<AllMovies language={language} />} />
       <Route
         path="/movies/:filter"
         element={<FilteredMoviesPage language={language} />}
       />
+      <Route path="/movie/:id" element={<MoviePage language={language} />} />
       <Route
         path="/shows/:filter"
         element={<FilteredTVPage language={language} />}

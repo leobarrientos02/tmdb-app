@@ -1,0 +1,63 @@
+.AllMovies{
+
+    .title{
+        width: 100%;
+        h2{
+            font-size: 3rem;
+        }
+    }
+
+    .sort-filter-movies-wrapper{
+        display:flex;
+        justify-content: space-between;
+
+        .sort-filter{
+            margin-top: 2rem;
+            width: 25%;
+            .sort{
+                width: 100%;
+                padding: 1rem;
+                border-radius: 1rem;
+                border: 1px solid grey;
+                h2{
+                    font-size: 1.5rem;
+                }
+
+                p{
+                    font-size: 1rem;
+                }
+
+                select{
+                    margin-top: 1rem;
+                    width: 100%;
+                    font-size: 1rem;
+                    background-color: #2f2f2f;
+                    color: white;
+                    outline: none;
+                    border: none;
+                    padding: .4rem .8rem;
+                    border-radius: .5rem;
+                }
+            }
+        }
+
+        .movies-wrapper{
+            width: 74%;
+
+            .movies{
+                display: grid;
+                column-gap: 2rem;
+                row-gap: 2rem;
+                grid-template-columns: repeat(auto-fit,minmax(10rem, 1fr));
+            }
+
+        }
+    }
+}
+
+.hide{
+    display: none;
+}
+.show{
+    display: inline;
+}

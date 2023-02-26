@@ -45,6 +45,9 @@ const Navbar = ({ setLanguage, language }) => {
                 />
               </h2>
               <div className="links" id="movie-links">
+                <Link to="/movies" className="link">
+                  All Movies
+                </Link>
                 <Link to="/movies/popular" className="link">
                   Popular
                 </Link>
