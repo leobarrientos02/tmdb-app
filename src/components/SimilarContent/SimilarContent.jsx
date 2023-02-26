@@ -7,12 +7,12 @@ import "./similarContent.scss";
 import { motion } from "framer-motion";
 import NotFound from "../../images/imageNotFound.png";
 
-const SimilarContent = ({ id, type }) => {
+const SimilarContent = ({ id, media_type, language }) => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}${media_type}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setData(res.results);
@@ -25,21 +25,25 @@ const SimilarContent = ({ id, type }) => {
   });
   return (
     <div className="SimilarContent">
-      <h2 className="title">Similar {type === "tv" ? "Shows" : "Movies"}</h2>
+      <h2 className="title">
+        Similar {media_type === "tv" ? "Shows" : "Movies"}
+      </h2>
       <Splide
         options={{
           perPage: 5,
           drag: "free",
           gap: "2rem",
-          arrows: true,
-          pagination: false,
+          arrows: false,
+          pagination: true,
         }}
       >
         {data.map((content) => {
           return (
-            <SplideSlide key={content?.id}>
+            <SplideSlide key={content?.id} className="similar-card-wrapper">
               <Link
-                to={`/${type === "tv" ? "tv" : type}/${content?.id}`}
+                to={`/${media_type === "tv" ? "tv" : media_type}/${
+                  content?.id
+                }`}
                 className="card"
               >
                 <motion.img
@@ -52,10 +56,10 @@ const SimilarContent = ({ id, type }) => {
                   transition={{ duration: 0.7, delay: 0.2 }}
                 />
                 <h2 className="content-title">
-                  {type === "tv" ? content?.name : content?.title}
+                  {media_type === "tv" ? content?.name : content?.title}
                 </h2>
                 <p className="date">
-                  {type === "tv"
+                  {media_type === "tv"
                     ? FormatDate(content?.first_air_date)
                     : FormatDate(content?.release_date)}
                 </p>

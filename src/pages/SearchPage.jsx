@@ -5,16 +5,16 @@ import Card from "../components/Card/Card";
 import Pagination from "../components/Pagination/Pagination";
 import "../styles/searchPage.scss";
 
-const SearchPage = () => {
+const SearchPage = ({ language }) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   let imagePath = "https://image.tmdb.org/t/p/original";
   let params = useParams();
 
-  const getData = async (type, search) => {
+  const getData = async (media_type, search) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/search/${type}?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&page=${page}`
+      `${process.env.REACT_APP_API_URL}search/${media_type}?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&page=${page}&language=${language}`
     );
     const res = await data.json();
     setTotal(res.total_pages);
@@ -22,15 +22,14 @@ const SearchPage = () => {
   };
 
   const pagination = (pageNum) => {
-    // scrollToTop();
     setPage(pageNum);
   };
 
   useEffect(() => {
-    getData(params.type, params.search);
+    getData(params.media, params.search);
   });
 
-  if (params.type === "tv" || params.type === "movie") {
+  if (params.media === "tv" || params.media === "movie") {
     return (
       <div className="SearchPage">
         <h2 className="page-title">Results for search: {params.search}</h2>
@@ -40,15 +39,17 @@ const SearchPage = () => {
               <Card
                 key={content?.id}
                 id={content?.id}
-                title={params.type === "movie" ? content?.title : content?.name}
+                title={
+                  params.media === "movie" ? content?.title : content?.name
+                }
                 poster_path={content?.poster_path}
                 release_date={
-                  params.type === "movie"
+                  params.media === "movie"
                     ? content?.release_date
                     : content?.first_air_date
                 }
                 vote={content?.vote_average}
-                type={params.type}
+                type={params.media}
               />
             );
           })}
@@ -63,7 +64,7 @@ const SearchPage = () => {
         />
       </div>
     );
-  } else if (params.type === "company") {
+  } else if (params.media === "company") {
     return (
       <div className="SearchPage">
         <h2 className="page-title">Results for search: {params.search}</h2>
@@ -93,7 +94,6 @@ const SearchPage = () => {
           page={page}
           total={total}
           pagination={pagination}
-          type="OneParameter"
         />
       </div>
     );

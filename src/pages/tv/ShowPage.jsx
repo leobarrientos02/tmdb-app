@@ -5,21 +5,21 @@ import "@splidejs/splide/dist/css/splide.min.css";
 import VotePercentage, { FormatDate } from "../../shared";
 import { motion } from "framer-motion";
 import NotFound from "../../images/imageNotFound.png";
-import "../../styles/tvPage.scss";
 import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
 import ReviewSection from "../../components/Reviews/ReviewSection";
 import SimilarContent from "../../components/SimilarContent/SimilarContent";
 import ContentImages from "../../components/ContentImages/ContentImages";
 import Credits from "../../components/Credits/Credits";
+import "../../styles/tvPage.scss";
 
-const ShowPage = () => {
+const ShowPage = ({ language }) => {
   const [show, setShow] = useState([]);
   let params = useParams();
   let imagePath = "https://image.tmdb.org/t/p/original";
 
-  const getShow = async (id) => {
+  const getShow = async (show_id) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}tv/${show_id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setShow(res);
@@ -75,7 +75,7 @@ const ShowPage = () => {
         })}
       </div>
 
-      <motion.img src={imagePath + show?.backdrop_path} alt={show?.title} />
+      <img src={imagePath + show?.backdrop_path} alt={show?.title} />
 
       <div className="tv-overview">
         <h2 className="section-title">
@@ -84,9 +84,9 @@ const ShowPage = () => {
         <p>{show?.overview}</p>
       </div>
 
-      <ContentImages url={`tv/${show?.id}/images`} />
+      <ContentImages api_path={`tv/${show?.id}`} />
 
-      <ProductionCompanies res={show} />
+      <ProductionCompanies data={show} />
 
       <div className="tv-seasons">
         <h2 className="title">Seasons</h2>
@@ -95,8 +95,8 @@ const ShowPage = () => {
             perPage: 5,
             drag: "free",
             gap: "2rem",
-            arrows: true,
-            pagination: false,
+            arrows: false,
+            pagination: true,
           }}
           className="seasons"
         >
@@ -121,11 +121,11 @@ const ShowPage = () => {
         </Splide>
       </div>
 
-      <ReviewSection id={params.id} type={"tv"} />
+      <ReviewSection api_path={`tv/${params.id}`} language={language} />
 
-      <Credits api_path={`tv/${params.id}`} />
+      <Credits api_path={`tv/${params.id}`} language={language} />
 
-      <SimilarContent id={params.id} type={"tv"} />
+      <SimilarContent id={params.id} media_type={"tv"} language={language} />
     </motion.div>
   );
 };

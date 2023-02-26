@@ -5,14 +5,14 @@ import { FormatBirthDate } from "../../shared";
 import { motion } from "framer-motion";
 import "../../styles/personPage.scss";
 
-const PersonPage = () => {
+const PersonPage = ({ language }) => {
   const [person, setPerson] = useState({});
   let params = useParams();
   let imagePath = "https://image.tmdb.org/t/p/original";
 
   const getPerson = async (id) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}person/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setPerson(res);

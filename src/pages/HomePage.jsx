@@ -3,13 +3,13 @@ import GenrePreview from "../components/GenrePreview/GenrePreview";
 import React, { useEffect, useState } from "react";
 import "../styles/homePage.scss";
 
-const HomePage = () => {
+const HomePage = ({ language }) => {
   const [genres, setGenres] = useState([]);
   const [mediaType, setMediaType] = useState("movie");
 
   const getGenres = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/genre/${mediaType}/list?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}genre/${mediaType}/list?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setGenres(res.genres);
@@ -41,9 +41,9 @@ const HomePage = () => {
         return (
           <GenrePreview
             key={genre?.id}
-            name={genre?.name}
-            genreId={genre?.id}
-            type={mediaType}
+            genre={genre?.name}
+            genre_id={genre?.id}
+            media_type={mediaType}
           />
         );
       })}

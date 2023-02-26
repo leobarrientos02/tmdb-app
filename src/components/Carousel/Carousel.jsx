@@ -14,13 +14,13 @@ const Carousel = ({ data, type }) => {
         perPage: 5,
         drag: "free",
         gap: "2rem",
-        arrows: true,
-        pagination: false,
+        arrows: false,
+        pagination: true,
       }}
     >
       {data.map((content) => {
         return (
-          <SplideSlide key={content?.id}>
+          <SplideSlide key={content?.id} className="carousel-splide-wrapper">
             <motion.div
               className="mediaCard"
               animate={{ opacity: 1 }}

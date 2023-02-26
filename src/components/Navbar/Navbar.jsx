@@ -1,39 +1,23 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
 import Logo from "../../images/tmdb_short.svg";
-import "./navbar.scss";
 import { motion } from "framer-motion";
-import { FiChevronDown } from "react-icons/fi";
-import { checkType, handleMouseEnter, handleMouseLeave } from "../../shared";
+import { FiChevronDown, FiX } from "react-icons/fi";
+import { AiOutlineSearch } from "react-icons/ai";
+import { handleMouseEnter, handleMouseLeave } from "../../shared";
+import "./navbar.scss";
+import Search from "../Search/Search";
 
-const Navbar = () => {
-  // const [genres, setGenres] = useState([]);
-  const [input, setInput] = useState("");
-  const [type, setType] = useState("movie");
-  const navigate = useNavigate();
-
-  // const getGenres = async () => {
-  //   const data = await fetch(
-  //     `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
-  //   );
-  //   const res = await data.json();
-  //   setGenres(res.genres);
-  // };
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    navigate(`/search/${type}/${input}`);
-    setInput("");
+const Navbar = ({ setLanguage, language }) => {
+  const [showSearch, setShowSearch] = useState(false);
+  const [showLanguages, setShowLanguages] = useState(false);
+  const getLanguageValue = (e) => {
+    setLanguage(e.target.value);
   };
-
-  // useEffect(() => {
-  //   getGenres();
-  // });
   return (
     <div className="navbar">
       <div className="top-nav">
-        <div className="left-nav">
+        <div className="top-left-nav">
           <Link to="/">
             <motion.img
               src={Logo}
@@ -89,16 +73,16 @@ const Navbar = () => {
                 />
               </h2>
               <div className="links" id="tv-links">
-                <Link to="/tvs/popular" className="link">
+                <Link to="/shows/popular" className="link">
                   Popular
                 </Link>
-                <Link to="/tvs/airing_today" className="link">
+                <Link to="/shows/airing_today" className="link">
                   Airing Today
                 </Link>
-                <Link to="/tvs/on_the_air" className="link">
+                <Link to="/shows/on_the_air" className="link">
                   On TV
                 </Link>
-                <Link to="/tvs/top_rated" className="link">
+                <Link to="/shows/top_rated" className="link">
                   Top Rated
                 </Link>
               </div>
@@ -129,99 +113,61 @@ const Navbar = () => {
           </div>
         </div>
 
-        <form onSubmit={submitHandler} className="search">
-          <div
-            className="search-type-wrapper"
-            onMouseEnter={() =>
-              handleMouseEnter("search-options", "search-type-arrow")
-            }
-            onMouseLeave={() =>
-              handleMouseLeave("search-options", "search-type-arrow")
-            }
-          >
-            <div className="search-type">
-              <p>{checkType(type)}</p>
-              <FiChevronDown
-                size="1.2em"
-                id="search-type-arrow"
-                className="arrow"
-              />
-            </div>
-            <div className="search-types" id="search-options">
-              <p
-                onClick={() => setType("movie")}
-                className={type === "movie" ? "hide" : ""}
-              >
-                Movies
-              </p>
-              <p
-                onClick={() => setType("tv")}
-                className={type === "tv" ? "hide" : ""}
-              >
-                Shows
-              </p>
-              <p
-                onClick={() => setType("company")}
-                className={type === "company" ? "hide" : ""}
-              >
-                Company
-              </p>
-              <p
-                onClick={() => setType("person")}
-                className={type === "person" ? "hide" : ""}
-              >
-                Person
-              </p>
+        <div className="top-right-nav">
+          <div className="languages-wrapper">
+            <button onClick={() => setShowLanguages(!showLanguages)}>
+              {language}
+            </button>
+            <div className={showLanguages === false ? "hide" : "show"}>
+              <div className="languages">
+                <h2>Language Preferences</h2>
+                <select onChange={getLanguageValue}>
+                  <option value="ar">Arabic (ar)</option>
+                  <option value="bg">Bulgarian (bg)</option>
+                  <option value="zh">Chinese (zh)</option>
+                  <option value="cs">Czech (cs)</option>
+                  <option value="da">Danish (da)</option>
+                  <option value="nl">Dutch (nl)</option>
+                  <option value="en">English (en)</option>
+                  <option value="fr">French (fr)</option>
+                  <option value="de">German (de)</option>
+                  <option value="el">Greek (el)</option>
+                  <option value="he">Hebrew (he)</option>
+                  <option value="hu">Hungarian (hu)</option>
+                  <option value="id">Indonesian (id)</option>
+                  <option value="it">Italian (it)</option>
+                  <option value="ja">Japanese (ja)</option>
+                  <option value="ko">Korean (ko)</option>
+                  <option value="pl">Polish (pl)</option>
+                  <option value="pt">Portuguese (pt)</option>
+                  <option value="ro">Romanian (ro)</option>
+                  <option value="ru">Russian (ru)</option>
+                  <option value="sr">Serbian (sr)</option>
+                  <option value="es">Spanish (es)</option>
+                  <option value="sv">Swedish (sv)</option>
+                  <option value="tr">Turkish (tr)</option>
+                  <option value="uk">Ukranian (uk)</option>
+                  <option value="vi">Vietnamese (vi)</option>
+                </select>
+              </div>
             </div>
           </div>
-          <input
-            type="text"
-            required
-            onChange={(e) => setInput(e.target.value)}
-            value={input}
-            placeholder={`Search for ${checkType(type)}`}
-          />
-          <button>Search</button>
-        </form>
+          <div className="search-btn-wrapper">
+            {showSearch === false ? (
+              <AiOutlineSearch
+                size="1.2rem"
+                onClick={() => setShowSearch(!showSearch)}
+              />
+            ) : (
+              <FiX size="1.2rem" onClick={() => setShowSearch(!showSearch)} />
+            )}
+          </div>
+        </div>
       </div>
-      {/* <ul>
-        <li>
-          <Link to="/category/popular" className="nav-link">
-            Popular
-          </Link>
-        </li>
-        <li>
-          <Link to="/category/now_playing" className="nav-link">
-            Now Playing
-          </Link>
-        </li>
-        <li>
-          <Link to="/category/top_rated" className="nav-link">
-            Top Rated
-          </Link>
-        </li>
-        <li>
-          <Link to="/category/upcoming" className="nav-link">
-            Upcoming
-          </Link>
-        </li>
-        <select name="genre" className="genre-dropdown">
-          <option value="" selected disabled className="genre-option">
-            Genres
-          </option>
-          {genres.map((genre) => {
-            return (
-              <option
-                key={genre.id}
-                className="genre-option"
-                onClick={() => navigate(`/genre/${genre.id}`)}
-              >
-                {genre.name}
-              </option>
-            );
-          })} 
-        </select>
-      </ul> */}
+
+      <div className={showSearch === true ? "show" : "hide"}>
+        <Search location={"nav"} />
+      </div>
     </div>
   );
 };

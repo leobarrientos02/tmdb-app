@@ -4,18 +4,18 @@ import { motion } from "framer-motion";
 import "./genrePreview.scss";
 import Carousel from "../Carousel/Carousel";
 
-const GenrePreview = ({ name, genreId, type }) => {
+const GenrePreview = ({ genre, genre_id, media_type }) => {
   const [data, setData] = useState([]);
 
-  const getData = async (id) => {
+  const getData = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/${type}?with_genres=${id}&api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_API_URL}discover/${media_type}?with_genres=${genre_id}&api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     const res = await data.json();
     setData(res.results);
   };
   useEffect(() => {
-    getData(genreId);
+    getData();
   });
   return (
     <motion.div
@@ -25,12 +25,12 @@ const GenrePreview = ({ name, genreId, type }) => {
       transition={{ type: "spring", stiffness: 100 }}
     >
       <div className="genre-heading">
-        <h2>{name}</h2>
-        <Link to={`/${type}/genre/${genreId}`} className="link">
+        <h2>{genre}</h2>
+        <Link to={`/${media_type}/genre/${genre_id}`} className="link">
           View More
         </Link>
       </div>
-      <Carousel data={data} type={type} />
+      <Carousel data={data} type={media_type} />
     </motion.div>
   );
 };
