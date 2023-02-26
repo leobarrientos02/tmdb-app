@@ -1,22 +1,24 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../images/tmdb_short.svg";
 import { motion } from "framer-motion";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiX } from "react-icons/fi";
 import { AiOutlineSearch } from "react-icons/ai";
 import { handleMouseEnter, handleMouseLeave } from "../../shared";
 import "./navbar.scss";
 import Search from "../Search/Search";
 
 const Navbar = ({ setLanguage, language }) => {
-  const ToggleSearch = () => {
-    let BottomNav = document.getElementById("bottom-nav");
-    let display = BottomNav.style.display;
-    if (display === "none") {
-      BottomNav.style.display = "flex";
-    } else {
-      BottomNav.style.display = "none";
-    }
-  };
+  const [showSearch, setShowSearch] = useState(false);
+  // const ToggleSearch = () => {
+  //   let BottomNav = document.getElementById("bottom-nav");
+  //   let display = BottomNav.style.display;
+  //   if (display === "none") {
+  //     BottomNav.style.display = "flex";
+  //   } else {
+  //     BottomNav.style.display = "none";
+  //   }
+  // };
   return (
     <div className="navbar">
       <div className="top-nav">
@@ -152,15 +154,19 @@ const Navbar = ({ setLanguage, language }) => {
             </div>
           </div>
           <div className="search-btn-wrapper">
-            <AiOutlineSearch
-              size="1.5rem"
-              onClick={() => ToggleSearch()}
-              className="search-btn"
-            />
+            {showSearch === false ? (
+              <AiOutlineSearch
+                size="1.3rem"
+                onClick={() => setShowSearch(!showSearch)}
+              />
+            ) : (
+              <FiX size="1.3rem" onClick={() => setShowSearch(!showSearch)} />
+            )}
           </div>
         </div>
       </div>
-      <div className="bottom-nav" id="bottom-nav">
+
+      <div className={showSearch === true ? "show" : "hide"}>
         <Search location={"nav"} />
       </div>
     </div>
