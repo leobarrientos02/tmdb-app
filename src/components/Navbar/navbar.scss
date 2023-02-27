@@ -52,17 +52,22 @@ $green: #90cea1;
                     border-radius: 0.3rem;
                     flex-direction: column;
                     display: none;
+                    border: solid 1px $blue;
                     .link{
                         text-decoration: none;
                         width: 100%;
-                        font-size: .9rem;
+                        font-size: 1rem;
                         text-align: left;
                         color: #2f2f2f;
                         padding: .2rem .4rem;
                         cursor: pointer;
+                        border-bottom: 1px solid lightgrey;
                         &:hover{
                             color: $blue;
                         }
+                    }
+                    .link:last-child{
+                        border: none;
                     }
                 }
             }
@@ -72,6 +77,7 @@ $green: #90cea1;
             flex-direction: row;
             align-items: center;
             .languages-wrapper {
+                z-index: 1000;
                 button{
                     font-size: .8rem;
                     border: 1px solid #fff;

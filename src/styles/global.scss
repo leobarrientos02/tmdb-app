@@ -40,9 +40,9 @@ body {
 
 .page-grid{
     display: grid;
-    column-gap: 3rem;
+    column-gap: 2rem;
     row-gap: 2rem;
-    grid-template-columns: repeat(auto-fit,minmax(12rem, 1fr));
+    grid-template-columns: repeat(auto-fit,minmax(10rem, 1fr));
 }
 
 .page-title{
