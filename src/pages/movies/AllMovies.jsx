@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import Pagination from "../../components/Pagination/Pagination";
 import Card from "../../components/Card/Card";
-import { FiChevronRight } from "react-icons/fi";
 import "../../styles/AllMovies.scss";
+import SortFilter from "../../components/SortFilter/SortFilter";
 
 const AllMovies = ({ language }) => {
   const [movies, setMovies] = useState([]);
   const [sortBy, setSortBy] = useState("popularity.desc");
-  const [showSort, setShowSort] = useState(false);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
 
@@ -36,53 +35,23 @@ const AllMovies = ({ language }) => {
     <div className="AllMovies">
       <div className="title">
         <h2>All Movies</h2>
+        <SortFilter getSortValue={getSortValue} />
       </div>
 
-      <div className="sort-filter-movies-wrapper">
-        <div className="sort-filter">
-          <div className="sort">
-            <div className="sort-btn" onClick={() => setShowSort(!showSort)}>
-              <h2>Sort</h2>
-              <FiChevronRight
-                size="1.2em"
-                className={showSort === true ? "rotateArrow" : ""}
-              />
-            </div>
-            <div className={showSort === false ? "hide" : "show"}>
-              <p>Sort movies by</p>
-              <select onChange={getSortValue}>
-                <option value="popularity.desc">Popularity Descending</option>
-                <option value="popularity.asc">Popularity Ascending</option>
-                <option value="vote_average.desc">Rating Descending</option>
-                <option value="vote_average.asc">Rating Ascending</option>
-                <option value="release_date.desc">
-                  Release Date Descending
-                </option>
-                <option value="release_date.asc">Release Date Ascending</option>
-                <option value="original_title.asc">Title (A-Z)</option>
-                <option value="original_title.desc">Title (Z-A)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div className="movies-wrapper">
-          <div className="movies">
-            {movies.map((movie) => {
-              return (
-                <Card
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.title}
-                  poster_path={movie.poster_path}
-                  release_date={movie.release_date}
-                  vote={movie.vote_average}
-                  type={"movie"}
-                />
-              );
-            })}
-          </div>
-        </div>
+      <div className="page-grid">
+        {movies.map((movie) => {
+          return (
+            <Card
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              poster_path={movie.poster_path}
+              release_date={movie.release_date}
+              vote={movie.vote_average}
+              type={"movie"}
+            />
+          );
+        })}
       </div>
 
       <Pagination
