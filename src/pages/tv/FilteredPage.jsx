@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FormatTitle } from "../../shared";
 import Pagination from "../../components/Pagination/Pagination";
-import Card from "../../components/Card/Card";
 import { motion } from "framer-motion";
+import Show from "../../components/Show/Show";
 
 const FilteredTVPage = ({ language }) => {
   const [shows, setShows] = useState([]);
@@ -38,14 +38,13 @@ const FilteredTVPage = ({ language }) => {
       <div className="page-grid">
         {shows.map((show) => {
           return (
-            <Card
+            <Show
               key={show.id}
               id={show.id}
-              title={show.name}
+              name={show.name}
               poster_path={show.poster_path}
-              release_date={show.first_air_date}
+              aired_date={show.first_air_date}
               vote={show.vote_average}
-              type={"tv"}
             />
           );
         })}

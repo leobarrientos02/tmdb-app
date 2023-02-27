@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Card from "../../components/Card/Card";
 import Pagination from "../../components/Pagination/Pagination";
 import { FormatTitle } from "../../shared";
 import { motion } from "framer-motion";
+import Movie from "../../components/Movie/Movie";
 
 const FilteredMoviesPage = ({ language }) => {
   const [movies, setMovies] = useState([]);
@@ -38,14 +38,13 @@ const FilteredMoviesPage = ({ language }) => {
       <div className="page-grid">
         {movies.map((movie) => {
           return (
-            <Card
+            <Movie
               key={movie.id}
               id={movie.id}
               title={movie.title}
               poster_path={movie.poster_path}
               release_date={movie.release_date}
               vote={movie.vote_average}
-              type={"movie"}
             />
           );
         })}
