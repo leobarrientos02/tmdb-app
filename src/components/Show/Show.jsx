@@ -16,7 +16,7 @@ const Show = ({ id, vote, poster_path, name, aired_date }) => {
       <p className="vote-bubble" title={VotePercentage(vote) + "% Rating"}>
         {VotePercentage(vote)}%
       </p>
-      <Link to={`/movie/${id}`}>
+      <Link to={`/tv/${id}`}>
         <img
           src={imagePath + poster_path}
           alt=""

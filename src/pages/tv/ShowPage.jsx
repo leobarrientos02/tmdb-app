@@ -91,7 +91,7 @@ const ShowPage = ({ language }) => {
         <p>{show?.overview}</p>
       </div>
 
-      <ContentImages api_path={`tv/${show?.id}`} />
+      <ContentImages api_path={`tv/${params.id}`} />
 
       <ProductionCompanies data={show} />
 
