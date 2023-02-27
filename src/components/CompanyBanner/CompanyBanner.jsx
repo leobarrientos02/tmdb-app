@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import "./companyBanner.scss";
 import NotFound from "../../images/imageNotFound.png";
 
-const CompanyBanner = ({ company_id }) => {
+const CompanyBanner = ({ company_id, language }) => {
   const [company, setCompany] = useState({});
   let imagePath = "https://image.tmdb.org/t/p/original";
   const getCompany = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}company/${company_id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `${process.env.REACT_APP_API_URL}company/${company_id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setCompany(res);

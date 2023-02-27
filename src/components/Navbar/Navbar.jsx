@@ -4,16 +4,23 @@ import Logo from "../../images/tmdb_short.svg";
 import { motion } from "framer-motion";
 import { FiChevronDown, FiX } from "react-icons/fi";
 import { AiOutlineSearch } from "react-icons/ai";
-import { handleMouseEnter, handleMouseLeave } from "../../shared";
+import {
+  handleMouseEnter,
+  handleMouseLeave,
+  languageObjects,
+} from "../../shared";
 import "./navbar.scss";
 import Search from "../Search/Search";
 
 const Navbar = ({ setLanguage, language }) => {
   const [showSearch, setShowSearch] = useState(false);
+  let languages = languageObjects;
   const [showLanguages, setShowLanguages] = useState(false);
+
   const getLanguageValue = (e) => {
     setLanguage(e.target.value);
   };
+
   return (
     <div className="navbar">
       <div className="top-nav">
@@ -122,32 +129,13 @@ const Navbar = ({ setLanguage, language }) => {
               <div className="languages">
                 <h2>Language Preferences</h2>
                 <select onChange={getLanguageValue}>
-                  <option value="ar">Arabic (ar)</option>
-                  <option value="bg">Bulgarian (bg)</option>
-                  <option value="zh">Chinese (zh)</option>
-                  <option value="cs">Czech (cs)</option>
-                  <option value="da">Danish (da)</option>
-                  <option value="nl">Dutch (nl)</option>
-                  <option value="en">English (en)</option>
-                  <option value="fr">French (fr)</option>
-                  <option value="de">German (de)</option>
-                  <option value="el">Greek (el)</option>
-                  <option value="he">Hebrew (he)</option>
-                  <option value="hu">Hungarian (hu)</option>
-                  <option value="id">Indonesian (id)</option>
-                  <option value="it">Italian (it)</option>
-                  <option value="ja">Japanese (ja)</option>
-                  <option value="ko">Korean (ko)</option>
-                  <option value="pl">Polish (pl)</option>
-                  <option value="pt">Portuguese (pt)</option>
-                  <option value="ro">Romanian (ro)</option>
-                  <option value="ru">Russian (ru)</option>
-                  <option value="sr">Serbian (sr)</option>
-                  <option value="es">Spanish (es)</option>
-                  <option value="sv">Swedish (sv)</option>
-                  <option value="tr">Turkish (tr)</option>
-                  <option value="uk">Ukranian (uk)</option>
-                  <option value="vi">Vietnamese (vi)</option>
+                  {languages.map((lang) => {
+                    return (
+                      <option value={lang?.iso} key={lang?.iso}>
+                        {lang?.name} ({lang?.iso})
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             </div>

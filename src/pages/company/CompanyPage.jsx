@@ -35,7 +35,7 @@ const CompanyPage = ({ language }) => {
       initial={{ x: "-150%" }}
       transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
     >
-      <CompanyBanner company_id={params.id} />
+      <CompanyBanner company_id={params.id} language={language} />
 
       {params.media === "tv" ? (
         <div className="page-grid">
