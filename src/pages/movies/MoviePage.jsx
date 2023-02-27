@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReviewSection from "../../components/Reviews/ReviewSection";
-import VotePercentage, { FormatDate } from "../../shared";
+import VotePercentage, {
+  FormatDate,
+  NullEmptyUndefinedChecker,
+} from "../../shared";
 import { motion } from "framer-motion";
 import "../../styles/moviePage.scss";
 import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
@@ -61,7 +64,11 @@ const MoviePage = ({ language }) => {
         alt={movieData?.title}
       />
 
-      <div>
+      <div
+        className={
+          NullEmptyUndefinedChecker(movieData?.overview) === false ? "hide" : ""
+        }
+      >
         <h2 className="section-title">Overview</h2>
         <p>{movieData?.overview}</p>
       </div>

@@ -19,7 +19,7 @@ const Credits = ({ api_path, language }) => {
     getCredits();
   });
 
-  if (credits !== undefined) {
+  if (credits.length > 0) {
     return (
       <div className="credits">
         <h2 className="section-title">Credits</h2>

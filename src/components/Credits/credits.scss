@@ -2,8 +2,7 @@
 $blue: #01b4e4;
 $green: #90cea1;
 .credits{
-    margin: 1rem 0;
-
+    margin: 3rem 0;
     .section-title{
         font-size: 1.4rem;
         text-decoration: underline;
@@ -14,8 +13,13 @@ $green: #90cea1;
         display: grid;
         column-gap: 2rem;
         row-gap: 1rem;
-        grid-template-columns: repeat(auto-fit,minmax(12rem, 1fr));
-        
+        grid-template-columns: repeat(auto-fit,minmax(14rem, 1fr));
+        border-top: 2px solid #1c1c1c;
+        border-bottom: 2px solid #1c1c1c;
+        max-height: 90vh;
+        overflow-y: scroll;
+        scrollbar-width: auto;
+        scrollbar-color: $green #222222;
         .person{
             background-color: #1c1c1c;
             display: flex;

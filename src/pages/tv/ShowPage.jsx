@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
-import VotePercentage, { FormatDate } from "../../shared";
+import VotePercentage, {
+  FormatDate,
+  NullEmptyUndefinedChecker,
+} from "../../shared";
 import { motion } from "framer-motion";
 import NotFound from "../../images/imageNotFound.png";
 import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
@@ -77,10 +80,14 @@ const ShowPage = ({ language }) => {
 
       <img src={imagePath + show?.backdrop_path} alt={show?.title} />
 
-      <div className="tv-overview">
-        <h2 className="section-title">
-          {show?.overview === "" ? "" : "Overview"}
-        </h2>
+      <div
+        className={
+          NullEmptyUndefinedChecker(show?.overview) === false
+            ? "hide"
+            : "tv-overview"
+        }
+      >
+        <h2 className="section-title">Overview</h2>
         <p>{show?.overview}</p>
       </div>
 

@@ -19,7 +19,8 @@ const ContentImages = ({ api_path }) => {
   useEffect(() => {
     getImages();
   });
-  if (images !== undefined) {
+
+  if (images.length > 0) {
     return (
       <div className="ContentImages">
         <h2>Images</h2>
