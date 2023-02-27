@@ -90,3 +90,35 @@ export const checkType = (type) => {
         return "Company";
     }
 };
+
+export const languageObjects = [
+    { name: "Arabic", iso: "ar" },
+    { name: "Bulgarian", iso: "bg" },
+    { name: "Chinese", iso: "zh" },
+    { name: "Czech", iso: "cs" },
+    { name: "Bulgarian", iso: "bg" },
+    { name: "Chinese", iso: "zh" },
+    { name: "Czech", iso: "cs" },
+    { name: "Danish", iso: "da" },
+    { name: "Dutch", iso: "nl" },
+    { name: "English", iso: "en" },
+    { name: "French", iso: "fr" },
+    { name: "German", iso: "de" },
+    { name: "Greek", iso: "el" },
+    { name: "Hebrew", iso: "he" },
+    { name: "Hungarian", iso: "hu" },
+    { name: "Indonesian", iso: "id" },
+    { name: "Italian", iso: "it" },
+    { name: "Japanese", iso: "ja" },
+    { name: "Korean", iso: "ko" },
+    { name: "Polish", iso: "pl" },
+    { name: "Portuguese", iso: "pt" },
+    { name: "Romanian", iso: "ro" },
+    { name: "Russian", iso: "ru" },
+    { name: "Serbian", iso: "sr" },
+    { name: "Spanish", iso: "es" },
+    { name: "Swedish", iso: "sv" },
+    { name: "Turkish", iso: "tr" },
+    { name: "Ukranian", iso: "uk" },
+    { name: "Vietnamese", iso: "vi" }
+];
