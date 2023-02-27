@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Card from "../components/Card/Card";
+import Movie from "../components/Movie/Movie";
 import Pagination from "../components/Pagination/Pagination";
+import Show from "../components/Show/Show";
 
 const GenrePage = ({ language }) => {
   const [data, setData] = useState([]);
@@ -43,25 +44,39 @@ const GenrePage = ({ language }) => {
       <h2 className="page-title">
         {genre} {params.media === "tv" ? "Shows" : "Movies"}
       </h2>
-      <div className="page-grid">
-        {data.map((content) => {
-          return (
-            <Card
-              key={content.id}
-              id={content.id}
-              title={params.media === "movie" ? content.title : content.name}
-              poster_path={content.poster_path}
-              release_date={
-                params.media === "movie"
-                  ? content.release_date
-                  : content.first_air_date
-              }
-              vote={content.vote_average}
-              type={params.media}
-            />
-          );
-        })}
-      </div>
+
+      {params.media === "tv" ? (
+        <div className="page-grid">
+          {data.map((content) => {
+            return (
+              <Show
+                key={content.id}
+                id={content.id}
+                name={content.name}
+                poster_path={content.poster_path}
+                aired_date={content.first_air_date}
+                vote={content.vote_average}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <div className="page-grid">
+          {data.map((content) => {
+            return (
+              <Movie
+                key={content.id}
+                id={content.id}
+                title={content.title}
+                poster_path={content.poster_path}
+                release_date={content.release_date}
+                vote={content.vote_average}
+                type={params.media}
+              />
+            );
+          })}
+        </div>
+      )}
 
       <Pagination
         param={params.id}

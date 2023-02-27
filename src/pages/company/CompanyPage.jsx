@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CompanyBanner from "../../components/CompanyBanner/CompanyBanner";
-import Card from "../../components/Card/Card";
 import Pagination from "../../components/Pagination/Pagination";
 import { motion } from "framer-motion";
+import Movie from "../../components/Movie/Movie";
+import Show from "../../components/Show/Show";
 
 const CompanyPage = ({ language }) => {
-  const [movies, setMovies] = useState([]);
+  const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   let params = useParams();
 
-  const getMovies = async () => {
+  const getData = async () => {
     const data = await fetch(
       `${process.env.REACT_APP_API_URL}discover/movie?with_companies=${params.id}&page=${page}&api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const movies = await data.json();
     setTotal(movies.total_pages);
-    setMovies(movies.results);
+    setData(movies.results);
   };
 
   const pagination = (page) => {
@@ -25,7 +26,7 @@ const CompanyPage = ({ language }) => {
   };
 
   useEffect(() => {
-    getMovies();
+    getData();
   });
 
   return (
@@ -35,21 +36,39 @@ const CompanyPage = ({ language }) => {
       transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
     >
       <CompanyBanner company_id={params.id} />
-      <div className="page-grid">
-        {movies.map((movie) => {
-          return (
-            <Card
-              key={movie?.id}
-              id={movie?.id}
-              title={movie?.title}
-              poster_path={movie?.poster_path}
-              release_date={movie?.release_date}
-              vote={movie?.vote_average}
-              type={"movie"}
-            />
-          );
-        })}
-      </div>
+
+      {params.media === "tv" ? (
+        <div className="page-grid">
+          {data.map((content) => {
+            return (
+              <Show
+                key={content.id}
+                id={content.id}
+                name={content.name}
+                poster_path={content.poster_path}
+                aired_date={content.first_air_date}
+                vote={content.vote_average}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <div className="page-grid">
+          {data.map((content) => {
+            return (
+              <Movie
+                key={content.id}
+                id={content.id}
+                title={content.title}
+                poster_path={content.poster_path}
+                release_date={content.release_date}
+                vote={content.vote_average}
+                type={params.media}
+              />
+            );
+          })}
+        </div>
+      )}
 
       <Pagination
         param={params.id}
