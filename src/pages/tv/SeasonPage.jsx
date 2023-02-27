@@ -47,7 +47,9 @@ const Season = ({ language }) => {
         <p>{season?.overview}</p>
       </div>
 
-      <div className="episodes-sections">
+      <div
+        className={season?.episodes.length === 0 ? "hide" : "episodes-sections"}
+      >
         <h2>Episodes</h2>
         <Splide
           options={{

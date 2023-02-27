@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import VotePercentage, { FormatDate } from "../../shared";
 import { motion } from "framer-motion";
-import NotFound from "../../images/imageNotFound.png";
 import "./movie.scss";
+import ContentNotFound from "../NotFound/ContentNotFound";
 
 const Movie = ({ id, vote, poster_path, title, release_date }) => {
   let imagePath = "https://image.tmdb.org/t/p/original";
@@ -17,11 +17,11 @@ const Movie = ({ id, vote, poster_path, title, release_date }) => {
         {VotePercentage(vote)}%
       </p>
       <Link to={`/movie/${id}`}>
-        <img
-          src={imagePath + poster_path}
-          alt=""
-          onError={(e) => (e.currentTarget.src = NotFound)}
-        />
+        {poster_path === null ? (
+          <ContentNotFound content={"Movie"} />
+        ) : (
+          <img src={imagePath + poster_path} alt={title} />
+        )}
       </Link>
       <h2>{title}</h2>
       <p>Release date: {FormatDate(release_date)}</p>

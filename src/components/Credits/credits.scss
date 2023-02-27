@@ -2,16 +2,16 @@
 $blue: #01b4e4;
 $green: #90cea1;
 .credits{
-    margin: 3rem 0;
     .section-title{
         font-size: 1.4rem;
         text-decoration: underline;
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
     }
 
     .persons{
+        padding-bottom: 1rem;
         display: grid;
-        column-gap: 2rem;
+        column-gap: 1rem;
         row-gap: 1rem;
         grid-template-columns: repeat(auto-fit,minmax(14rem, 1fr));
         border-top: 2px solid #1c1c1c;

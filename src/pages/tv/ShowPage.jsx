@@ -78,7 +78,14 @@ const ShowPage = ({ language }) => {
         })}
       </div>
 
-      <img src={imagePath + show?.backdrop_path} alt={show?.title} />
+      <img
+        src={
+          show?.backdrop_path === null
+            ? imagePath + show?.poster_path
+            : imagePath + show?.backdrop_path
+        }
+        alt={show?.title}
+      />
 
       <div
         className={
