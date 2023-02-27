@@ -16,7 +16,7 @@ const MoviePage = ({ language }) => {
 
   const getMovieData = async (movie_id) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}movie/${movie_id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
+      `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const movie = await data.json();
     setMovieData(movie);

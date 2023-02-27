@@ -9,7 +9,7 @@ const GenrePreview = ({ genre, genre_id, media_type }) => {
 
   const getData = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}discover/${media_type}?with_genres=${genre_id}&api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/discover/${media_type}?with_genres=${genre_id}&api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     const res = await data.json();
     setData(res.results);

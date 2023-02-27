@@ -8,7 +8,7 @@ const ReviewSection = ({ api_path, language }) => {
 
   const getReviews = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}${api_path}/reviews?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
+      `https://api.themoviedb.org/3/${api_path}/reviews?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setReviews(res.results);

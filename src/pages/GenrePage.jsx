@@ -13,7 +13,7 @@ const GenrePage = ({ language }) => {
 
   const getData = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}discover/${params.media}?with_genres=${params.id}&page=${page}&api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
+      `https://api.themoviedb.org/3/discover/${params.media}?with_genres=${params.id}&page=${page}&api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const movies = await data.json();
     setTotal(movies.total_pages > 500 ? 500 : movies.total_pages);
@@ -22,7 +22,7 @@ const GenrePage = ({ language }) => {
 
   const getGenreName = async (id) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}genre/${params.media}/list?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
+      `https://api.themoviedb.org/3/genre/${params.media}/list?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     var result = res.genres.filter(function (obj) {

@@ -13,7 +13,7 @@ const FilteredMoviesPage = ({ language }) => {
 
   const getMovies = async (filter) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}movie/${filter}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}&language=${language}`
+      `https://api.themoviedb.org/3/movie/${filter}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}&language=${language}`
     );
     const movies = await data.json();
     setTotal(movies.total_pages > 500 ? 500 : movies.total_pages);

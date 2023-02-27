@@ -15,7 +15,7 @@ const Season = ({ language }) => {
 
   const getSeason = async (id, seasonNumber) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}tv/${id}/season/${seasonNumber}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
+      `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setSeason(res);

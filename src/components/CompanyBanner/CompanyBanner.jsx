@@ -8,7 +8,7 @@ const CompanyBanner = ({ company_id, language }) => {
   let imagePath = "https://image.tmdb.org/t/p/original";
   const getCompany = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}company/${company_id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
+      `https://api.themoviedb.org/3/company/${company_id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setCompany(res);

@@ -14,7 +14,7 @@ const CompanyPage = ({ language }) => {
 
   const getData = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}discover/movie?with_companies=${params.id}&page=${page}&api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
+      `https://api.themoviedb.org/3/discover/movie?with_companies=${params.id}&page=${page}&api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const movies = await data.json();
     setTotal(movies.total_pages);

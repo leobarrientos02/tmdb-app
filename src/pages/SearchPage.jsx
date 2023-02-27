@@ -15,7 +15,7 @@ const SearchPage = ({ language }) => {
 
   const getData = async (search) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}search/${params.media}?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&page=${page}&language=${language}`
+      `https://api.themoviedb.org/3/search/${params.media}?api_key=${process.env.REACT_APP_API_KEY}&query=${search}&page=${page}&language=${language}`
     );
     const res = await data.json();
     setTotal(res.total_pages);

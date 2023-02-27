@@ -12,7 +12,7 @@ const SimilarContent = ({ id, media_type, language }) => {
 
   const getData = async () => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}${media_type}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
+      `https://api.themoviedb.org/3/${media_type}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setData(res.results);

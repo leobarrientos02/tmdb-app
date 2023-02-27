@@ -12,7 +12,7 @@ const PersonPage = ({ language }) => {
 
   const getPerson = async (id) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}person/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
+      `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setPerson(res);

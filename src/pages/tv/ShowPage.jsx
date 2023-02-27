@@ -19,7 +19,7 @@ const ShowPage = ({ language }) => {
 
   const getShow = async (show_id) => {
     const data = await fetch(
-      `${process.env.REACT_APP_API_URL}tv/${show_id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
+      `https://api.themoviedb.org/3/tv/${show_id}?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setShow(res);
