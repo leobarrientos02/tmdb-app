@@ -8,9 +8,8 @@ $green: #90cea1;
         .title{
             width: 100%;
             text-align: left;
-            font-size: 2.5rem;
+            font-size: 2rem;
             text-decoration: none;
-            margin-bottom: 1rem;
         }
         width: 100%;
         img{
@@ -30,5 +29,9 @@ $green: #90cea1;
             font-size: .9rem;
             color: lightgray;
         }
+    }
+
+    .crew{
+        margin-top: 2rem;
     }
 }
