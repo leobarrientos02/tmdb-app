@@ -23,6 +23,7 @@ const Season = ({ language }) => {
     const res = await data.json();
     setSeason(res);
   };
+
   useEffect(() => {
     getSeason(params.id, params.seasonNumber);
   });
@@ -70,7 +71,7 @@ const Season = ({ language }) => {
         >
           {season?.episodes?.map((episode) => {
             return (
-              <SplideSlide key={episode.show_id} className="episode-card">
+              <SplideSlide key={episode.id} className="episode-card">
                 <Link
                   to={`/tv/${params.id}/season/${season?.season_number}/episode/${episode.episode_number}`}
                   className="link"

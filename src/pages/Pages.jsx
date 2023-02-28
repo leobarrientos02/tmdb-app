@@ -52,6 +52,7 @@ const Pages = ({ language }) => {
         path="/search/:media/:search"
         element={<SearchPage language={language} />}
       />
+      <Route path="*" element={<HomePage language={language} />} />
     </Routes>
   );
 };
