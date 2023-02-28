@@ -64,6 +64,12 @@ const ContentNotFound = ({ content }) => {
         <IoIosPerson size="1.5em" className="not-found-icon" />
       </div>
     );
+  } else if (content === "PersonPage") {
+    return (
+      <div className="PersonPageNotFound">
+        <IoIosPerson size="1.5em" className="not-found-icon" />
+      </div>
+    );
   } else if (content === "MediaCredit") {
     return (
       <div className="MediaCreditNotFound">

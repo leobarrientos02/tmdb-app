@@ -31,7 +31,7 @@ const PersonPage = ({ language }) => {
       <div className="header">
         <div className="image-wrapper">
           {NullEmptyUndefinedChecker(person?.profile_path) === false ? (
-            <ContentNotFound content="Person" />
+            <ContentNotFound content="PersonPage" />
           ) : (
             <img src={imagePath + person?.profile_path} alt={person?.name} />
           )}
