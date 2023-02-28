@@ -24,6 +24,20 @@ const ContentNotFound = ({ content }) => {
         <p className="not-found-text">Image not found</p>
       </div>
     );
+  } else if (content === "SeasonPreview") {
+    return (
+      <div className="SeasonPreviewNotFound">
+        <BiMoviePlay size="1.5em" className="not-found-icon" />
+        <p className="not-found-text">Image not found</p>
+      </div>
+    );
+  } else if (content === "EpisodePreview") {
+    return (
+      <div className="EpisodePreviewNotFound">
+        <BiMoviePlay size="1.5em" className="not-found-icon" />
+        <p className="not-found-text">Image not found</p>
+      </div>
+    );
   } else if (content === "Episode") {
     return (
       <div className="EpisodeNotFound">

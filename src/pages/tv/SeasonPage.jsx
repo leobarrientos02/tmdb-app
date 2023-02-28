@@ -63,8 +63,8 @@ const Season = ({ language }) => {
             perPage: 3,
             drag: "free",
             gap: "2rem",
-            arrows: false,
-            pagination: true,
+            arrows: true,
+            pagination: false,
           }}
           className="episodes"
         >
@@ -80,7 +80,7 @@ const Season = ({ language }) => {
                   </p>
 
                   {NullEmptyUndefinedChecker(episode.still_path) === false ? (
-                    <ContentNotFound content="Episode" />
+                    <ContentNotFound content="EpisodePreview" />
                   ) : (
                     <img
                       src={imagePath + episode.still_path}

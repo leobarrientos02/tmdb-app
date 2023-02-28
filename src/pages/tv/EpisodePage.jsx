@@ -39,16 +39,20 @@ const EpisodePage = ({ language }) => {
       <p>Runtime: {episode?.runtime} minutes</p>
       <p>Average Vote: {VotePercentage(episode?.vote_average)}%</p>
 
-      <div className="image-wrapper">
-        <img src={imagePath + episode?.still_path} alt="" />
-      </div>
+      {NullEmptyUndefinedChecker(episode.still_path) === false ? (
+        <ContentNotFound content="Episode" />
+      ) : (
+        <div className="image-wrapper">
+          <img src={imagePath + episode?.still_path} alt={episode.name} />
+        </div>
+      )}
 
       <div className="overview">
         <h2>{episode?.overview === "" ? "" : "Overview"}</h2>
         <p>{episode?.overview}</p>
       </div>
 
-      <div className="crew">
+      <div className={episode.crew.length > 0 ? "crew" : "hide"}>
         <h2 className="section-title">Crew</h2>
         <div className="persons">
           {episode?.crew?.map((person) => {
@@ -79,7 +83,7 @@ const EpisodePage = ({ language }) => {
         </div>
       </div>
 
-      <div className="guest">
+      <div className={episode.guest_stars.length > 0 ? "guest" : "hide"}>
         <h2 className="section-title">Guest Stars</h2>
         <div className="persons">
           {episode?.guest_stars?.map((person) => {

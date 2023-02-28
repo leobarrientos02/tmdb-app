@@ -126,7 +126,7 @@ const ShowPage = ({ language }) => {
                   className="season"
                 >
                   {NullEmptyUndefinedChecker(season.poster_path) === false ? (
-                    <ContentNotFound content="Season" />
+                    <ContentNotFound content="SeasonPreview" />
                   ) : (
                     <img
                       src={imagePath + season.poster_path}
