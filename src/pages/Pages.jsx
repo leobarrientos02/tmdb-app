@@ -1,17 +1,17 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./HomePage";
+import HomePage from "../pages/home/HomePage";
 import GenrePage from "./GenrePage";
 import MoviePage from "./movies/MoviePage";
 import CompanyPage from "./company/CompanyPage";
 import FilteredMoviesPage from "./movies/FilteredPage";
 import FilteredTVPage from "./tv/FilteredPage";
-import ShowPage from "./tv/ShowPage";
-import SeasonPage from "./tv/SeasonPage";
-import EpisodePage from "./tv/EpisodePage";
-import SearchPage from "./SearchPage";
-import PersonPage from "./person/PersonPage";
-import PopularPeople from "./person/PopularPeople";
+import ShowPage from "./tv/show/ShowPage";
+import SeasonPage from "./tv/season/SeasonPage";
+import EpisodePage from "./tv/episode/EpisodePage";
+import SearchPage from "./search/SearchPage";
+import PersonPage from "./person/personPage/PersonPage";
+import PopularPeople from "./person/popular/PopularPeople";
 
 const Pages = ({ language }) => {
   return (

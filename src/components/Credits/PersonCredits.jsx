@@ -80,7 +80,7 @@ const PersonCredits = ({ id }) => {
               >
                 <div className="crew">
                   {NullEmptyUndefinedChecker(crew?.poster_path) === false ? (
-                    <ContentNotFound content="PersonCredit" />
+                    <ContentNotFound content="MediaCredit" />
                   ) : (
                     <img
                       src={imagePath + crew?.poster_path}

@@ -6,7 +6,7 @@ import VotePercentage, {
   NullEmptyUndefinedChecker,
 } from "../../shared";
 import { motion } from "framer-motion";
-import "../../styles/moviePage.scss";
+import "./moviePage.scss";
 import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
 import SimilarContent from "../../components/SimilarContent/SimilarContent";
 import ContentImages from "../../components/ContentImages/ContentImages";

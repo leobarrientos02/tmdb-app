@@ -5,16 +5,15 @@ import "@splidejs/splide/dist/css/splide.min.css";
 import VotePercentage, {
   FormatDate,
   NullEmptyUndefinedChecker,
-} from "../../shared";
+} from "../../../shared";
 import { motion } from "framer-motion";
-
-import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
-import ReviewSection from "../../components/Reviews/ReviewSection";
-import SimilarContent from "../../components/SimilarContent/SimilarContent";
-import ContentImages from "../../components/ContentImages/ContentImages";
-import Credits from "../../components/Credits/Credits";
-import "../../styles/tvPage.scss";
-import ContentNotFound from "../../components/NotFound/ContentNotFound";
+import ProductionCompanies from "../../../components/ProductionCompanies/ProductionCompanies";
+import ReviewSection from "../../../components/Reviews/ReviewSection";
+import SimilarContent from "../../../components/SimilarContent/SimilarContent";
+import ContentImages from "../../../components/ContentImages/ContentImages";
+import Credits from "../../../components/Credits/Credits";
+import "./showPage.scss";
+import ContentNotFound from "../../../components/NotFound/ContentNotFound";
 
 const ShowPage = ({ language }) => {
   const [show, setShow] = useState([]);

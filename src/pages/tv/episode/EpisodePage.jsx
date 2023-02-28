@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import VotePercentage, {
   FormatDate,
   NullEmptyUndefinedChecker,
-} from "../../shared";
-import "../../styles/episodePage.scss";
-import ContentNotFound from "../../components/NotFound/ContentNotFound";
+} from "../../../shared";
+import "./episodePage.scss";
+import ContentNotFound from "../../../components/NotFound/ContentNotFound";
 
 const EpisodePage = ({ language }) => {
   const [episode, setEpisode] = useState({});

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import NotFound from "../images/imageNotFound.png";
-import Pagination from "../components/Pagination/Pagination";
-import "../styles/searchPage.scss";
-import Show from "../components/Show/Show";
-import Movie from "../components/Movie/Movie";
+import Pagination from "../../components/Pagination/Pagination";
+import "./searchPage.scss";
+import Show from "../../components/Show/Show";
+import Movie from "../../components/Movie/Movie";
+import { NullEmptyUndefinedChecker } from "../../shared";
+import ContentNotFound from "../../components/NotFound/ContentNotFound";
 
 const SearchPage = ({ language }) => {
   const [data, setData] = useState([]);
@@ -136,11 +137,11 @@ const SearchPage = ({ language }) => {
                 className="link"
               >
                 <div className="person">
-                  <img
-                    src={imagePath + person?.profile_path}
-                    alt=""
-                    onError={(e) => (e.currentTarget.src = NotFound)}
-                  />
+                  {NullEmptyUndefinedChecker(person.profile_path) === false ? (
+                    <ContentNotFound content="Person" />
+                  ) : (
+                    <img src={imagePath + person?.profile_path} alt="" />
+                  )}
                   <h2>{person?.name}</h2>
                   <p>{person?.known_for_department}</p>
                 </div>

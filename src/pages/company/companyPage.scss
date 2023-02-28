@@ -1,0 +1,51 @@
+// Global Variables
+$blue: #01b4e4;
+$green: #90cea1;
+
+.manage-result{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .toggle_media{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+        .movie{
+            font-size: 1.2rem;
+            border-radius: 1rem 0 0 1rem;
+            padding: .3rem .6rem;
+            background-color: #2f2f2f;
+            border-right: 1px solid #0f0f0f;
+            cursor: pointer;
+            &:hover{
+                color: $blue;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+        .tv{
+            font-size: 1.2rem;
+            border-radius: 0 1rem 1rem 0;
+            padding: .3rem .6rem;
+            background-color: #2f2f2f;
+            border-left: 1px solid #0f0f0f;
+            cursor: pointer;
+            &:hover{
+                color: $blue;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+
+    .company-sort-select{
+        width: 25%;
+        border: 1px solid white;
+        background: #1c1c1c;
+        padding: .3rem .6rem;
+        border-radius: 1rem;
+        font-size: 1rem;
+        color: white;
+    }
+}

@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 import VotePercentage, {
   FormatDate,
   NullEmptyUndefinedChecker,
-} from "../../shared";
-import "../../styles/seasonPage.scss";
-import Credits from "../../components/Credits/Credits";
-import ContentNotFound from "../../components/NotFound/ContentNotFound";
+} from "../../../shared";
+import "./seasonPage.scss";
+import Credits from "../../../components/Credits/Credits";
+import ContentNotFound from "../../../components/NotFound/ContentNotFound";
 
 const Season = ({ language }) => {
   const [season, setSeason] = useState({});

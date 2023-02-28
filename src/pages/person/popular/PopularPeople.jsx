@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Pagination from "../../components/Pagination/Pagination";
+import Pagination from "../../../components/Pagination/Pagination";
 import { motion } from "framer-motion";
-import "../../styles/popularPage.scss";
-import { NullEmptyUndefinedChecker } from "../../shared";
-import ContentNotFound from "../../components/NotFound/ContentNotFound";
+import "./popularPage.scss";
+import { NullEmptyUndefinedChecker } from "../../../shared";
+import ContentNotFound from "../../../components/NotFound/ContentNotFound";
 
 const PopularPeople = ({ language }) => {
   const [persons, setPersons] = useState([]);
