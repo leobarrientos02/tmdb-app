@@ -32,6 +32,12 @@ const ContentNotFound = ({ content }) => {
         <p className="not-found-text">Image not found</p>
       </div>
     );
+  } else if (content === "Episode") {
+    return (
+      <div className="Episode">
+        <p className="not-found-text">Image not found</p>
+      </div>
+    );
   } else {
     return (
       <div className="ContentNotFound">

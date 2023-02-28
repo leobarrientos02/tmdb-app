@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import NotFound from "../../images/imageNotFound.png";
+import { NullEmptyUndefinedChecker } from "../../shared";
+import ContentNotFound from "../NotFound/ContentNotFound";
 import "./productionCompanies.scss";
 const ProductionCompanies = ({ data }) => {
   let imagePath = "https://image.tmdb.org/t/p/original";
@@ -19,11 +20,11 @@ const ProductionCompanies = ({ data }) => {
               className="company"
               key={company.id}
             >
-              <img
-                src={imagePath + company.logo_path}
-                alt=""
-                onError={(e) => (e.currentTarget.src = NotFound)}
-              />
+              {NullEmptyUndefinedChecker(company.logo_path) === false ? (
+                <ContentNotFound content="Company" />
+              ) : (
+                <img src={imagePath + company.logo_path} alt={company.name} />
+              )}
               <h2>{company.name}</h2>
             </Link>
           );

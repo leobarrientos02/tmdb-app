@@ -55,7 +55,7 @@ const PersonCredits = ({ id }) => {
                   <p>
                     {cast?.character === "" || cast?.character === undefined
                       ? ""
-                      : `Character: ${cast?.character}`}
+                      : `"${cast?.character}"`}
                   </p>
                 </div>
               </Link>

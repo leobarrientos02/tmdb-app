@@ -3,10 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { motion } from "framer-motion";
-import VotePercentage, { FormatDate } from "../../shared";
-import NotFound from "../../images/imageNotFound.png";
+import VotePercentage, {
+  FormatDate,
+  NullEmptyUndefinedChecker,
+} from "../../shared";
 import "../../styles/seasonPage.scss";
 import Credits from "../../components/Credits/Credits";
+import ContentNotFound from "../../components/NotFound/ContentNotFound";
 
 const Season = ({ language }) => {
   const [season, setSeason] = useState({});
@@ -35,11 +38,11 @@ const Season = ({ language }) => {
       <p className="date">Air Date: {FormatDate(season?.air_date)}</p>
 
       <div className="image-wrapper">
-        <img
-          src={imagePath + season?.poster_path}
-          alt=""
-          onError={(e) => (e.currentTarget.src = NotFound)}
-        />
+        {NullEmptyUndefinedChecker(season?.poster_path) === false ? (
+          <ContentNotFound content="Season" />
+        ) : (
+          <img src={imagePath + season?.poster_path} alt={season?.name} />
+        )}
       </div>
 
       <div className="overview">
@@ -71,11 +74,15 @@ const Season = ({ language }) => {
                   <p className="vote">
                     {VotePercentage(episode.vote_average)}%
                   </p>
-                  <img
-                    src={imagePath + episode.still_path}
-                    alt=""
-                    onError={(e) => (e.currentTarget.src = NotFound)}
-                  />
+
+                  {NullEmptyUndefinedChecker(episode.still_path) === false ? (
+                    <ContentNotFound content="Episode" />
+                  ) : (
+                    <img
+                      src={imagePath + episode.still_path}
+                      alt={episode.name}
+                    />
+                  )}
                   <h2 className="content-title">{episode.name}</h2>
                   <p className="date">{FormatDate(episode.air_date)}</p>
                 </Link>

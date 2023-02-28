@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import VotePercentage, { FormatDate } from "../../shared";
-import NotFound from "../../images/imageNotFound.png";
+import VotePercentage, {
+  FormatDate,
+  NullEmptyUndefinedChecker,
+} from "../../shared";
 import "../../styles/episodePage.scss";
+import ContentNotFound from "../../components/NotFound/ContentNotFound";
 
 const EpisodePage = ({ language }) => {
   const [episode, setEpisode] = useState({});
@@ -56,11 +59,15 @@ const EpisodePage = ({ language }) => {
                 className="link"
               >
                 <div className="person">
-                  <img
-                    src={imagePath + person?.profile_path}
-                    alt=""
-                    onError={(e) => (e.currentTarget.src = NotFound)}
-                  />
+                  {NullEmptyUndefinedChecker(person?.profile_path) === false ? (
+                    <ContentNotFound content="Person" />
+                  ) : (
+                    <img
+                      src={imagePath + person?.profile_path}
+                      alt={person?.name}
+                    />
+                  )}
+
                   <div className="info">
                     <h2>{person?.name}</h2>
                     <p>{person?.job}</p>
@@ -83,11 +90,14 @@ const EpisodePage = ({ language }) => {
                 className="link"
               >
                 <div className="person">
-                  <img
-                    src={imagePath + person?.profile_path}
-                    alt=""
-                    onError={(e) => (e.currentTarget.src = NotFound)}
-                  />
+                  {NullEmptyUndefinedChecker(person?.profile_path) === false ? (
+                    <ContentNotFound content="Person" />
+                  ) : (
+                    <img
+                      src={imagePath + person?.profile_path}
+                      alt={person?.name}
+                    />
+                  )}
                   <div className="info">
                     <h2>{person?.name}</h2>
                     <p>{person?.character}</p>

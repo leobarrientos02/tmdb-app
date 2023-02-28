@@ -26,8 +26,8 @@ const Show = ({ id, vote, poster_path, name, aired_date }) => {
           <img src={imagePath + poster_path} alt={name} />
         )}
       </Link>
-      <h2>{name}</h2>
-      <p>First Aired Date: {FormatDate(aired_date)}</p>
+      <h2 className="show-name">{name}</h2>
+      <p className="show-date">First Aired Date: {FormatDate(aired_date)}</p>
     </motion.div>
   );
 };

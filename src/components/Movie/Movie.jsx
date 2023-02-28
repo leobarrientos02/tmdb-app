@@ -26,8 +26,8 @@ const Movie = ({ id, vote, poster_path, title, release_date }) => {
           <img src={imagePath + poster_path} alt={title} />
         )}
       </Link>
-      <h2>{title}</h2>
-      <p>Release date: {FormatDate(release_date)}</p>
+      <h2 className="movie-title">{title}</h2>
+      <p className="movie-date">Release date: {FormatDate(release_date)}</p>
     </motion.div>
   );
 };
