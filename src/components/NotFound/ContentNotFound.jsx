@@ -51,6 +51,12 @@ const ContentNotFound = ({ content }) => {
         <BsFillCameraReelsFill size="1.2em" />
       </div>
     );
+  } else if (content === "CompanySearch") {
+    return (
+      <div className="CompanySearchNotFound">
+        <BsFillCameraReelsFill size="1.2em" />
+      </div>
+    );
   } else if (content === "CompanyPage") {
     return (
       <div className="CompanyLogoNotFound">
