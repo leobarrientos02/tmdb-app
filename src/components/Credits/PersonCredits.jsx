@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FormatDate } from "../../shared";
-import NotFound from "../../images/imageNotFound.png";
+import { FormatDate, NullEmptyUndefinedChecker } from "../../shared";
 import "./personCredits.scss";
+import ContentNotFound from "../NotFound/ContentNotFound";
 
 const PersonCredits = ({ id }) => {
   const [credits, setCredits] = useState([]);
@@ -36,11 +36,14 @@ const PersonCredits = ({ id }) => {
                 className="link"
               >
                 <div className="cast">
-                  <img
-                    src={imagePath + cast?.poster_path}
-                    alt=""
-                    onError={(e) => (e.currentTarget.src = NotFound)}
-                  />
+                  {NullEmptyUndefinedChecker(cast?.poster_path) === false ? (
+                    <ContentNotFound content="PersonCredit" />
+                  ) : (
+                    <img
+                      src={imagePath + cast?.poster_path}
+                      alt={cast?.title}
+                    />
+                  )}
                   <h2>{cast?.title}</h2>
                   <p>
                     {FormatDate(
@@ -76,11 +79,15 @@ const PersonCredits = ({ id }) => {
                 className="link"
               >
                 <div className="crew">
-                  <img
-                    src={imagePath + crew?.poster_path}
-                    alt=""
-                    onError={(e) => (e.currentTarget.src = NotFound)}
-                  />
+                  {NullEmptyUndefinedChecker(crew?.poster_path) === false ? (
+                    <ContentNotFound content="PersonCredit" />
+                  ) : (
+                    <img
+                      src={imagePath + crew?.poster_path}
+                      alt={crew?.title}
+                    />
+                  )}
+
                   <h2>{crew?.title}</h2>
                   <p>
                     {FormatDate(

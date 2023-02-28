@@ -54,7 +54,6 @@ const MoviePage = ({ language }) => {
           );
         })}
       </div>
-
       <img
         src={
           movieData?.backdrop_path === null

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import NotFound from "../../images/imageNotFound.png";
+import ContentNotFound from "../NotFound/ContentNotFound";
 import "./credits.scss";
 
 const Credits = ({ api_path, language }) => {
@@ -33,11 +33,14 @@ const Credits = ({ api_path, language }) => {
               >
                 <div className="person">
                   <div className="person-image-wrapper">
-                    <img
-                      src={imagePath + person?.profile_path}
-                      alt=""
-                      onError={(e) => (e.currentTarget.src = NotFound)}
-                    />
+                    {person.profile_path === null ? (
+                      <ContentNotFound content={"Person"} />
+                    ) : (
+                      <img
+                        src={imagePath + person?.profile_path}
+                        alt={person?.name}
+                      />
+                    )}
                   </div>
 
                   <div className="details">

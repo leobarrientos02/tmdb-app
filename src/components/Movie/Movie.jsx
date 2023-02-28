@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-import VotePercentage, { FormatDate } from "../../shared";
+import VotePercentage, {
+  FormatDate,
+  NullEmptyUndefinedChecker,
+} from "../../shared";
 import { motion } from "framer-motion";
 import "./movie.scss";
 import ContentNotFound from "../NotFound/ContentNotFound";
@@ -16,8 +19,8 @@ const Movie = ({ id, vote, poster_path, title, release_date }) => {
       <p className="vote-bubble" title={VotePercentage(vote) + "% Rating"}>
         {VotePercentage(vote)}%
       </p>
-      <Link to={`/movie/${id}`}>
-        {poster_path === null ? (
+      <Link to={`/movie/${id}`} className="link">
+        {NullEmptyUndefinedChecker(poster_path) === false ? (
           <ContentNotFound content={"Movie"} />
         ) : (
           <img src={imagePath + poster_path} alt={title} />

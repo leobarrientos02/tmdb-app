@@ -7,13 +7,14 @@ import VotePercentage, {
   NullEmptyUndefinedChecker,
 } from "../../shared";
 import { motion } from "framer-motion";
-import NotFound from "../../images/imageNotFound.png";
+
 import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
 import ReviewSection from "../../components/Reviews/ReviewSection";
 import SimilarContent from "../../components/SimilarContent/SimilarContent";
 import ContentImages from "../../components/ContentImages/ContentImages";
 import Credits from "../../components/Credits/Credits";
 import "../../styles/tvPage.scss";
+import ContentNotFound from "../../components/NotFound/ContentNotFound";
 
 const ShowPage = ({ language }) => {
   const [show, setShow] = useState([]);
@@ -55,11 +56,14 @@ const ShowPage = ({ language }) => {
               to={`/person/${creator.id}`}
               className="creator"
             >
-              <img
-                src={imagePath + creator.profile_path}
-                alt=""
-                onError={(e) => (e.currentTarget.src = NotFound)}
-              />
+              {NullEmptyUndefinedChecker(creator.profile_path) === false ? (
+                <ContentNotFound content="creator" />
+              ) : (
+                <img
+                  src={imagePath + creator.profile_path}
+                  alt={creator.name}
+                />
+              )}
               <p>{creator.name}</p>
             </Link>
           );
@@ -121,11 +125,14 @@ const ShowPage = ({ language }) => {
                   to={`/tv/${params.id}/season/${season?.season_number}`}
                   className="season"
                 >
-                  <img
-                    src={imagePath + season.poster_path}
-                    alt=""
-                    onError={(e) => (e.currentTarget.src = NotFound)}
-                  />
+                  {NullEmptyUndefinedChecker(season.poster_path) === false ? (
+                    <ContentNotFound content="Season" />
+                  ) : (
+                    <img
+                      src={imagePath + season.poster_path}
+                      alt={season.name}
+                    />
+                  )}
                   <h2 className="content-title">{season.name}</h2>
                   <p className="date">{FormatDate(season.air_date)}</p>
                 </Link>
