@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
-import Show from "../Show/Show";
-import Movie from "../Movie/Movie";
+import VotePercentage, {
+  FormatDate,
+  NullEmptyUndefinedChecker,
+} from "../../shared";
 import "./similarContent.scss";
+import { motion } from "framer-motion";
+import NotFound from "../../images/imageNotFound.png";
+import ContentNotFound from "../NotFound/ContentNotFound";
 
 const SimilarContent = ({ id, media_type, language }) => {
   const [data, setData] = useState([]);
@@ -16,6 +21,8 @@ const SimilarContent = ({ id, media_type, language }) => {
     const res = await data.json();
     setData(res.results);
   };
+
+  let imagePath = "https://image.tmdb.org/t/p/original";
 
   useEffect(() => {
     getData();
@@ -43,25 +50,35 @@ const SimilarContent = ({ id, media_type, language }) => {
                   to={`/${media_type === "tv" ? "tv" : media_type}/${
                     content?.id
                   }`}
-                  className="link"
+                  className="card"
                 >
-                  {media_type === "tv" ? (
-                    <Show
-                      id={content?.id}
-                      name={content?.name}
-                      poster_path={content?.poster_path}
-                      aired_date={content?.first_air_date}
-                      vote={content?.vote_average}
-                    />
+                  {NullEmptyUndefinedChecker(content?.poster_path) === false ? (
+                    <ContentNotFound content="Movie" />
                   ) : (
-                    <Movie
-                      id={content?.id}
-                      title={content?.name}
-                      poster_path={content?.poster_path}
-                      release_date={content?.release_date}
-                      vote={content?.vote_average}
+                    <motion.img
+                      src={imagePath + content?.poster_path}
+                      alt=""
+                      onError={(e) => (e.currentTarget.src = NotFound)}
+                      animate={{ opacity: 1 }}
+                      initial={{ opacity: 0 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.7, delay: 0.2 }}
                     />
                   )}
+                  <h2 className="content-title">
+                    {media_type === "tv" ? content?.name : content?.title}
+                  </h2>
+                  <p className="date">
+                    {media_type === "tv"
+                      ? FormatDate(content?.first_air_date)
+                      : FormatDate(content?.release_date)}
+                  </p>
+                  <p
+                    className="vote-bubble2"
+                    title={VotePercentage(content?.vote_average) + "% Rating"}
+                  >
+                    {VotePercentage(content?.vote_average)}%
+                  </p>
                 </Link>
               </SplideSlide>
             );

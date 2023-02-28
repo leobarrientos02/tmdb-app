@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./companyBanner.scss";
+import { NullEmptyUndefinedChecker } from "../../shared";
 import ContentNotFound from "../NotFound/ContentNotFound";
 
 const CompanyBanner = ({ company_id, language }) => {
@@ -25,8 +26,8 @@ const CompanyBanner = ({ company_id, language }) => {
       transition={{ duration: 0.7 }}
     >
       <div className="image">
-        {company?.logo_path === null ? (
-          <ContentNotFound content={"Company Logo"} />
+        {NullEmptyUndefinedChecker(company?.logo_path) === false ? (
+          <ContentNotFound content="CompanyPage" />
         ) : (
           <img src={imagePath + company?.logo_path} alt={company?.name} />
         )}

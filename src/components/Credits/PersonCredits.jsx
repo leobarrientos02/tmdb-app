@@ -37,7 +37,7 @@ const PersonCredits = ({ id }) => {
               >
                 <div className="cast">
                   {NullEmptyUndefinedChecker(cast?.poster_path) === false ? (
-                    <ContentNotFound content="PersonCredit" />
+                    <ContentNotFound content="MediaCredit" />
                   ) : (
                     <img
                       src={imagePath + cast?.poster_path}
