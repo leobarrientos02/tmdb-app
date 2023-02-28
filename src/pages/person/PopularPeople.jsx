@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
 import { motion } from "framer-motion";
 import "../../styles/popularPage.scss";
+import { NullEmptyUndefinedChecker } from "../../shared";
+import ContentNotFound from "../../components/NotFound/ContentNotFound";
 
 const PopularPeople = ({ language }) => {
   const [persons, setPersons] = useState([]);
@@ -39,7 +41,14 @@ const PopularPeople = ({ language }) => {
           return (
             <Link to={`/person/${person.id}`} key={person.id} className="link">
               <motion.div whileHover={{ scale: 1.03 }} className="person">
-                <img src={imagePath + person?.profile_path} alt="" />
+                {NullEmptyUndefinedChecker(person?.profile_path) === false ? (
+                  <ContentNotFound content="Person" />
+                ) : (
+                  <img
+                    src={imagePath + person?.profile_path}
+                    alt={person?.name}
+                  />
+                )}
                 <h2>{person?.name}</h2>
                 <p>{person?.known_for_department}</p>
               </motion.div>

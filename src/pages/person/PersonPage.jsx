@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PersonCredits from "../../components/Credits/PersonCredits";
-import { FormatBirthDate } from "../../shared";
+import { FormatBirthDate, NullEmptyUndefinedChecker } from "../../shared";
 import { motion } from "framer-motion";
 import "../../styles/personPage.scss";
+import ContentNotFound from "../../components/NotFound/ContentNotFound";
 
 const PersonPage = ({ language }) => {
   const [person, setPerson] = useState({});
@@ -29,7 +30,11 @@ const PersonPage = ({ language }) => {
     >
       <div className="header">
         <div className="image-wrapper">
-          <img src={imagePath + person?.profile_path} alt="" />
+          {NullEmptyUndefinedChecker(person?.profile_path) === false ? (
+            <ContentNotFound content="PersonPage" />
+          ) : (
+            <img src={imagePath + person?.profile_path} alt={person?.name} />
+          )}
         </div>
         <div className="biography">
           <h2>{person?.name}</h2>

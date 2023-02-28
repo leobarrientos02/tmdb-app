@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import NotFound from "../../images/imageNotFound.png";
+import ContentNotFound from "../NotFound/ContentNotFound";
 import "./credits.scss";
 
 const Credits = ({ api_path, language }) => {
@@ -19,7 +19,7 @@ const Credits = ({ api_path, language }) => {
     getCredits();
   });
 
-  if (credits !== undefined) {
+  if (credits.length > 0) {
     return (
       <div className="credits">
         <h2 className="section-title">Credits</h2>
@@ -33,11 +33,14 @@ const Credits = ({ api_path, language }) => {
               >
                 <div className="person">
                   <div className="person-image-wrapper">
-                    <img
-                      src={imagePath + person?.profile_path}
-                      alt=""
-                      onError={(e) => (e.currentTarget.src = NotFound)}
-                    />
+                    {person.profile_path === null ? (
+                      <ContentNotFound content={"Person"} />
+                    ) : (
+                      <img
+                        src={imagePath + person?.profile_path}
+                        alt={person?.name}
+                      />
+                    )}
                   </div>
 
                   <div className="details">

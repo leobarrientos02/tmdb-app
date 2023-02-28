@@ -19,7 +19,8 @@ const ContentImages = ({ api_path }) => {
   useEffect(() => {
     getImages();
   });
-  if (images !== undefined) {
+
+  if (images.length > 0) {
     return (
       <div className="ContentImages">
         <h2>Images</h2>
@@ -38,11 +39,18 @@ const ContentImages = ({ api_path }) => {
                 key={image?.file_path}
                 className="content-card-wrapper"
               >
-                <motion.img
-                  src={imagePath + image?.file_path}
-                  alt=""
-                  onError={(e) => (e.currentTarget.src = NotFound)}
-                />
+                <a
+                  href={imagePath + image?.file_path}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link"
+                >
+                  <motion.img
+                    src={imagePath + image?.file_path}
+                    alt=""
+                    onError={(e) => (e.currentTarget.src = NotFound)}
+                  />
+                </a>
               </SplideSlide>
             );
           })}

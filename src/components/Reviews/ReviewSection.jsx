@@ -17,29 +17,35 @@ const ReviewSection = ({ api_path, language }) => {
     getReviews();
   });
 
-  return (
-    <div className="review-section">
-      <h2 className="section-title">{reviews.length === 0 ? "" : "Reviews"}</h2>
-      <div className="reviews">
-        {reviews?.map((review) => {
-          return (
-            <div className="review" key={review.id}>
-              <div className="review-header">
-                <Author
-                  username={review.author_details?.username}
-                  avatar={review.author_details?.avatar_path}
-                />
-                <p className="creation">
-                  Creation Date: {FormatLocaleDate(review.created_at)}
-                </p>
+  if (reviews.length > 0) {
+    return (
+      <div className="review-section">
+        <h2 className="section-title">
+          {reviews.length === 0 ? "" : "Reviews"}
+        </h2>
+        <div className="reviews">
+          {reviews?.map((review) => {
+            return (
+              <div className="review" key={review.id}>
+                <div className="review-header">
+                  <Author
+                    username={review.author_details?.username}
+                    avatar={review.author_details?.avatar_path}
+                  />
+                  <p className="creation">
+                    Creation Date: {FormatLocaleDate(review.created_at)}
+                  </p>
+                </div>
+                <p className="content">{review.content}</p>
               </div>
-              <p className="content">{review.content}</p>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <div></div>;
+  }
 };
 
 export default ReviewSection;

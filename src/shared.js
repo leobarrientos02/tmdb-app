@@ -91,11 +91,20 @@ export const checkType = (type) => {
     }
 };
 
+export const NullEmptyUndefinedChecker = (data) => {
+    if (data === undefined) {
+        return false;
+    } else if (data === null) {
+        return false;
+    } else if (data === '') {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 export const languageObjects = [
     { name: "Arabic", iso: "ar" },
-    { name: "Bulgarian", iso: "bg" },
-    { name: "Chinese", iso: "zh" },
-    { name: "Czech", iso: "cs" },
     { name: "Bulgarian", iso: "bg" },
     { name: "Chinese", iso: "zh" },
     { name: "Czech", iso: "cs" },

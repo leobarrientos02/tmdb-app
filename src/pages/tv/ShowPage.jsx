@@ -2,15 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
-import VotePercentage, { FormatDate } from "../../shared";
+import VotePercentage, {
+  FormatDate,
+  NullEmptyUndefinedChecker,
+} from "../../shared";
 import { motion } from "framer-motion";
-import NotFound from "../../images/imageNotFound.png";
+
 import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
 import ReviewSection from "../../components/Reviews/ReviewSection";
 import SimilarContent from "../../components/SimilarContent/SimilarContent";
 import ContentImages from "../../components/ContentImages/ContentImages";
 import Credits from "../../components/Credits/Credits";
 import "../../styles/tvPage.scss";
+import ContentNotFound from "../../components/NotFound/ContentNotFound";
 
 const ShowPage = ({ language }) => {
   const [show, setShow] = useState([]);
@@ -52,11 +56,14 @@ const ShowPage = ({ language }) => {
               to={`/person/${creator.id}`}
               className="creator"
             >
-              <img
-                src={imagePath + creator.profile_path}
-                alt=""
-                onError={(e) => (e.currentTarget.src = NotFound)}
-              />
+              {NullEmptyUndefinedChecker(creator.profile_path) === false ? (
+                <ContentNotFound content="creator" />
+              ) : (
+                <img
+                  src={imagePath + creator.profile_path}
+                  alt={creator.name}
+                />
+              )}
               <p>{creator.name}</p>
             </Link>
           );
@@ -75,16 +82,27 @@ const ShowPage = ({ language }) => {
         })}
       </div>
 
-      <img src={imagePath + show?.backdrop_path} alt={show?.title} />
+      <img
+        src={
+          show?.backdrop_path === null
+            ? imagePath + show?.poster_path
+            : imagePath + show?.backdrop_path
+        }
+        alt={show?.title}
+      />
 
-      <div className="tv-overview">
-        <h2 className="section-title">
-          {show?.overview === "" ? "" : "Overview"}
-        </h2>
+      <div
+        className={
+          NullEmptyUndefinedChecker(show?.overview) === false
+            ? "hide"
+            : "tv-overview"
+        }
+      >
+        <h2 className="section-title">Overview</h2>
         <p>{show?.overview}</p>
       </div>
 
-      <ContentImages api_path={`tv/${show?.id}`} />
+      <ContentImages api_path={`tv/${params.id}`} />
 
       <ProductionCompanies data={show} />
 
@@ -107,11 +125,14 @@ const ShowPage = ({ language }) => {
                   to={`/tv/${params.id}/season/${season?.season_number}`}
                   className="season"
                 >
-                  <img
-                    src={imagePath + season.poster_path}
-                    alt=""
-                    onError={(e) => (e.currentTarget.src = NotFound)}
-                  />
+                  {NullEmptyUndefinedChecker(season.poster_path) === false ? (
+                    <ContentNotFound content="SeasonPreview" />
+                  ) : (
+                    <img
+                      src={imagePath + season.poster_path}
+                      alt={season.name}
+                    />
+                  )}
                   <h2 className="content-title">{season.name}</h2>
                   <p className="date">{FormatDate(season.air_date)}</p>
                 </Link>

@@ -14,6 +14,7 @@ $green: #90cea1;
         font-weight: 600;
         border: solid white 2px;
         top: 5%;
+        color: white;
     }
     
     img{
@@ -26,11 +27,12 @@ $green: #90cea1;
         }
     }
 
-    h2{
+    .movie-title{
         font-size: 1.2rem;
+        color: white;
     }
 
-    p{
+    .movie-date{
         font-size: .75rem;
         color: lightgray;
     }
