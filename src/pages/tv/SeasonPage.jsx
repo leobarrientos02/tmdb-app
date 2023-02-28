@@ -51,7 +51,11 @@ const Season = ({ language }) => {
       </div>
 
       <div
-        className={season?.episodes.length === 0 ? "hide" : "episodes-sections"}
+        className={
+          NullEmptyUndefinedChecker(season?.episodes) === false
+            ? "hide"
+            : "episodes-sections"
+        }
       >
         <h2>Episodes</h2>
         <Splide
