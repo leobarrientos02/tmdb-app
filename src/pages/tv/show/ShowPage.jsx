@@ -56,7 +56,7 @@ const ShowPage = ({ language }) => {
               className="creator"
             >
               {NullEmptyUndefinedChecker(creator.profile_path) === false ? (
-                <ContentNotFound content="creator" />
+                <ContentNotFound content="Creator" />
               ) : (
                 <img
                   src={imagePath + creator.profile_path}
