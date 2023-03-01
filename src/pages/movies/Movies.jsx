@@ -68,6 +68,7 @@ const Movies = ({ language }) => {
               title={movie.title}
               poster_path={movie.poster_path}
               release_date={movie.release_date}
+              character=""
               vote={movie.vote_average}
             />
           );

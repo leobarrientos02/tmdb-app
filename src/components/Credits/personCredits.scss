@@ -4,34 +4,59 @@ $green: #90cea1;
 .credits{
     margin: 1rem 0;
 
-    .cast, .crew{
-        .title{
-            width: 100%;
-            text-align: left;
-            font-size: 2rem;
-            text-decoration: none;
-        }
+    .toggle_media{
+        margin-top: 1rem;
+        margin-bottom: .5rem;
         width: 100%;
-        img{
-            width: 100%;
-            object-fit: cover;
-            border-radius: 1rem;
-            box-shadow: rgba(15, 9, 40, 0.474) 0px 2px 4px 0px, rgba(19, 35, 98, 0.32) 0px 2px 16px 0px;
+        display: flex;
+        flex-direction: row;
+
+        .movie{
+            font-size: 1.2rem;
+            border-radius: 1rem 0 0 1rem;
+            padding: .3rem .6rem;
+            background-color: #2f2f2f;
+            border-right: 1px solid #0f0f0f;
+            cursor: pointer;
             &:hover{
-                border: 2px solid $blue; 
+                color: $blue;
+                transition: all 0.3s ease-in-out;
             }
         }
-        h2{
+        .tv{
             font-size: 1.2rem;
-            color: white;
-        }
-        p{
-            font-size: .9rem;
-            color: lightgray;
+            border-radius: 0 1rem 1rem 0;
+            padding: .3rem .6rem;
+            background-color: #2f2f2f;
+            border-left: 1px solid #0f0f0f;
+            cursor: pointer;
+            &:hover{
+                color: $blue;
+                transition: all 0.3s ease-in-out;
+            }
         }
     }
 
-    .crew{
-        margin-top: 2rem;
+    .character{
+        font-size: .9rem;
     }
 }
+
+.movie-active{
+    background-color: $blue;
+    font-size: 1.2rem;
+    border-radius: 1rem 0 0 1rem;
+    padding: .3rem .6rem;
+    border-right: 1px solid #0f0f0f;
+    pointer-events: none;
+}
+
+.tv-active {
+    background-color: $blue;  
+    font-size: 1.2rem;
+    border-radius: 0 1rem 1rem 0;
+    padding: .3rem .6rem;
+    border-left: 1px solid #0f0f0f;
+    pointer-events: none;
+}
+

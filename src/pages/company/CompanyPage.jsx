@@ -73,6 +73,7 @@ const CompanyPage = ({ language }) => {
                 poster_path={content.poster_path}
                 release_date={content.release_date}
                 vote={content.vote_average}
+                character=""
                 type={params.media}
               />
             );
@@ -88,6 +89,7 @@ const CompanyPage = ({ language }) => {
                 name={content.name}
                 poster_path={content.poster_path}
                 aired_date={content.first_air_date}
+                character=""
                 vote={content.vote_average}
               />
             );

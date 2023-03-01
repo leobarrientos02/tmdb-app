@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { FormatDate, NullEmptyUndefinedChecker } from "../../shared";
 import "./personCredits.scss";
-import ContentNotFound from "../NotFound/ContentNotFound";
+import Movie from "../Movie/Movie";
+import Show from "../Show/Show";
 
-const PersonCredits = ({ id }) => {
+const PersonCredits = ({ id, language }) => {
   const [credits, setCredits] = useState([]);
-  let imagePath = "https://image.tmdb.org/t/p/original";
+  const [mediaType, setMediaType] = useState("movie");
 
   const getCredits = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+      `https://api.themoviedb.org/3/person/${id}/${mediaType}_credits?language=${language}&api_key=${process.env.REACT_APP_API_KEY}`
     );
     const res = await data.json();
-    setCredits(res);
+    setCredits(res.cast);
   };
 
   useEffect(() => {
@@ -21,92 +20,56 @@ const PersonCredits = ({ id }) => {
   });
   return (
     <div className="credits">
-      <div className="cast">
-        <h2 className="title">
-          {credits?.cast === undefined || credits?.cast?.length === 0
-            ? ""
-            : "Cast"}
-        </h2>
-        <div className="page-grid">
-          {credits?.cast?.map((cast) => {
-            return (
-              <Link
-                to={`/${cast?.media_type}/${cast?.id}`}
-                key={cast.credit_id}
-                className="link"
-              >
-                <div className="cast">
-                  {NullEmptyUndefinedChecker(cast?.poster_path) === false ? (
-                    <ContentNotFound content="MediaCredit" />
-                  ) : (
-                    <img
-                      src={imagePath + cast?.poster_path}
-                      alt={cast?.title}
-                    />
-                  )}
-                  <h2>{cast?.title}</h2>
-                  <p>
-                    {FormatDate(
-                      cast?.media_type === "movie"
-                        ? cast?.release_date
-                        : cast?.first_air_date
-                    )}
-                  </p>
-                  <p>
-                    {cast?.character === "" || cast?.character === undefined
-                      ? ""
-                      : `"${cast?.character}"`}
-                  </p>
-                </div>
-              </Link>
-            );
-          })}
+      <div className="filter-credits">
+        <div className="toggle_media">
+          <h2
+            onClick={() => setMediaType("movie")}
+            className={mediaType === "movie" ? "movie-active" : "movie"}
+          >
+            Movies
+          </h2>
+          <h2
+            onClick={() => setMediaType("tv")}
+            className={mediaType === "tv" ? "tv-active" : "tv"}
+          >
+            Shows
+          </h2>
         </div>
       </div>
 
-      <div className="crew">
-        <h2 className="title">
-          {credits?.crew === undefined || credits?.crew.length === 0
-            ? ""
-            : "Crew"}
-        </h2>
+      {mediaType === "movie" ? (
         <div className="page-grid">
-          {credits?.crew?.map((crew) => {
+          {credits.map((movie) => {
             return (
-              <Link
-                to={`/${crew?.media_type}/${crew?.id}`}
-                key={crew.credit_id}
-                className="link"
-              >
-                <div className="crew">
-                  {NullEmptyUndefinedChecker(crew?.poster_path) === false ? (
-                    <ContentNotFound content="MediaCredit" />
-                  ) : (
-                    <img
-                      src={imagePath + crew?.poster_path}
-                      alt={crew?.title}
-                    />
-                  )}
-
-                  <h2>{crew?.title}</h2>
-                  <p>
-                    {FormatDate(
-                      crew?.media_type === "movie"
-                        ? crew?.release_date
-                        : crew?.first_air_date
-                    )}
-                  </p>
-                  <p>
-                    {crew?.job === "" || crew?.job === undefined
-                      ? ""
-                      : `Role: ${crew?.job}`}
-                  </p>
-                </div>
-              </Link>
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                poster_path={movie.poster_path}
+                release_date={movie.release_date}
+                character={movie.character}
+                vote={movie.vote_average}
+              />
             );
           })}
         </div>
-      </div>
+      ) : (
+        <div className="page-grid">
+          {credits.map((show) => {
+            return (
+              <Show
+                key={show.id}
+                id={show.id}
+                name={show.name}
+                poster_path={show.poster_path}
+                aired_date={show.first_air_date}
+                character={show.character}
+                vote={show.vote_average}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

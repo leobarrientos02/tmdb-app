@@ -7,7 +7,7 @@ import VotePercentage, {
 import { motion } from "framer-motion";
 import ContentNotFound from "../NotFound/ContentNotFound";
 
-const Show = ({ id, vote, poster_path, name, aired_date }) => {
+const Show = ({ id, vote, poster_path, name, character, aired_date }) => {
   let imagePath = "https://image.tmdb.org/t/p/original";
   return (
     <motion.div
@@ -27,6 +27,7 @@ const Show = ({ id, vote, poster_path, name, aired_date }) => {
         )}
       </Link>
       <h2 className="show-name">{name}</h2>
+      <p className="character">{character}</p>
       <p className="show-date">First Aired Date: {FormatDate(aired_date)}</p>
     </motion.div>
   );

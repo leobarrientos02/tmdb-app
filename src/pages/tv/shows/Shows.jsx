@@ -67,6 +67,7 @@ const Shows = ({ language }) => {
               name={show.name}
               poster_path={show.poster_path}
               aired_date={show.first_air_date}
+              character=""
               vote={show.vote_average}
             />
           );
