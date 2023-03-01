@@ -1,7 +1,7 @@
-import { Banner } from "../components/Banner/Banner";
-import GenrePreview from "../components/GenrePreview/GenrePreview";
+import { Banner } from "../../components/Banner/Banner";
+import GenrePreview from "../../components/GenrePreview/GenrePreview";
 import React, { useEffect, useState } from "react";
-import "../styles/homePage.scss";
+import "./homePage.scss";
 
 const HomePage = ({ language }) => {
   const [genres, setGenres] = useState([]);

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import NotFound from "../images/imageNotFound.png";
-import Pagination from "../components/Pagination/Pagination";
-import "../styles/searchPage.scss";
-import Show from "../components/Show/Show";
-import Movie from "../components/Movie/Movie";
+import Pagination from "../../components/Pagination/Pagination";
+import "./searchPage.scss";
+import Show from "../../components/Show/Show";
+import Movie from "../../components/Movie/Movie";
+import { NullEmptyUndefinedChecker } from "../../shared";
+import ContentNotFound from "../../components/NotFound/ContentNotFound";
 
 const SearchPage = ({ language }) => {
   const [data, setData] = useState([]);
@@ -81,40 +82,25 @@ const SearchPage = ({ language }) => {
     return (
       <div className="SearchPage">
         <h2 className="page-title">Results for search: {params.search}</h2>
-
-        {params.media === "tv" ? (
-          <div className="page-grid">
-            {data.map((content) => {
-              return (
-                <Show
-                  key={content.id}
-                  id={content.id}
-                  name={content.name}
-                  poster_path={content.poster_path}
-                  aired_date={content.first_air_date}
-                  vote={content.vote_average}
-                />
-              );
-            })}
-          </div>
-        ) : (
-          <div className="page-grid">
-            {data.map((content) => {
-              return (
-                <Movie
-                  key={content.id}
-                  id={content.id}
-                  title={content.title}
-                  poster_path={content.poster_path}
-                  release_date={content.release_date}
-                  vote={content.vote_average}
-                  type={params.media}
-                />
-              );
-            })}
-          </div>
-        )}
-
+        <div className="page-grid">
+          {data.map((content) => {
+            return (
+              <Link to={`/company/${content.id}`} className="link">
+                <div className="company">
+                  {NullEmptyUndefinedChecker(content.logo_path) === false ? (
+                    <ContentNotFound content="CompanySearch" />
+                  ) : (
+                    <img
+                      src={imagePath + content.logo_path}
+                      alt={content.name}
+                    />
+                  )}
+                  <h2>{content.name}</h2>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
         <Pagination
           param={params.search}
           page={page}
@@ -136,11 +122,11 @@ const SearchPage = ({ language }) => {
                 className="link"
               >
                 <div className="person">
-                  <img
-                    src={imagePath + person?.profile_path}
-                    alt=""
-                    onError={(e) => (e.currentTarget.src = NotFound)}
-                  />
+                  {NullEmptyUndefinedChecker(person.profile_path) === false ? (
+                    <ContentNotFound content="Person" />
+                  ) : (
+                    <img src={imagePath + person?.profile_path} alt="" />
+                  )}
                   <h2>{person?.name}</h2>
                   <p>{person?.known_for_department}</p>
                 </div>

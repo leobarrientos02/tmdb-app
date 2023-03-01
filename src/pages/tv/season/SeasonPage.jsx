@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 import VotePercentage, {
   FormatDate,
   NullEmptyUndefinedChecker,
-} from "../../shared";
-import "../../styles/seasonPage.scss";
-import Credits from "../../components/Credits/Credits";
-import ContentNotFound from "../../components/NotFound/ContentNotFound";
+} from "../../../shared";
+import "./seasonPage.scss";
+import Credits from "../../../components/Credits/Credits";
+import ContentNotFound from "../../../components/NotFound/ContentNotFound";
 
 const Season = ({ language }) => {
   const [season, setSeason] = useState({});
@@ -23,6 +23,7 @@ const Season = ({ language }) => {
     const res = await data.json();
     setSeason(res);
   };
+
   useEffect(() => {
     getSeason(params.id, params.seasonNumber);
   });
@@ -70,7 +71,7 @@ const Season = ({ language }) => {
         >
           {season?.episodes?.map((episode) => {
             return (
-              <SplideSlide key={episode.show_id} className="episode-card">
+              <SplideSlide key={episode.id} className="episode-card">
                 <Link
                   to={`/tv/${params.id}/season/${season?.season_number}/episode/${episode.episode_number}`}
                   className="link"
