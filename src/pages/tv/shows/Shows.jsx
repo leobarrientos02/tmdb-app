@@ -6,7 +6,7 @@ import Sort from "../../../components/Sort/Sort";
 import { FormatTitle } from "../../../shared";
 
 const Shows = ({ language }) => {
-  const params = useParams();
+  let params = useParams();
   const [shows, setShows] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);

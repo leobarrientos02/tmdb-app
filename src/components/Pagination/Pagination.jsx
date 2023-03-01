@@ -1,8 +1,8 @@
 import "./pagination.scss";
-const Pagination = ({ param, page, total, pagination }) => {
+const Pagination = ({ page, total, pagination }) => {
   let pages = Array.from(Array(total), (_, i) => i + 1);
   return (
-    <div>
+    <div className={total < 1 ? "hide" : ""}>
       <div className="pagination-container">
         <div className="pagination">
           <button

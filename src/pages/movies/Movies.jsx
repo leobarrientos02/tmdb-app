@@ -7,7 +7,7 @@ import "./AllMovies.scss";
 import Sort from "../../components/Sort/Sort";
 
 const Movies = ({ language }) => {
-  const params = useParams();
+  let params = useParams();
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
@@ -74,12 +74,7 @@ const Movies = ({ language }) => {
         })}
       </div>
 
-      <Pagination
-        param={params.filter}
-        page={page}
-        total={total}
-        pagination={pagination}
-      />
+      <Pagination page={page} total={total} pagination={pagination} />
     </div>
   );
 };

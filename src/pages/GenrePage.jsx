@@ -78,12 +78,7 @@ const GenrePage = ({ language }) => {
         </div>
       )}
 
-      <Pagination
-        param={params.id}
-        page={page}
-        total={total}
-        pagination={pagination}
-      />
+      <Pagination page={page} total={total} pagination={pagination} />
     </div>
   );
 };

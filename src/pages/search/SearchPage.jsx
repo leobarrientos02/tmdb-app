@@ -135,13 +135,7 @@ const SearchPage = ({ language }) => {
           })}
         </div>
 
-        <Pagination
-          param={params.search}
-          page={page}
-          total={total}
-          pagination={pagination}
-          type="OneParameter"
-        />
+        <Pagination page={page} total={total} pagination={pagination} />
       </div>
     );
   }
