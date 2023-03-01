@@ -2,30 +2,24 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "../pages/home/HomePage";
 import GenrePage from "./GenrePage";
-import MoviePage from "./movies/MoviePage";
+import MoviePage from "./movies/movie/MoviePage";
 import CompanyPage from "./company/CompanyPage";
-import FilteredMoviesPage from "./movies/FilteredPage";
-import FilteredTVPage from "./tv/FilteredPage";
+import Shows from "./tv/shows/Shows";
 import ShowPage from "./tv/show/ShowPage";
 import SeasonPage from "./tv/season/SeasonPage";
 import EpisodePage from "./tv/episode/EpisodePage";
 import SearchPage from "./search/SearchPage";
 import PersonPage from "./person/personPage/PersonPage";
 import PopularPeople from "./person/popular/PopularPeople";
+import Movies from "./movies/Movies";
 
 const Pages = ({ language }) => {
   return (
     <Routes className="pages">
       <Route path="/" element={<HomePage language={language} />} />
       <Route path="/movie/:id" element={<MoviePage language={language} />} />
-      <Route
-        path="/movies/:filter"
-        element={<FilteredMoviesPage language={language} />}
-      />
-      <Route
-        path="/shows/:filter"
-        element={<FilteredTVPage language={language} />}
-      />
+      <Route path="/movies/:filter" element={<Movies language={language} />} />
+      <Route path="/shows/:filter" element={<Shows language={language} />} />
       <Route path="/tv/:id" element={<ShowPage language={language} />} />
       <Route
         path="/tv/:id/season/:seasonNumber"

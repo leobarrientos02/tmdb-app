@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import ReviewSection from "../../components/Reviews/ReviewSection";
+import ReviewSection from "../../../components/Reviews/ReviewSection";
 import VotePercentage, {
   FormatDate,
   NullEmptyUndefinedChecker,
-} from "../../shared";
+} from "../../../shared";
 import { motion } from "framer-motion";
 import "./moviePage.scss";
-import ProductionCompanies from "../../components/ProductionCompanies/ProductionCompanies";
-import SimilarContent from "../../components/SimilarContent/SimilarContent";
-import ContentImages from "../../components/ContentImages/ContentImages";
-import Credits from "../../components/Credits/Credits";
+import ProductionCompanies from "../../../components/ProductionCompanies/ProductionCompanies";
+import SimilarContent from "../../../components/SimilarContent/SimilarContent";
+import ContentImages from "../../../components/ContentImages/ContentImages";
+import Credits from "../../../components/Credits/Credits";
 
 const MoviePage = ({ language }) => {
   const [movieData, setMovieData] = useState([]);
