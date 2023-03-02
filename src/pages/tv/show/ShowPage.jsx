@@ -9,11 +9,11 @@ import VotePercentage, {
 import { motion } from "framer-motion";
 import ProductionCompanies from "../../../components/ProductionCompanies/ProductionCompanies";
 import ReviewSection from "../../../components/Reviews/ReviewSection";
-import SimilarContent from "../../../components/SimilarContent/SimilarContent";
-import ContentImages from "../../../components/ContentImages/ContentImages";
+import Media from "../../../components/Media/Media";
 import Credits from "../../../components/Credits/Credits";
 import "./showPage.scss";
 import ContentNotFound from "../../../components/NotFound/ContentNotFound";
+import Reccomended from "../../../components/Recommended/Reccomended";
 
 const ShowPage = ({ language }) => {
   const [show, setShow] = useState([]);
@@ -101,7 +101,7 @@ const ShowPage = ({ language }) => {
         <p>{show?.overview}</p>
       </div>
 
-      <ContentImages api_path={`tv/${params.id}`} />
+      <Media id={params.id} mediaType="tv" />
 
       <ProductionCompanies data={show} />
 
@@ -145,7 +145,7 @@ const ShowPage = ({ language }) => {
 
       <Credits api_path={`tv/${params.id}`} language={language} />
 
-      <SimilarContent id={params.id} media_type={"tv"} language={language} />
+      <Reccomended id={params.id} media_type={"tv"} language={language} />
     </motion.div>
   );
 };
