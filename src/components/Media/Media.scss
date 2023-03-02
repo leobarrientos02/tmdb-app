@@ -7,7 +7,7 @@ $green: #90cea1;
         width: 40%;
         display: flex;
         flex-direction: row;
-        align-items: end;
+        align-items: flex-end;
         justify-content: space-between;
         margin-bottom: .5rem;
         h2{
@@ -24,15 +24,18 @@ $green: #90cea1;
     }
     .backdrops{
         .backdrop{
-            margin-bottom: 1rem;
             max-height: 50vh;
         }
     }
-    
+
     .posters{
         .poster{
-            margin-bottom: 1rem;
             max-height: 70vh;
+        }
+    }
+    .videos{
+        .video{
+            height: 50vh;
         }
     }
 }

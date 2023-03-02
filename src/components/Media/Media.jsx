@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
+import Iframe from "react-iframe";
 import "./Media.scss";
+
 const Media = ({ id, mediaType }) => {
   const [backdrops, setBackdrops] = useState([]);
   const [posters, setPosters] = useState([]);
@@ -59,8 +61,8 @@ const Media = ({ id, mediaType }) => {
             perPage: 3,
             drag: "free",
             gap: "1rem",
-            arrows: false,
-            pagination: true,
+            arrows: true,
+            pagination: false,
           }}
         >
           {backdrops?.map((backdrop) => {
@@ -84,8 +86,8 @@ const Media = ({ id, mediaType }) => {
             perPage: 5,
             drag: "free",
             gap: "1rem",
-            arrows: false,
-            pagination: true,
+            arrows: true,
+            pagination: false,
           }}
         >
           {posters?.map((poster) => {
@@ -106,17 +108,22 @@ const Media = ({ id, mediaType }) => {
       <div className={media === "videos" ? "videos" : "hide"}>
         <Splide
           options={{
-            perPage: 4,
+            perPage: 2,
             drag: "free",
             gap: "1rem",
-            arrows: false,
-            pagination: true,
+            arrows: true,
+            pagination: false,
           }}
         >
           {videos?.map((video) => {
             return (
-              <SplideSlide key={video.key}>
-                <h2>{video.name}</h2>
+              <SplideSlide key={video.key} className="video">
+                <Iframe
+                  url={`https://www.youtube.com/embed/${video.key}`}
+                  width="100%"
+                  height="100%"
+                  frameBorder={1}
+                />
               </SplideSlide>
             );
           })}
