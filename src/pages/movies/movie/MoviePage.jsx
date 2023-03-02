@@ -8,9 +8,9 @@ import VotePercentage, {
 import { motion } from "framer-motion";
 import "./moviePage.scss";
 import ProductionCompanies from "../../../components/ProductionCompanies/ProductionCompanies";
-import SimilarContent from "../../../components/SimilarContent/SimilarContent";
-import ContentImages from "../../../components/ContentImages/ContentImages";
 import Credits from "../../../components/Credits/Credits";
+import Reccomended from "../../../components/Recommended/Reccomended";
+import Media from "../../../components/Media/Media";
 
 const MoviePage = ({ language }) => {
   const [movieData, setMovieData] = useState([]);
@@ -72,7 +72,7 @@ const MoviePage = ({ language }) => {
         <p>{movieData?.overview}</p>
       </div>
 
-      <ContentImages api_path={`movie/${params.id}`} />
+      <Media id={params.id} mediaType="movie" />
 
       <ProductionCompanies data={movieData} />
 
@@ -80,7 +80,7 @@ const MoviePage = ({ language }) => {
 
       <Credits api_path={`movie/${params.id}`} language={language} />
 
-      <SimilarContent id={params.id} media_type={"movie"} language={language} />
+      <Reccomended id={params.id} media_type={"movie"} language={language} />
     </motion.div>
   );
 };

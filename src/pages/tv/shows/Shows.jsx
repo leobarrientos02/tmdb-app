@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Pagination from "../../../components/Pagination/Pagination";
 import Show from "../../../components/Show/Show";
+import Sort from "../../../components/Sort/Sort";
 import { FormatTitle } from "../../../shared";
 
 const Shows = ({ language }) => {
-  const params = useParams();
+  let params = useParams();
   const [shows, setShows] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
@@ -54,18 +55,7 @@ const Shows = ({ language }) => {
     <div className="AllMovies">
       <div className="page-title">
         <h2>{FormatTitle(params.filter)} Shows</h2>
-        <div className="sort">
-          <select className="movies-sort-select" onChange={getOptionValue}>
-            <option value="popularity.desc">Popularity Descending</option>
-            <option value="popularity.asc">Popularity Ascending</option>
-            <option value="vote_average.desc">Rating Descending</option>
-            <option value="vote_average.asc">Rating Ascending</option>
-            <option value="release_date.desc">Release Date Descending</option>
-            <option value="release_date.asc">Release Date Ascending</option>
-            <option value="original_title.desc">Title (Z-A) Descending</option>
-            <option value="original_title.asc">Title (A-Z) Ascending</option>
-          </select>
-        </div>
+        <Sort getOptionValue={getOptionValue} />
       </div>
 
       <div className="page-grid">
@@ -77,6 +67,7 @@ const Shows = ({ language }) => {
               name={show.name}
               poster_path={show.poster_path}
               aired_date={show.first_air_date}
+              character=""
               vote={show.vote_average}
             />
           );

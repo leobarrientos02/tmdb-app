@@ -57,12 +57,7 @@ const PopularPeople = ({ language }) => {
         })}
       </div>
 
-      <Pagination
-        param={""}
-        page={page}
-        total={total}
-        pagination={pagination}
-      />
+      <Pagination page={page} total={total} pagination={pagination} />
     </motion.div>
   );
 };

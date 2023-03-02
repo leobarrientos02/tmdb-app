@@ -55,6 +55,7 @@ const GenrePage = ({ language }) => {
                 name={content.name}
                 poster_path={content.poster_path}
                 aired_date={content.first_air_date}
+                character=""
                 vote={content.vote_average}
               />
             );
@@ -71,6 +72,7 @@ const GenrePage = ({ language }) => {
                 poster_path={content.poster_path}
                 release_date={content.release_date}
                 vote={content.vote_average}
+                character=""
                 type={params.media}
               />
             );
@@ -78,12 +80,7 @@ const GenrePage = ({ language }) => {
         </div>
       )}
 
-      <Pagination
-        param={params.id}
-        page={page}
-        total={total}
-        pagination={pagination}
-      />
+      <Pagination page={page} total={total} pagination={pagination} />
     </div>
   );
 };

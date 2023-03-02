@@ -6,14 +6,15 @@ import { motion } from "framer-motion";
 import "./companyPage.scss";
 import Movie from "../../components/Movie/Movie";
 import Show from "../../components/Show/Show";
+import Sort from "../../components/Sort/Sort";
 
 const CompanyPage = ({ language }) => {
+  let params = useParams();
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [mediaType, setMediaType] = useState("movie");
   const [sortBy, setSortBy] = useState("popularity.desc");
-  let params = useParams();
 
   const getData = async () => {
     const data = await fetch(
@@ -59,20 +60,7 @@ const CompanyPage = ({ language }) => {
             Shows
           </h2>
         </div>
-
-        <select className="company-sort-select" onChange={getOptionValue}>
-          <option value="" disabled selected>
-            Sort Results
-          </option>
-          <option value="popularity.desc">Popularity Descending</option>
-          <option value="popularity.asc">Popularity Ascending</option>
-          <option value="vote_average.desc">Rating Descending</option>
-          <option value="vote_average.asc">Rating Ascending</option>
-          <option value="release_date.desc">Release Date Descending</option>
-          <option value="release_date.asc">Release Date Ascending</option>
-          <option value="original_title.desc">Title (Z-A) Descending</option>
-          <option value="original_title.asc">Title (A-Z) Ascending</option>
-        </select>
+        <Sort getOptionValue={getOptionValue} />
       </div>
       {mediaType === "movie" ? (
         <div className="page-grid">
@@ -85,6 +73,7 @@ const CompanyPage = ({ language }) => {
                 poster_path={content.poster_path}
                 release_date={content.release_date}
                 vote={content.vote_average}
+                character=""
                 type={params.media}
               />
             );
@@ -100,18 +89,14 @@ const CompanyPage = ({ language }) => {
                 name={content.name}
                 poster_path={content.poster_path}
                 aired_date={content.first_air_date}
+                character=""
                 vote={content.vote_average}
               />
             );
           })}
         </div>
       )}
-      <Pagination
-        param={params.id}
-        page={page}
-        total={total}
-        pagination={pagination}
-      />
+      <Pagination page={page} total={total} pagination={pagination} />
     </motion.div>
   );
 };

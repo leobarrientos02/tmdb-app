@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import "./movie.scss";
 import ContentNotFound from "../NotFound/ContentNotFound";
 
-const Movie = ({ id, vote, poster_path, title, release_date }) => {
+const Movie = ({ id, vote, poster_path, title, character, release_date }) => {
   let imagePath = "https://image.tmdb.org/t/p/original";
   return (
     <motion.div
@@ -27,6 +27,7 @@ const Movie = ({ id, vote, poster_path, title, release_date }) => {
         )}
       </Link>
       <h2 className="movie-title">{title}</h2>
+      <p className="character">{character}</p>
       <p className="movie-date">Release date: {FormatDate(release_date)}</p>
     </motion.div>
   );

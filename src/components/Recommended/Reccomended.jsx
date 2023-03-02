@@ -6,17 +6,17 @@ import VotePercentage, {
   FormatDate,
   NullEmptyUndefinedChecker,
 } from "../../shared";
-import "./similarContent.scss";
+import "./reccomended.scss";
 import { motion } from "framer-motion";
 import NotFound from "../../images/imageNotFound.png";
 import ContentNotFound from "../NotFound/ContentNotFound";
 
-const SimilarContent = ({ id, media_type, language }) => {
+const Reccomended = ({ id, media_type, language }) => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/${media_type}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
+      `https://api.themoviedb.org/3/${media_type}/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}&language=${language}`
     );
     const res = await data.json();
     setData(res.results);
@@ -30,22 +30,25 @@ const SimilarContent = ({ id, media_type, language }) => {
 
   if (data.length > 0) {
     return (
-      <div className="SimilarContent">
+      <div className="reccomended">
         <h2 className="title">
-          Similar {media_type === "tv" ? "Shows" : "Movies"}
+          Reccomended {media_type === "tv" ? "Shows" : "Movies"}
         </h2>
         <Splide
           options={{
             perPage: 5,
             drag: "free",
             gap: "2rem",
-            arrows: false,
-            pagination: true,
+            arrows: true,
+            pagination: false,
           }}
         >
           {data.map((content) => {
             return (
-              <SplideSlide key={content?.id} className="similar-card-wrapper">
+              <SplideSlide
+                key={content?.id}
+                className="reccomended-card-wrapper"
+              >
                 <Link
                   to={`/${media_type === "tv" ? "tv" : media_type}/${
                     content?.id
@@ -90,4 +93,4 @@ const SimilarContent = ({ id, media_type, language }) => {
     return <div></div>;
   }
 };
-export default SimilarContent;
+export default Reccomended;

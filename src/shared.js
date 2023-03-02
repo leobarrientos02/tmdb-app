@@ -98,6 +98,8 @@ export const NullEmptyUndefinedChecker = (data) => {
         return false;
     } else if (data === '') {
         return false;
+    } else if (data.length === 0) {
+        return false;
     } else {
         return true;
     }
