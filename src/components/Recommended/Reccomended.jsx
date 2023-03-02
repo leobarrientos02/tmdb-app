@@ -39,8 +39,8 @@ const Reccomended = ({ id, media_type, language }) => {
             perPage: 5,
             drag: "free",
             gap: "2rem",
-            arrows: false,
-            pagination: true,
+            arrows: true,
+            pagination: false,
           }}
         >
           {data.map((content) => {

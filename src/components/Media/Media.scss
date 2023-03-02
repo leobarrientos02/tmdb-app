@@ -22,16 +22,17 @@ $green: #90cea1;
             }
         }
     }
-
-    .posters{
-        .poster{
-            max-height: 60vh;
-        }
-    }
-
     .backdrops{
         .backdrop{
+            margin-bottom: 1rem;
             max-height: 50vh;
+        }
+    }
+    
+    .posters{
+        .poster{
+            margin-bottom: 1rem;
+            max-height: 70vh;
         }
     }
 }

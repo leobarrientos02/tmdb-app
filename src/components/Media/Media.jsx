@@ -59,8 +59,8 @@ const Media = ({ id, mediaType }) => {
             perPage: 3,
             drag: "free",
             gap: "1rem",
-            arrows: true,
-            pagination: false,
+            arrows: false,
+            pagination: true,
           }}
         >
           {backdrops?.map((backdrop) => {
@@ -84,8 +84,8 @@ const Media = ({ id, mediaType }) => {
             perPage: 5,
             drag: "free",
             gap: "1rem",
-            arrows: true,
-            pagination: false,
+            arrows: false,
+            pagination: true,
           }}
         >
           {posters?.map((poster) => {
@@ -109,13 +109,13 @@ const Media = ({ id, mediaType }) => {
             perPage: 4,
             drag: "free",
             gap: "1rem",
-            arrows: true,
-            pagination: false,
+            arrows: false,
+            pagination: true,
           }}
         >
           {videos?.map((video) => {
             return (
-              <SplideSlide>
+              <SplideSlide key={video.key}>
                 <h2>{video.name}</h2>
               </SplideSlide>
             );
