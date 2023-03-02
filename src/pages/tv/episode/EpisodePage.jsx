@@ -52,7 +52,11 @@ const EpisodePage = ({ language }) => {
         <p>{episode?.overview}</p>
       </div>
 
-      <div className={episode.crew.length > 0 ? "crew" : "hide"}>
+      <div
+        className={
+          NullEmptyUndefinedChecker(episode.crew) === false ? "hide" : "crew"
+        }
+      >
         <h2 className="section-title">Crew</h2>
         <div className="persons">
           {episode?.crew?.map((person) => {
@@ -83,7 +87,13 @@ const EpisodePage = ({ language }) => {
         </div>
       </div>
 
-      <div className={episode.guest_stars.length > 0 ? "guest" : "hide"}>
+      <div
+        className={
+          NullEmptyUndefinedChecker(episode.guest_stars) === false
+            ? "hide"
+            : "guest"
+        }
+      >
         <h2 className="section-title">Guest Stars</h2>
         <div className="persons">
           {episode?.guest_stars?.map((person) => {
