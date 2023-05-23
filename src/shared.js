@@ -1,5 +1,12 @@
 const VotePercentage = (num) => {
-    return Math.round((num * 100) / 10);
+    let vote = Math.round((num * 100) / 10);
+    let result = ''
+    if (vote === 0) {
+        result = 'NR'
+    } else {
+        result = vote
+    }
+    return result
 }
 export default VotePercentage;
 
@@ -133,3 +140,47 @@ export const languageObjects = [
     { name: "Ukranian", iso: "uk" },
     { name: "Vietnamese", iso: "vi" }
 ];
+
+export const getVoteBubble = (vote) => {
+    let voteBorder = document.querySelector('.border');
+    if (vote >= 75) {
+        voteBorder.style.backgroundColor = '#204529';
+        voteBorder.style.backgroundImage = `linear-gradient(0deg, #20cc78 ${vote}%, #204529 30%)`;
+    }
+    if (vote <= 74 && vote >= 25) {
+        voteBorder.style.backgroundColor = '#d2d531';
+        voteBorder.style.backgroundImage = `linear-gradient(0deg, #d2d531 ${vote}%, #3d3a0f 30%)`;
+    }
+    if (vote < 24) {
+        voteBorder.style.backgroundColor = '#571435';
+        voteBorder.style.backgroundImage = `linear-gradient(0deg, #db2360 ${vote}%, #204529 30%)`;
+    }
+}
+
+export const getBackgroundColor = (vote) => {
+    let backgroundColor = "";
+    if (vote >= 75) {
+        backgroundColor = "#20cc78";
+    }
+    if (vote <= 74 && vote >= 25) {
+        backgroundColor = "#d2d531";
+    }
+    if (vote < 24) {
+        backgroundColor = "#571435";
+    }
+    return backgroundColor;
+};
+
+export const getBackgroundImage = (vote) => {
+    let backgroundImage = "";
+    if (vote >= 75) {
+        backgroundImage = `linear-gradient(360deg, #20cc78 ${vote}%, #204529 30%)`;
+    }
+    if (vote <= 74 && vote >= 25) {
+        backgroundImage = `linear-gradient(3600deg, #d2d531 ${vote}%, #3d3a0f 30%)`;
+    }
+    if (vote < 24) {
+        backgroundImage = `linear-gradient(360deg, #db2360 ${vote}%, #204529 30%)`;
+    }
+    return backgroundImage;
+}

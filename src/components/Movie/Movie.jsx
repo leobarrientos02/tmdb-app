@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import VotePercentage, {
   FormatDate,
   NullEmptyUndefinedChecker,
+  getBackgroundColor,
+  getBackgroundImage,
 } from "../../shared";
 import { motion } from "framer-motion";
 import "./movie.scss";
@@ -16,9 +18,25 @@ const Movie = ({ id, vote, poster_path, title, character, release_date }) => {
       initial={{ opacity: 0 }}
       transition={{ duration: 1, delay: 0.5 }}
     >
-      <p className="vote-bubble" title={VotePercentage(vote) + "% Rating"}>
-        {VotePercentage(vote)}%
-      </p>
+      <div className="vote-bubble">
+        <div
+          className="vote-bubble-outer"
+          title={VotePercentage(vote) + "% Rating"}
+        >
+          <div
+            className="border"
+            style={{
+              backgroundColor: `${getBackgroundColor(VotePercentage(vote))}`,
+              backgroundImage: `${getBackgroundImage(VotePercentage(vote))}`,
+            }}
+          >
+            <div className={`vote-bubble-inner`}>
+              <p className="vote">{VotePercentage(vote)}</p>
+              <p className="percent-sign">%</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <Link to={`/movie/${id}`} className="link">
         {NullEmptyUndefinedChecker(poster_path) === false ? (
           <ContentNotFound content={"Movie"} />
