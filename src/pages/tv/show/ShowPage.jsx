@@ -14,6 +14,7 @@ import Credits from "../../../components/Credits/Credits";
 import "./showPage.scss";
 import ContentNotFound from "../../../components/NotFound/ContentNotFound";
 import Reccomended from "../../../components/Recommended/Reccomended";
+import VoteBubble from "../../../components/VoteBubble/VoteBubble";
 
 const ShowPage = ({ language }) => {
   const [show, setShow] = useState([]);
@@ -68,7 +69,7 @@ const ShowPage = ({ language }) => {
           );
         })}
       </div>
-      <p>Rating: {VotePercentage(show?.vote_average)}%</p>
+      <VoteBubble vote={show?.vote_average} />
       <p className="released-icon">{show?.status}</p>
 
       <div className="genres-section">
