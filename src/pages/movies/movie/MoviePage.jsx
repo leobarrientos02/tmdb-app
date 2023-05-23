@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReviewSection from "../../../components/Reviews/ReviewSection";
-import VotePercentage, {
-  FormatDate,
-  NullEmptyUndefinedChecker,
-} from "../../../shared";
+import { FormatDate, NullEmptyUndefinedChecker } from "../../../shared";
 import { motion } from "framer-motion";
 import "./moviePage.scss";
 import ProductionCompanies from "../../../components/ProductionCompanies/ProductionCompanies";
 import Credits from "../../../components/Credits/Credits";
 import Reccomended from "../../../components/Recommended/Reccomended";
 import Media from "../../../components/Media/Media";
+import VoteBubble from "../../../components/VoteBubble/VoteBubble";
 
 const MoviePage = ({ language }) => {
   const [movieData, setMovieData] = useState([]);
@@ -38,7 +36,8 @@ const MoviePage = ({ language }) => {
       <h2>{movieData?.title}</h2>
       <p>Released Date: {FormatDate(movieData?.release_date)}</p>
       <p>Runtime: {movieData?.runtime} minutes</p>
-      <p>Average Vote: {VotePercentage(movieData?.vote_average)}%</p>
+      <VoteBubble vote={movieData?.vote_average} />
+      {/* <p>Average Vote: {VotePercentage(movieData?.vote_average)}%</p> */}
       <p className="released-icon">{movieData?.status}</p>
 
       <div className="genres-section">

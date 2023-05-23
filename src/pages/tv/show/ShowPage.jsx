@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
-import VotePercentage, {
-  FormatDate,
-  NullEmptyUndefinedChecker,
-} from "../../../shared";
+import { FormatDate, NullEmptyUndefinedChecker } from "../../../shared";
 import { motion } from "framer-motion";
 import ProductionCompanies from "../../../components/ProductionCompanies/ProductionCompanies";
 import ReviewSection from "../../../components/Reviews/ReviewSection";
@@ -14,6 +11,7 @@ import Credits from "../../../components/Credits/Credits";
 import "./showPage.scss";
 import ContentNotFound from "../../../components/NotFound/ContentNotFound";
 import Reccomended from "../../../components/Recommended/Reccomended";
+import VoteBubble from "../../../components/VoteBubble/VoteBubble";
 
 const ShowPage = ({ language }) => {
   const [show, setShow] = useState([]);
@@ -68,7 +66,7 @@ const ShowPage = ({ language }) => {
           );
         })}
       </div>
-      <p>Rating: {VotePercentage(show?.vote_average)}%</p>
+      <VoteBubble vote={show?.vote_average} />
       <p className="released-icon">{show?.status}</p>
 
       <div className="genres-section">

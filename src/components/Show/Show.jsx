@@ -3,6 +3,8 @@ import "./show.scss";
 import VotePercentage, {
   FormatDate,
   NullEmptyUndefinedChecker,
+  getBackgroundColor,
+  getBackgroundImage,
 } from "../../shared";
 import { motion } from "framer-motion";
 import ContentNotFound from "../NotFound/ContentNotFound";
@@ -16,9 +18,27 @@ const Show = ({ id, vote, poster_path, name, character, aired_date }) => {
       initial={{ opacity: 0 }}
       transition={{ duration: 1, delay: 0.5 }}
     >
-      <p className="vote-bubble" title={VotePercentage(vote) + "% Rating"}>
-        {VotePercentage(vote)}%
-      </p>
+      <div className="vote-bubble">
+        <div className="vote-bubble">
+          <div
+            className="vote-bubble-outer"
+            title={VotePercentage(vote) + "% Rating"}
+          >
+            <div
+              className="border"
+              style={{
+                backgroundColor: `${getBackgroundColor(VotePercentage(vote))}`,
+                backgroundImage: `${getBackgroundImage(VotePercentage(vote))}`,
+              }}
+            >
+              <div className={`vote-bubble-inner`}>
+                <p className="vote">{VotePercentage(vote)}</p>
+                <p className="percent-sign">%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <Link to={`/tv/${id}`} className="link">
         {NullEmptyUndefinedChecker(poster_path) === false ? (
           <ContentNotFound content={"Show"} />
