@@ -141,22 +141,6 @@ export const languageObjects = [
     { name: "Vietnamese", iso: "vi" }
 ];
 
-export const getVoteBubble = (vote) => {
-    let voteBorder = document.querySelector('.border');
-    if (vote >= 75) {
-        voteBorder.style.backgroundColor = '#204529';
-        voteBorder.style.backgroundImage = `linear-gradient(0deg, #20cc78 ${vote}%, #204529 30%)`;
-    }
-    if (vote <= 74 && vote >= 25) {
-        voteBorder.style.backgroundColor = '#d2d531';
-        voteBorder.style.backgroundImage = `linear-gradient(0deg, #d2d531 ${vote}%, #3d3a0f 30%)`;
-    }
-    if (vote < 24) {
-        voteBorder.style.backgroundColor = '#571435';
-        voteBorder.style.backgroundImage = `linear-gradient(0deg, #db2360 ${vote}%, #204529 30%)`;
-    }
-}
-
 export const getBackgroundColor = (vote) => {
     let backgroundColor = "";
     if (vote >= 75) {
